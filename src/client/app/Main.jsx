@@ -13,16 +13,6 @@ const styles = {
     display : 'flex',
     flexDirection : 'row',
     justifyContent : 'space-around'
-  },
-  loginButton : {
-  	alignSelf: 'auto',
-  	order : 1, 
-  	flexGrow : 2
-  }, 
-  signUpButton : {
-  	alignSelf : 'auto',
-  	order : 3, 
-  	flexGrow : 1
   }
 };
 
@@ -68,21 +58,39 @@ class Main extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.container}>
-        	<div style = {styles.loginButton}>
-        		<LoginDialogComponent style = {styles.loginButton}/>
-          		
-        	</div>
-        	<div style = {styles.signUpButton}>
-        		<SignUpDialogComponent />
-          		
-        	</div>
-        	
+        	<Grid>
+        		<Row>
+        			<Col xs={12}>
+        				<Row start = "xs">
+        					<Col xs = {8}>
+        						<LoginDialogComponent />
 
+        					</Col>
+        					<Col xs = {2}>
+        						<SignUpDialogComponent />
+        					</Col>
+        					<Col xs = {2} >
+        						<LoginDialogComponent label = "Brand" />
+        					</Col>
+
+        				</Row>
+  
+        			</Col>
+        		</Row>
+        		<br></br>
+        		<Row>	
+				  <Col xs={12}>
+				    <Row center="xs" around = "xs">
+				      <Col xs={2} >
+				      	<LoginDialogComponent />
+
+				      </Col>
+				    </Row>
+				  </Col>
+				</Row>
+        	</Grid>
         	
-    		
-        	
-	          
-	    </div>
+        </div>
         
       </MuiThemeProvider>
     );
