@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import LoginDialogComponent from './Components/LoginDialog.jsx';
 import SignUpDialogComponent from './Components/SignUpDialog.jsx';
+import PostList from './Components/PostList.jsx'
 import {lightBlue600} from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -81,8 +82,8 @@ class Main extends Component {
         		<Row>	
 				  <Col xs={12}>
 				    <Row center="xs" around = "xs">
-				      <Col xs={2} >
-				      	<LoginDialogComponent />
+				      <Col xs={11} >
+				      	<PostList hands = {this.props.hands}/>
 
 				      </Col>
 				    </Row>

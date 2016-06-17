@@ -4,7 +4,14 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
+const signUpFormStyle = {
+	  width: '40%',
+	  maxWidth: 'none',
+	};
+
 export default class SignUpDialogComponent extends React.Component{
+
+
 	constructor(props){
 		super(props);
 		this.state = { open:false, errorTextUser : '',errorTextPassword : '', errorTextEmail : '', username : '', password : '', email : ''};
@@ -74,10 +81,11 @@ export default class SignUpDialogComponent extends React.Component{
 			<div>
 				<RaisedButton label = "Sign Up" onTouchTap = {this.handleOpen} />
 				<Dialog
-					title = "Login Form"
+					title = "Sign Up"
 					actions = {actions}
 					modal = {false}
 					open = {this.state.open}
+					contentStyle = {signUpFormStyle}
 					onRequestClose = {this.handleClose}>
 					<TextField
 				      hintText="Username"
