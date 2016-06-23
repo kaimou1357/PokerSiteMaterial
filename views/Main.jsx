@@ -5,7 +5,7 @@ import PostList from './Components/PostList.jsx'
 import {lightBlue600} from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import {Grid, Col, Row} from 'react-flexbox-grid/lib/index';
 
 
@@ -17,11 +17,7 @@ const styles = {
   }
 };
 
-const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: lightBlue600,
-  },
-});
+
 
 class Main extends Component {
   constructor(props, context) {
@@ -57,7 +53,7 @@ class Main extends Component {
     );
 
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
+      
         <div style={styles.container}>
         	<Grid>
         		<Row>
@@ -93,7 +89,7 @@ class Main extends Component {
         	
         </div>
         
-      </MuiThemeProvider>
+
     );
   }
 }

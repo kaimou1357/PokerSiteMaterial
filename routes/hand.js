@@ -1,5 +1,6 @@
 exports.getHand = function(req, res){
-	//get hand via hand ID via query. 
+	//get hand via hand ID via query.
+	res.json({"title": "What to do with QQ preflop", "author": "Kai Mou", "content": "I hate this game"})
 }
 
 exports.postHand = function(req, res){
