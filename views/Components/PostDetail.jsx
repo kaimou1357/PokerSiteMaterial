@@ -1,6 +1,6 @@
 import React from 'react';
-import CommentList from './Components/CommentList.jsx'
-import CommentReply from './Components/CommentReply.jsx'
+import CommentList from './CommentList.jsx'
+import CommentReply from './CommentReply.jsx'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 
 
@@ -28,17 +28,21 @@ export default class PostDetail extends React.Component{
 	render(){
 		//render a card view with the approrpriate title/author/content. 
 		return(
-			<Card>
-			    <CardHeader
-			      title={this.state.title}
-			      subtitle={this.state.author}
-			      showExpandableButton={false}
-			    />
-			    <CardText>
-			      {this.state.content}
-			    </CardText>
-			    
-			</Card>
+			<div>
+				<Card>
+				    <CardHeader
+				      title={this.state.title}
+				      subtitle={this.state.author}
+				      showExpandableButton={false}
+				    />
+				    <CardText>
+				      {this.state.content}
+				    </CardText>
+				    
+				    
+				</Card>
+				<CommentList />
+			</div>
 
 		);
 			

@@ -2,7 +2,6 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import CommentReply from './CommentReply.jsx'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import CommentList from './CommentList.jsx'
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider';
@@ -34,7 +33,8 @@ export default class Post extends React.Component{
 					primaryText = {title}
 					onTouchTap = {this.openPost}
 					secondaryText = {author} />
-				<Divider inset = {true} />
+				<Divider 
+					inset = {true} />
 			</div>
 			
 

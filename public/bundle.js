@@ -63,11 +63,11 @@
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _PostDetail = __webpack_require__(/*! ./PostDetail.jsx */ 427);
+	var _PostDetail = __webpack_require__(/*! ./Components/PostDetail.jsx */ 428);
 	
 	var _PostDetail2 = _interopRequireDefault(_PostDetail);
 	
-	var _MuiThemeProvider = __webpack_require__(/*! material-ui/styles/MuiThemeProvider */ 426);
+	var _MuiThemeProvider = __webpack_require__(/*! material-ui/styles/MuiThemeProvider */ 427);
 	
 	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 	
@@ -98,7 +98,8 @@
 		null,
 		_react2.default.createElement(
 			_MuiThemeProvider2.default,
-			{ muiTheme: (0, _getMuiTheme2.default)(_lightBaseTheme2.default) },
+			{
+				muiTheme: (0, _getMuiTheme2.default)(_lightBaseTheme2.default) },
 			_react2.default.createElement(
 				_reactRouter.Router,
 				{ history: _reactRouter.browserHistory },
@@ -21563,7 +21564,10 @@
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_RaisedButton2.default, { label: 'Login', onTouchTap: this.handleOpen, backgroundColor: _colors.redA700 }),
+					_react2.default.createElement(_RaisedButton2.default, {
+						label: 'Login',
+						onTouchTap: this.handleOpen,
+						backgroundColor: _colors.redA700 }),
 					_react2.default.createElement(
 						_Dialog2.default,
 						{
@@ -28080,7 +28084,9 @@
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_RaisedButton2.default, { label: 'Sign Up', onTouchTap: this.handleOpen }),
+					_react2.default.createElement(_RaisedButton2.default, {
+						label: 'Sign Up',
+						onTouchTap: this.handleOpen }),
 					_react2.default.createElement(
 						_Dialog2.default,
 						{
@@ -28169,7 +28175,13 @@
 			value: function render() {
 				var posts = [];
 				this.props.hands.map(function (hand) {
-					posts.push(_react2.default.createElement(_Post2.default, { title: hand.title, content: hand.content, author: hand.author, key: hand.id, comments: hand.comments, id: hand.id }));
+					posts.push(_react2.default.createElement(_Post2.default, {
+						title: hand.title,
+						content: hand.content,
+						author: hand.author,
+						key: hand.id,
+						comments: hand.comments,
+						id: hand.id }));
 				});
 				return _react2.default.createElement(
 					_List.List,
@@ -30754,10 +30766,6 @@
 	
 	var _Card = __webpack_require__(/*! material-ui/Card */ 249);
 	
-	var _CommentList = __webpack_require__(/*! ./CommentList.jsx */ 261);
-	
-	var _CommentList2 = _interopRequireDefault(_CommentList);
-	
 	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 218);
 	
 	var _FlatButton2 = _interopRequireDefault(_FlatButton);
@@ -30816,7 +30824,8 @@
 						primaryText: title,
 						onTouchTap: this.openPost,
 						secondaryText: author }),
-					_react2.default.createElement(_Divider2.default, { inset: true })
+					_react2.default.createElement(_Divider2.default, {
+						inset: true })
 				);
 			}
 		}]);
@@ -30934,7 +30943,9 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_FlatButton2.default, { label: 'Reply', onTouchTap: this.handleOpen }),
+	        _react2.default.createElement(_RaisedButton2.default, {
+	          label: 'Reply',
+	          onTouchTap: this.handleOpen }),
 	        _react2.default.createElement(
 	          _Dialog2.default,
 	          {
@@ -32368,10 +32379,26 @@
 		function CommentList(props) {
 			_classCallCheck(this, CommentList);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(CommentList).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CommentList).call(this, props));
+	
+			_this.state = { comments: [] };
+			return _this;
 		}
 	
 		_createClass(CommentList, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				$.ajax({
+					url: "/api/comments",
+					success: function (response) {
+						this.setState({ comments: response });
+					}.bind(this),
+					error: function (xhr) {
+						console.log("GET request to retrieve hand failed.");
+					}.bind(this)
+				});
+			}
+		}, {
 			key: 'handleCommentSubmit',
 			value: function handleCommentSubmit(comment) {
 				//make the POST request here.
@@ -32381,9 +32408,12 @@
 			key: 'render',
 			value: function render() {
 				var commentList = [];
-	
-				this.props.comments.map(function (comment) {
-					commentList.push(_react2.default.createElement(_List.ListItem, { disabled: true, primaryText: comment.author, secondaryText: comment.content, key: comment.commentID }));
+				this.state.comments.map(function (comment) {
+					commentList.push(_react2.default.createElement(_List.ListItem, {
+						disabled: true,
+						primaryText: comment.author,
+						secondaryText: comment.content,
+						key: comment.commentId }));
 				});
 	
 				return _react2.default.createElement(
@@ -32405,7 +32435,11 @@
 					_react2.default.createElement(
 						_index.Row,
 						{ start: 'xs' },
-						commentList
+						_react2.default.createElement(
+							_List.List,
+							null,
+							commentList
+						)
 					),
 					_react2.default.createElement(
 						_index.Row,
@@ -47598,7 +47632,8 @@
 	exports.default = new Typography();
 
 /***/ },
-/* 426 */
+/* 426 */,
+/* 427 */
 /*!**************************************************!*\
   !*** ./~/material-ui/styles/MuiThemeProvider.js ***!
   \**************************************************/
@@ -47662,10 +47697,10 @@
 	exports.default = MuiThemeProvider;
 
 /***/ },
-/* 427 */
-/*!******************************!*\
-  !*** ./views/PostDetail.jsx ***!
-  \******************************/
+/* 428 */
+/*!*****************************************!*\
+  !*** ./views/Components/PostDetail.jsx ***!
+  \*****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47680,11 +47715,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _CommentList = __webpack_require__(/*! ./Components/CommentList.jsx */ 261);
+	var _CommentList = __webpack_require__(/*! ./CommentList.jsx */ 261);
 	
 	var _CommentList2 = _interopRequireDefault(_CommentList);
 	
-	var _CommentReply = __webpack_require__(/*! ./Components/CommentReply.jsx */ 248);
+	var _CommentReply = __webpack_require__(/*! ./CommentReply.jsx */ 248);
 	
 	var _CommentReply2 = _interopRequireDefault(_CommentReply);
 	
@@ -47732,18 +47767,23 @@
 			value: function render() {
 				//render a card view with the approrpriate title/author/content.
 				return _react2.default.createElement(
-					_Card.Card,
+					'div',
 					null,
-					_react2.default.createElement(_Card.CardHeader, {
-						title: this.state.title,
-						subtitle: this.state.author,
-						showExpandableButton: false
-					}),
 					_react2.default.createElement(
-						_Card.CardText,
+						_Card.Card,
 						null,
-						this.state.content
-					)
+						_react2.default.createElement(_Card.CardHeader, {
+							title: this.state.title,
+							subtitle: this.state.author,
+							showExpandableButton: false
+						}),
+						_react2.default.createElement(
+							_Card.CardText,
+							null,
+							this.state.content
+						)
+					),
+					_react2.default.createElement(_CommentList2.default, null)
 				);
 			}
 		}]);

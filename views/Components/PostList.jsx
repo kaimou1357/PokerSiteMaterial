@@ -11,7 +11,15 @@ export default class PostList extends React.Component{
 	render(){
 		var posts = [];
 		this.props.hands.map(function(hand){
-			posts.push(<Post title = {hand.title} content = {hand.content} author = {hand.author} key = {hand.id} comments = {hand.comments} id = {hand.id} />)
+			posts.push(
+				<Post 
+					title = {hand.title} 
+					content = {hand.content} 
+					author = {hand.author} 
+					key = {hand.id} 
+					comments = {hand.comments} 
+					id = {hand.id} />
+			)
 		});
 		return (
 			<List>

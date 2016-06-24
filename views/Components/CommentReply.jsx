@@ -2,7 +2,7 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+import FlatButton from 'material-ui/FlatButton'
 
 const loginCustomStyle = {
   width : '40%',
@@ -61,7 +61,9 @@ export default class CommentReply extends React.Component{
       ];
     return (
       <div>
-        <FlatButton label = "Reply" onTouchTap = {this.handleOpen} />
+        <RaisedButton 
+          label = "Reply" 
+          onTouchTap = {this.handleOpen} />
         <Dialog
           title = "Reply"
           actions = {actions}

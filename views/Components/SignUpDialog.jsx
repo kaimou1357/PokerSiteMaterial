@@ -79,7 +79,9 @@ export default class SignUpDialogComponent extends React.Component{
 	    ];
 		return (
 			<div>
-				<RaisedButton label = "Sign Up" onTouchTap = {this.handleOpen} />
+				<RaisedButton 
+					label = "Sign Up" 
+					onTouchTap = {this.handleOpen} />
 				<Dialog
 					title = "Sign Up"
 					actions = {actions}

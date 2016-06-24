@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Main from './Main.jsx'; // Our custom react component
-import PostDetail from './PostDetail.jsx';
+import PostDetail from './Components/PostDetail.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { Router, Route, Link, browserHistory } from 'react-router';
@@ -24,7 +24,8 @@ let POSTS = [
 
 render(
 	<div>
-	<MuiThemeProvider muiTheme = {getMuiTheme(lightBaseTheme)}>
+	<MuiThemeProvider 
+		muiTheme = {getMuiTheme(lightBaseTheme)}>
 		<Router history = {browserHistory}>
 			<Route path = "/" component = {Main} hands = {POSTS} />
 			<Route path = "/hands" component = {PostDetail} /> 
