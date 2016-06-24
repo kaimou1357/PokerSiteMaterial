@@ -7,18 +7,22 @@ var comment = require('./routes/comment')
 
 app.use(express.static('public'));
 
-app.route('/api/hands')
-	.get(hand.getHand)
-	.post(hand.postHand)
-	.delete(hand.deleteHand)
+app.get('/api/hands', hand.getHand)
+app.post('/api/hands', hand.postHand)
+app.delete('/api/hands/:handid', hand.deleteHand)
 
-app.route('/api/comments')
-	.get(comment.getComments)
-	.post(comment.postComment)
-	.delete(comment.deleteComment)
+app.get('/api/comments', comment.getComment)
 
-app.route('/api/users')
-	.post(user.createUser)
+
+app.get('/api/login', function(req, res){
+	//Leave this to setup user authentication
+	res.send("Cool")
+})
+
+app.get('/api/signup', function(req, res){
+	//Leave this to setup user setup.
+	res.send("Cool")
+})
 	
 
 app.get('*', require('./routes/index').default)
