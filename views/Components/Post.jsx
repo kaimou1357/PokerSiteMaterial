@@ -18,7 +18,7 @@ export default class Post extends React.Component{
 
 	openPost(e){
 		//render the component with the correct hand ID. 
-		browserHistory.push('/hands/')
+		browserHistory.push('/hands/' + this.props.id)
 	}
 
 

@@ -1,11 +1,13 @@
 var express = require('express')
 var app = express()
+var bodyParser = require('body-parser')
 
 var user = require('./routes/user')
 var hand = require('./routes/hand')
 var comment = require('./routes/comment')
 
 app.use(express.static('public'));
+app.use(bodyParser.json())
 
 app.get('/api/hands', hand.getHand)
 app.post('/api/hands', hand.postHand)
@@ -13,7 +15,7 @@ app.delete('/api/hands/:handid', hand.deleteHand)
 
 app.get('/api/comments', comment.getComment)
 app.post('/api/comments', comment.postComment)
-app.delete('/api/comments', comment.deleteComment)
+app.delete('/api/comments/:commentid', comment.deleteComment)
 
 
 app.get('/api/login', function(req, res){

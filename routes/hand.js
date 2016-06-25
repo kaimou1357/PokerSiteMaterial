@@ -1,6 +1,4 @@
 var pg = require('pg')
-var pool = new pg.Pool(config)
-
 var config = {
   user: 'postgres', //env var: PGUSER
   database: 'pokerdb', //env var: PGDATABASE
@@ -10,6 +8,7 @@ var config = {
   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 };
 
+var pool = new pg.Pool(config)
 exports.getHand = function(req, res){
 	//Takes in handid as a query string.
 	if(req.query.handid){
@@ -19,13 +18,13 @@ exports.getHand = function(req, res){
 
 			}
 
-			client.query('SELECT * FROM hands WHERE handid = $1', [req.query.handid], function(err, result){
+			client.query('SELECT * FROM hands WHERE postid = $1', [req.query.handid], function(err, result){
 				done()
 				if(err){
 					return console.error("Error running query")
 				}
 
-				res.json(result)
+				res.json(result.rows[0])
 			})
 		})
 	}
@@ -42,7 +41,7 @@ exports.getHand = function(req, res){
 					console.error("Error running query")
 				}
 
-				res.json(result)
+				res.json(result.rows)
 			})
 		})
 	}

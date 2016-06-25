@@ -27,8 +27,21 @@ class Main extends Component {
     this.handleTouchTap = this.handleTouchTap.bind(this);
 
     this.state = {
-      open: false,
+      open: false, hands : []
     };
+  }
+
+  componentDidMount(){
+    $.ajax({
+          url: "/api/hands",
+        
+        success: function(response) {
+            this.setState({hands : response})
+        }.bind(this),
+        error: function(xhr) {
+            console.log("GET request to retrieve hand failed.")
+        }.bind(this)
+    });
   }
 
   handleRequestClose() {
@@ -79,7 +92,7 @@ class Main extends Component {
 				  <Col xs={12}>
 				    <Row center="xs">
 				      <Col xs={12} >
-				      	<PostList hands = {this.props.route.hands}/>
+				      	<PostList hands = {this.state.hands}/>
 
 				      </Col>
 				    </Row>

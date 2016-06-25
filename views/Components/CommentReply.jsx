@@ -37,9 +37,9 @@ export default class CommentReply extends React.Component{
     }
     else{
       this.setState({passwordErrorText: '', userErrorText : ''})
-      //need to grab the author before submitting!
-      this.props.onCommentSubmit({author : 'author', reply : replyText})
-      alert("Submitting Comment!")
+      //TODO : need to grab the author before submitting!
+      this.props.onCommentSubmit({author : 'Test User', content: replyText, postid : this.props.postid})
+      this.setState({open:false})
     }
     
   }

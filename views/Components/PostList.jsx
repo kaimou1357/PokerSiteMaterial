@@ -14,11 +14,9 @@ export default class PostList extends React.Component{
 			posts.push(
 				<Post 
 					title = {hand.title} 
-					content = {hand.content} 
 					author = {hand.author} 
-					key = {hand.id} 
-					comments = {hand.comments} 
-					id = {hand.id} />
+					key = {hand.postid} 
+					id = {hand.postid} />
 			)
 		});
 		return (
