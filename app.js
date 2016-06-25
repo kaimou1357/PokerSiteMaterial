@@ -12,6 +12,8 @@ app.post('/api/hands', hand.postHand)
 app.delete('/api/hands/:handid', hand.deleteHand)
 
 app.get('/api/comments', comment.getComment)
+app.post('/api/comments', comment.postComment)
+app.delete('/api/comments', comment.deleteComment)
 
 
 app.get('/api/login', function(req, res){

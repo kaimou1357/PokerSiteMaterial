@@ -61,12 +61,13 @@ exports.deleteHand = function(req, res){
 	}
 	else{
 		pool.connect(function(err, client, done){
+			done()
 			if(err){
 				return console.log("Failed to connect to database")
 			}
 
 			client.query('DELETE FROM hands WHERE handid = $1 RETURNING handid;', [req.param.handid], function(err, result){
-				done()
+				
 				res.json({"success" : "true"})
 			})
 		})

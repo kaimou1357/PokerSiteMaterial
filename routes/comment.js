@@ -21,6 +21,7 @@ exports.getComment = function(req, res){
 				console.error('Failed to connect to database')
 			}
 			client.query('SELECT * FROM comments WHERE postid = $1;', [req.query.postid], function(err, result){
+				done()
 				if(err){
 					console.error('Failed to run query')
 				}
@@ -31,9 +32,39 @@ exports.getComment = function(req, res){
 }
 
 exports.postComment = function(req, res){
+	if(!req.body.postid || !req.body.ownerid || !req.body.content){
+		res.json({"success" : "false"})
+	}
 
+	else{
+		pool.connect(function(err, client, done){
+			if(err){
+				console.log('Failed to connect to database')
+			}
+			client.query('INSERT INTO comments(postid, ownerid, content) VALUES ($1, $2, $3) RETURNING postid, ownerid, content;' , [req.body.postid, req.body.ownerid, req.body.content], function(err, result){
+				done()
+				res.json(result)
+			})
+		})
+	}
 }
 
 exports.deleteComment = function(req, res){
+	if(!req.params.commentid){
+		res.json({"success" : "false"})
+
+	}
+
+	else{
+		pool.connect(function(err, client, done){
+			if(err){
+				console.log('Failed to connect to database')
+			}
+			client.query('DELETE FROM comments WHERE commentid = $1;', [req.params.commentid], function(err, result){
+				done()
+				res.json(result)
+			})
+		})
+	}
 	
 }
