@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import LoginDialogComponent from './Components/LoginDialog.jsx';
 import SignUpDialogComponent from './Components/SignUpDialog.jsx';
 import PostList from './Components/PostList.jsx'
-import {lightBlue600} from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-
 import {Grid, Col, Row} from 'react-flexbox-grid/lib/index';
 
 
@@ -25,22 +23,37 @@ class Main extends Component {
 
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.handleTouchTap = this.handleTouchTap.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this)
 
     this.state = {
       open: false, hands : []
     };
   }
 
+  handleSignUp(userinformation){
+    $.ajax({
+      url: "/signup",
+        type: "POST",
+        contentType : "application/json",
+        data: JSON.stringify(userinformation),
+        success: function(response){
+          alert(JSON.stringify(response))
+        }.bind(this), 
+        error:function(xhr){
+          console.log("POST request to signup failed")
+        }.bind(this)
+    });
+  }
+
   componentDidMount(){
     $.ajax({
-          url: "/api/hands",
-        
-        success: function(response) {
-            this.setState({hands : response})
-        }.bind(this),
-        error: function(xhr) {
-            console.log("GET request to retrieve hand failed.")
-        }.bind(this)
+        url: "/api/hands",
+      success: function(response) {
+  		this.setState({hands : response})
+  		}.bind(this),
+  		error: function(xhr) {
+  		console.log("GET request to retrieve hand failed.")
+  		}.bind(this)
     });
   }
 
@@ -64,8 +77,8 @@ class Main extends Component {
         onTouchTap={this.handleRequestClose}
       />
     );
-
     return (
+    	
       
         <div style={styles.container}>
         	<Grid>
@@ -73,11 +86,11 @@ class Main extends Component {
         			<Col xs={12}>
         				<Row start = "xs">
         					<Col xs = {8}>
-        						<LoginDialogComponent />
+        						<img src = 'http://localhost:3000/images/cardlogo.png' height = '75' width = '125'/>
 
         					</Col>
         					<Col xs = {2}>
-        						<SignUpDialogComponent />
+        						<SignUpDialogComponent onSignUp = {this.handleSignUp} />
         					</Col>
         					<Col xs = {2} >
         						<LoginDialogComponent label = "Brand" />

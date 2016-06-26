@@ -9,7 +9,8 @@ export default class PostDetail extends React.Component{
 		//need title, author, content and CommentList.
 		super(props)
 		this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
-		this.state = {postid : '', title : '', content : '', author : '', comments : []}
+		this.loadCommentsFromServer = this.loadCommentsFromServer.bind(this)
+		this.state = {postid : props.params.postid, title : '', content : '', author : '', comments : []}
 
 	}
 
@@ -17,7 +18,7 @@ export default class PostDetail extends React.Component{
 		$.ajax({
 	   	    url: "/api/hands?handid=" + this.props.params.postid,
 		    success: function(response) {
-		        this.setState({postid : response.postid, title: response.title, content : response.content, author: response.author})
+		        this.setState({title: response.title, content : response.content, author: response.author})
 		    }.bind(this),
 		    error: function(xhr) {
 		        console.log("GET request to retrieve hand failed.")
@@ -26,9 +27,8 @@ export default class PostDetail extends React.Component{
 	}
 
 	loadCommentsFromServer(){
-		alert('Loading Comments!')
 		$.ajax({
-	   	    url: "/api/comments?postid=" + this.props.params.postid,
+	   	    url: "/api/comments?postid=" + this.state.postid,
 		    success: function(response) {
 				this.setState({comments: response})
 			}.bind(this),
@@ -57,7 +57,13 @@ export default class PostDetail extends React.Component{
 
 	componentDidMount(){
 		this.loadHandFromServer()
-		setInterval(this.loadCommentsFromServer(), 2000)
+		this.loadCommentsFromServer()
+		this.intervalFunction = setInterval(this.loadCommentsFromServer, 5000)
+	}
+
+	componentWillUnmount(){
+		//unsubscribe from the interval so it doesn't call setstate on unrendered components.
+		clearInterval(this.intervalFunction)
 	}
 
 	render(){
@@ -76,13 +82,13 @@ export default class PostDetail extends React.Component{
 				    
 				</Card>
 				<CommentList 
-					postid = {this.props.params.postid}
+					postid = {this.state.postid}
 					comments = {this.state.comments}
 					onCommentSubmit = {this.handleCommentSubmit}
 					/>
 				<CommentReply 
 					onCommentSubmit = {this.handleCommentSubmit}
-					postid = {this.props.params.postid}
+					postid = {this.state.postid}
 
 				 />
 			</div>

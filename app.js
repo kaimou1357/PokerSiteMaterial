@@ -1,35 +1,30 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
+var passport = require('passport')
+var flash    = require('connect-flash');
 
-var user = require('./routes/user')
-var hand = require('./routes/hand')
-var comment = require('./routes/comment')
+var morgan = require('morgan')
+var cookieParser = require('cookie-parser')
+var session = require('express-session')
 
+require('./config/passport')(passport)
+
+//express setup
 app.use(express.static('public'));
 app.use(bodyParser.json())
+app.use(morgan('dev'))
+app.use(cookieParser())
 
-app.get('/api/hands', hand.getHand)
-app.post('/api/hands', hand.postHand)
-app.delete('/api/hands/:handid', hand.deleteHand)
+//passport setup
 
-app.get('/api/comments', comment.getComment)
-app.post('/api/comments', comment.postComment)
-app.delete('/api/comments/:commentid', comment.deleteComment)
+app.use(session({secret : 'kaimou', resave : true, saveUninitialized : true}))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash());
 
-
-app.get('/api/login', function(req, res){
-	//Leave this to setup user authentication
-	res.send("Cool")
-})
-
-app.get('/api/signup', function(req, res){
-	//Leave this to setup user setup.
-	res.send("Cool")
-})
-	
-
-app.get('*', require('./routes/index').default)
+//routes
+require('./routes/index.js')(app, passport)	
 	 
 
 app.listen(3000, function(){

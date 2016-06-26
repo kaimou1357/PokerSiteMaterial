@@ -71,10 +71,10 @@ export default class LoginDialogComponent extends React.Component{
 	    ];
 		return (
 			<div>
-				<RaisedButton 
+				<FlatButton
 					label = "Login" 
 					onTouchTap = {this.handleOpen} 
-					backgroundColor = {redA700} />
+					/>
 				<Dialog
 					title = "Login Form"
 					actions = {actions}

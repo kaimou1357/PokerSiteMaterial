@@ -40,12 +40,11 @@ export default class SignUpDialogComponent extends React.Component{
 	}
 
 	onSubmit(e){
-		e.preventDefault();
-		var user = this.state.username.trim()
+		var username = this.state.username.trim()
 		var password = this.state.password.trim()
 		var email = this.state.email.trim()
 
-		if(!user){
+		if(!username){
 			this.setState({errorTextUser : "You must have a username!"})
 		}
 		if(!password){
@@ -56,7 +55,7 @@ export default class SignUpDialogComponent extends React.Component{
 		}
 		else{
 			this.setState({errorTextUser : '', errorTextEmail : '', errorTextPassword : ''})
-			alert("Signing up!")
+			this.props.onSignUp({'username' : username, 'password' : password, 'email' : email})
 
 		}
 		
@@ -79,7 +78,7 @@ export default class SignUpDialogComponent extends React.Component{
 	    ];
 		return (
 			<div>
-				<RaisedButton 
+				<FlatButton
 					label = "Sign Up" 
 					onTouchTap = {this.handleOpen} />
 				<Dialog

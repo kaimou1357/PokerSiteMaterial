@@ -27,6 +27,16 @@ var config = {
         test: /\.css$/,
         loader: 'style!css?modules',
         include: /flexboxgrid/,
+      },
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'file?name=[path][name].[hash].[ext]',
+        include: APP_DIR.images
+      },
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'url?limit=26000',
+        include: APP_DIR.images
       }
     ]
   }

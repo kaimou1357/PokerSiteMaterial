@@ -63,11 +63,11 @@
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _PostDetail = __webpack_require__(/*! ./Components/PostDetail.jsx */ 425);
+	var _PostDetail = __webpack_require__(/*! ./Components/PostDetail.jsx */ 426);
 	
 	var _PostDetail2 = _interopRequireDefault(_PostDetail);
 	
-	var _MuiThemeProvider = __webpack_require__(/*! material-ui/styles/MuiThemeProvider */ 427);
+	var _MuiThemeProvider = __webpack_require__(/*! material-ui/styles/MuiThemeProvider */ 428);
 	
 	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 	
@@ -21313,8 +21313,6 @@
 	
 	var _PostList2 = _interopRequireDefault(_PostList);
 	
-	var _colors = __webpack_require__(/*! material-ui/styles/colors */ 202);
-	
 	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 218);
 	
 	var _FlatButton2 = _interopRequireDefault(_FlatButton);
@@ -21351,6 +21349,7 @@
 	
 	    _this.handleRequestClose = _this.handleRequestClose.bind(_this);
 	    _this.handleTouchTap = _this.handleTouchTap.bind(_this);
+	    _this.handleSignUp = _this.handleSignUp.bind(_this);
 	
 	    _this.state = {
 	      open: false, hands: []
@@ -21359,11 +21358,26 @@
 	  }
 	
 	  _createClass(Main, [{
+	    key: 'handleSignUp',
+	    value: function handleSignUp(userinformation) {
+	      $.ajax({
+	        url: "/signup",
+	        type: "POST",
+	        contentType: "application/json",
+	        data: JSON.stringify(userinformation),
+	        success: function (response) {
+	          alert(JSON.stringify(response));
+	        }.bind(this),
+	        error: function (xhr) {
+	          console.log("POST request to signup failed");
+	        }.bind(this)
+	      });
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      $.ajax({
 	        url: "/api/hands",
-	
 	        success: function (response) {
 	          this.setState({ hands: response });
 	        }.bind(this),
@@ -21394,7 +21408,6 @@
 	        primary: true,
 	        onTouchTap: this.handleRequestClose
 	      });
-	
 	      return _react2.default.createElement(
 	        'div',
 	        { style: styles.container },
@@ -21413,12 +21426,12 @@
 	                _react2.default.createElement(
 	                  _index.Col,
 	                  { xs: 8 },
-	                  _react2.default.createElement(_LoginDialog2.default, null)
+	                  _react2.default.createElement('img', { src: 'http://localhost:3000/images/cardlogo.png', height: '75', width: '125' })
 	                ),
 	                _react2.default.createElement(
 	                  _index.Col,
 	                  { xs: 2 },
-	                  _react2.default.createElement(_SignUpDialog2.default, null)
+	                  _react2.default.createElement(_SignUpDialog2.default, { onSignUp: this.handleSignUp })
 	                ),
 	                _react2.default.createElement(
 	                  _index.Col,
@@ -21576,10 +21589,10 @@
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_RaisedButton2.default, {
+					_react2.default.createElement(_FlatButton2.default, {
 						label: 'Login',
-						onTouchTap: this.handleOpen,
-						backgroundColor: _colors.redA700 }),
+						onTouchTap: this.handleOpen
+					}),
 					_react2.default.createElement(
 						_Dialog2.default,
 						{
@@ -28061,12 +28074,11 @@
 		}, {
 			key: 'onSubmit',
 			value: function onSubmit(e) {
-				e.preventDefault();
-				var user = this.state.username.trim();
+				var username = this.state.username.trim();
 				var password = this.state.password.trim();
 				var email = this.state.email.trim();
 	
-				if (!user) {
+				if (!username) {
 					this.setState({ errorTextUser: "You must have a username!" });
 				}
 				if (!password) {
@@ -28076,7 +28088,7 @@
 					this.setState({ errorTextEmail: "You must provide an email address!" });
 				} else {
 					this.setState({ errorTextUser: '', errorTextEmail: '', errorTextPassword: '' });
-					alert("Signing up!");
+					this.props.onSignUp({ 'username': username, 'password': password, 'email': email });
 				}
 			}
 		}, {
@@ -28096,7 +28108,7 @@
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_RaisedButton2.default, {
+					_react2.default.createElement(_FlatButton2.default, {
 						label: 'Sign Up',
 						onTouchTap: this.handleOpen }),
 					_react2.default.createElement(
@@ -47521,7 +47533,8 @@
 	exports.default = new Typography();
 
 /***/ },
-/* 425 */
+/* 425 */,
+/* 426 */
 /*!*****************************************!*\
   !*** ./views/Components/PostDetail.jsx ***!
   \*****************************************/
@@ -47539,7 +47552,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _CommentList = __webpack_require__(/*! ./CommentList.jsx */ 426);
+	var _CommentList = __webpack_require__(/*! ./CommentList.jsx */ 427);
 	
 	var _CommentList2 = _interopRequireDefault(_CommentList);
 	
@@ -47568,7 +47581,8 @@
 	
 	
 			_this.handleCommentSubmit = _this.handleCommentSubmit.bind(_this);
-			_this.state = { postid: '', title: '', content: '', author: '', comments: [] };
+			_this.loadCommentsFromServer = _this.loadCommentsFromServer.bind(_this);
+			_this.state = { postid: props.params.postid, title: '', content: '', author: '', comments: [] };
 	
 			return _this;
 		}
@@ -47579,7 +47593,7 @@
 				$.ajax({
 					url: "/api/hands?handid=" + this.props.params.postid,
 					success: function (response) {
-						this.setState({ postid: response.postid, title: response.title, content: response.content, author: response.author });
+						this.setState({ title: response.title, content: response.content, author: response.author });
 					}.bind(this),
 					error: function (xhr) {
 						console.log("GET request to retrieve hand failed.");
@@ -47589,9 +47603,8 @@
 		}, {
 			key: 'loadCommentsFromServer',
 			value: function loadCommentsFromServer() {
-				alert('Loading Comments!');
 				$.ajax({
-					url: "/api/comments?postid=" + this.props.params.postid,
+					url: "/api/comments?postid=" + this.state.postid,
 					success: function (response) {
 						this.setState({ comments: response });
 					}.bind(this),
@@ -47622,7 +47635,14 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				this.loadHandFromServer();
-				setInterval(this.loadCommentsFromServer(), 2000);
+				this.loadCommentsFromServer();
+				this.intervalFunction = setInterval(this.loadCommentsFromServer, 5000);
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				//unsubscribe from the interval so it doesn't call setstate on unrendered components.
+				clearInterval(this.intervalFunction);
 			}
 		}, {
 			key: 'render',
@@ -47645,13 +47665,13 @@
 						)
 					),
 					_react2.default.createElement(_CommentList2.default, {
-						postid: this.props.params.postid,
+						postid: this.state.postid,
 						comments: this.state.comments,
 						onCommentSubmit: this.handleCommentSubmit
 					}),
 					_react2.default.createElement(_CommentReply2.default, {
 						onCommentSubmit: this.handleCommentSubmit,
-						postid: this.props.params.postid
+						postid: this.state.postid
 	
 					})
 				);
@@ -47664,7 +47684,7 @@
 	exports.default = PostDetail;
 
 /***/ },
-/* 426 */
+/* 427 */
 /*!******************************************!*\
   !*** ./views/Components/CommentList.jsx ***!
   \******************************************/
@@ -47758,7 +47778,7 @@
 	exports.default = CommentList;
 
 /***/ },
-/* 427 */
+/* 428 */
 /*!**************************************************!*\
   !*** ./~/material-ui/styles/MuiThemeProvider.js ***!
   \**************************************************/
