@@ -10,8 +10,9 @@ client.connect(function(err){
 	}
 	var query = client.query(
 		'CREATE TABLE IF NOT EXISTS users(userid SERIAL PRIMARY KEY, username text, password text, email text);' + 
-		'CREATE TABLE IF NOT EXISTS hands(postid SERIAL PRIMARY KEY, author text, title text, content text);' + 
-		'CREATE TABLE IF NOT EXISTS comments(commentid SERIAL PRIMARY KEY, author text, postid text, content text);' + )
+		'CREATE TABLE IF NOT EXISTS hands(postid SERIAL PRIMARY text, title text, preflop_hands integer[2], preflop_betting text, flop_cards integer[3], flop_betting text, turn_card integer, turn_betting text, river_card integer, river_betting text);' + 
+		'CREATE TABLE IF NOT EXISTS playerinfo(postid integer , author text, name text, position text, stack_size integer, image text);' +
+		'CREATE TABLE IF NOT EXISTS comments(commentid SERIAL PRIMARY KEY, author text, postid integer, content text);')
 	//Create users table.
 	query.on('end', function(){
 		console.log("Tables Created")
