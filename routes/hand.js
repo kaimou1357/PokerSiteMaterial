@@ -23,8 +23,11 @@ exports.getHand = function(req, res){
 				if(err){
 					return console.error("Error running query")
 				}
-
-				res.json(result.rows[0])
+				var hand = result.rows[0]
+				client.query('SELECT * FROM playerinfo WHERE postid = $1', [req.query.handid], function(err, result){
+					hand.players = result.rows
+					res.json(hand)
+				})
 			})
 		})
 	}
@@ -35,7 +38,7 @@ exports.getHand = function(req, res){
 				return console.log("Failed to connect to database")
 			}
 
-			client.query('SELECT * from hands;', function(err, result){
+			client.query('SELECT title, author from hands;', function(err, result){
 				done()
 				if(err){
 					console.error("Error running query")

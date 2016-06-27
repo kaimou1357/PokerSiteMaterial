@@ -27,7 +27,12 @@ exports.getComment = function(req, res){
 				if(err){
 					console.error('Failed to run query')
 				}
-				res.json(result.rows)
+				if(result){
+					res.json(result.rows)
+				}
+				else{
+					res.json([])
+				}
 			})
 		})
 	}
