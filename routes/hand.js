@@ -17,17 +17,15 @@ exports.getHand = function(req, res){
 				return console.error("Failed to connect to database")
 
 			}
-
+			//TODO: Find a command that allows you to call only one query but return all the data necessary. 
 			client.query('SELECT * FROM hands WHERE postid = $1', [req.query.handid], function(err, result){
 				done()
 				if(err){
 					return console.error("Error running query")
 				}
-				var hand = result.rows[0]
-				client.query('SELECT * FROM playerinfo WHERE postid = $1', [req.query.handid], function(err, result){
-					hand.players = result.rows
-					res.json(hand)
-				})
+				else{
+					res.json(result.rows[0])
+				}
 			})
 		})
 	}
@@ -38,7 +36,7 @@ exports.getHand = function(req, res){
 				return console.log("Failed to connect to database")
 			}
 
-			client.query('SELECT title, author from hands;', function(err, result){
+			client.query('SELECT title, author, postid from hands;', function(err, result){
 				done()
 				if(err){
 					console.error("Error running query")

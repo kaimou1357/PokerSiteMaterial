@@ -63,11 +63,11 @@
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _PostDetail = __webpack_require__(/*! ./Components/PostDetail.jsx */ 425);
+	var _PostDetail = __webpack_require__(/*! ./Components/PostDetail.jsx */ 426);
 	
 	var _PostDetail2 = _interopRequireDefault(_PostDetail);
 	
-	var _MuiThemeProvider = __webpack_require__(/*! material-ui/styles/MuiThemeProvider */ 427);
+	var _MuiThemeProvider = __webpack_require__(/*! material-ui/styles/MuiThemeProvider */ 428);
 	
 	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 	
@@ -21305,15 +21305,19 @@
 	
 	var _LoginDialog2 = _interopRequireDefault(_LoginDialog);
 	
-	var _SignUpDialog = __webpack_require__(/*! ./Components/SignUpDialog.jsx */ 221);
+	var _SignUpDialog = __webpack_require__(/*! ./Components/SignUpDialog.jsx */ 220);
 	
 	var _SignUpDialog2 = _interopRequireDefault(_SignUpDialog);
+	
+	var _NewHand = __webpack_require__(/*! ./Components/NewHand.jsx */ 221);
+	
+	var _NewHand2 = _interopRequireDefault(_NewHand);
 	
 	var _PostList = __webpack_require__(/*! ./Components/PostList.jsx */ 222);
 	
 	var _PostList2 = _interopRequireDefault(_PostList);
 	
-	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 218);
+	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 217);
 	
 	var _FlatButton2 = _interopRequireDefault(_FlatButton);
 	
@@ -21425,8 +21429,13 @@
 	                { start: 'xs' },
 	                _react2.default.createElement(
 	                  _index.Col,
-	                  { xs: 8 },
+	                  { xs: 6 },
 	                  _react2.default.createElement('img', { src: 'http://localhost:3000/images/cardlogo.png', height: '75', width: '125' })
+	                ),
+	                _react2.default.createElement(
+	                  _index.Col,
+	                  { xs: 2 },
+	                  _react2.default.createElement(_NewHand2.default, null)
 	                ),
 	                _react2.default.createElement(
 	                  _index.Col,
@@ -21496,13 +21505,11 @@
 	
 	var _TextField2 = _interopRequireDefault(_TextField);
 	
-	var _colors = __webpack_require__(/*! material-ui/styles/colors */ 202);
-	
-	var _RaisedButton = __webpack_require__(/*! material-ui/RaisedButton */ 203);
+	var _RaisedButton = __webpack_require__(/*! material-ui/RaisedButton */ 202);
 	
 	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 	
-	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 218);
+	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 217);
 	
 	var _FlatButton2 = _interopRequireDefault(_FlatButton);
 	
@@ -21515,8 +21522,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var loginCustomStyle = {
-		width: '40%',
-		maxWidth: 'none'
+		width: '20%'
 	};
 	
 	var LoginDialogComponent = function (_React$Component) {
@@ -21605,12 +21611,14 @@
 						_react2.default.createElement(_TextField2.default, {
 							hintText: 'Username',
 							errorText: this.state.userErrorText,
+							fullWidth: true,
 							onChange: this.handleUserText.bind(this)
 						}),
 						_react2.default.createElement('br', null),
 						_react2.default.createElement(_TextField2.default, {
 							hintText: 'Password Field',
 							floatingLabelText: 'Password',
+							fullWidth: true,
 							errorText: this.state.passwordErrorText,
 							onChange: this.handlePasswordText.bind(this),
 							type: 'password'
@@ -25096,304 +25104,6 @@
 
 /***/ },
 /* 202 */
-/*!****************************************!*\
-  !*** ./~/material-ui/styles/colors.js ***!
-  \****************************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var red50 = exports.red50 = '#ffebee';
-	var red100 = exports.red100 = '#ffcdd2';
-	var red200 = exports.red200 = '#ef9a9a';
-	var red300 = exports.red300 = '#e57373';
-	var red400 = exports.red400 = '#ef5350';
-	var red500 = exports.red500 = '#f44336';
-	var red600 = exports.red600 = '#e53935';
-	var red700 = exports.red700 = '#d32f2f';
-	var red800 = exports.red800 = '#c62828';
-	var red900 = exports.red900 = '#b71c1c';
-	var redA100 = exports.redA100 = '#ff8a80';
-	var redA200 = exports.redA200 = '#ff5252';
-	var redA400 = exports.redA400 = '#ff1744';
-	var redA700 = exports.redA700 = '#d50000';
-	
-	var pink50 = exports.pink50 = '#fce4ec';
-	var pink100 = exports.pink100 = '#f8bbd0';
-	var pink200 = exports.pink200 = '#f48fb1';
-	var pink300 = exports.pink300 = '#f06292';
-	var pink400 = exports.pink400 = '#ec407a';
-	var pink500 = exports.pink500 = '#e91e63';
-	var pink600 = exports.pink600 = '#d81b60';
-	var pink700 = exports.pink700 = '#c2185b';
-	var pink800 = exports.pink800 = '#ad1457';
-	var pink900 = exports.pink900 = '#880e4f';
-	var pinkA100 = exports.pinkA100 = '#ff80ab';
-	var pinkA200 = exports.pinkA200 = '#ff4081';
-	var pinkA400 = exports.pinkA400 = '#f50057';
-	var pinkA700 = exports.pinkA700 = '#c51162';
-	
-	var purple50 = exports.purple50 = '#f3e5f5';
-	var purple100 = exports.purple100 = '#e1bee7';
-	var purple200 = exports.purple200 = '#ce93d8';
-	var purple300 = exports.purple300 = '#ba68c8';
-	var purple400 = exports.purple400 = '#ab47bc';
-	var purple500 = exports.purple500 = '#9c27b0';
-	var purple600 = exports.purple600 = '#8e24aa';
-	var purple700 = exports.purple700 = '#7b1fa2';
-	var purple800 = exports.purple800 = '#6a1b9a';
-	var purple900 = exports.purple900 = '#4a148c';
-	var purpleA100 = exports.purpleA100 = '#ea80fc';
-	var purpleA200 = exports.purpleA200 = '#e040fb';
-	var purpleA400 = exports.purpleA400 = '#d500f9';
-	var purpleA700 = exports.purpleA700 = '#aa00ff';
-	
-	var deepPurple50 = exports.deepPurple50 = '#ede7f6';
-	var deepPurple100 = exports.deepPurple100 = '#d1c4e9';
-	var deepPurple200 = exports.deepPurple200 = '#b39ddb';
-	var deepPurple300 = exports.deepPurple300 = '#9575cd';
-	var deepPurple400 = exports.deepPurple400 = '#7e57c2';
-	var deepPurple500 = exports.deepPurple500 = '#673ab7';
-	var deepPurple600 = exports.deepPurple600 = '#5e35b1';
-	var deepPurple700 = exports.deepPurple700 = '#512da8';
-	var deepPurple800 = exports.deepPurple800 = '#4527a0';
-	var deepPurple900 = exports.deepPurple900 = '#311b92';
-	var deepPurpleA100 = exports.deepPurpleA100 = '#b388ff';
-	var deepPurpleA200 = exports.deepPurpleA200 = '#7c4dff';
-	var deepPurpleA400 = exports.deepPurpleA400 = '#651fff';
-	var deepPurpleA700 = exports.deepPurpleA700 = '#6200ea';
-	
-	var indigo50 = exports.indigo50 = '#e8eaf6';
-	var indigo100 = exports.indigo100 = '#c5cae9';
-	var indigo200 = exports.indigo200 = '#9fa8da';
-	var indigo300 = exports.indigo300 = '#7986cb';
-	var indigo400 = exports.indigo400 = '#5c6bc0';
-	var indigo500 = exports.indigo500 = '#3f51b5';
-	var indigo600 = exports.indigo600 = '#3949ab';
-	var indigo700 = exports.indigo700 = '#303f9f';
-	var indigo800 = exports.indigo800 = '#283593';
-	var indigo900 = exports.indigo900 = '#1a237e';
-	var indigoA100 = exports.indigoA100 = '#8c9eff';
-	var indigoA200 = exports.indigoA200 = '#536dfe';
-	var indigoA400 = exports.indigoA400 = '#3d5afe';
-	var indigoA700 = exports.indigoA700 = '#304ffe';
-	
-	var blue50 = exports.blue50 = '#e3f2fd';
-	var blue100 = exports.blue100 = '#bbdefb';
-	var blue200 = exports.blue200 = '#90caf9';
-	var blue300 = exports.blue300 = '#64b5f6';
-	var blue400 = exports.blue400 = '#42a5f5';
-	var blue500 = exports.blue500 = '#2196f3';
-	var blue600 = exports.blue600 = '#1e88e5';
-	var blue700 = exports.blue700 = '#1976d2';
-	var blue800 = exports.blue800 = '#1565c0';
-	var blue900 = exports.blue900 = '#0d47a1';
-	var blueA100 = exports.blueA100 = '#82b1ff';
-	var blueA200 = exports.blueA200 = '#448aff';
-	var blueA400 = exports.blueA400 = '#2979ff';
-	var blueA700 = exports.blueA700 = '#2962ff';
-	
-	var lightBlue50 = exports.lightBlue50 = '#e1f5fe';
-	var lightBlue100 = exports.lightBlue100 = '#b3e5fc';
-	var lightBlue200 = exports.lightBlue200 = '#81d4fa';
-	var lightBlue300 = exports.lightBlue300 = '#4fc3f7';
-	var lightBlue400 = exports.lightBlue400 = '#29b6f6';
-	var lightBlue500 = exports.lightBlue500 = '#03a9f4';
-	var lightBlue600 = exports.lightBlue600 = '#039be5';
-	var lightBlue700 = exports.lightBlue700 = '#0288d1';
-	var lightBlue800 = exports.lightBlue800 = '#0277bd';
-	var lightBlue900 = exports.lightBlue900 = '#01579b';
-	var lightBlueA100 = exports.lightBlueA100 = '#80d8ff';
-	var lightBlueA200 = exports.lightBlueA200 = '#40c4ff';
-	var lightBlueA400 = exports.lightBlueA400 = '#00b0ff';
-	var lightBlueA700 = exports.lightBlueA700 = '#0091ea';
-	
-	var cyan50 = exports.cyan50 = '#e0f7fa';
-	var cyan100 = exports.cyan100 = '#b2ebf2';
-	var cyan200 = exports.cyan200 = '#80deea';
-	var cyan300 = exports.cyan300 = '#4dd0e1';
-	var cyan400 = exports.cyan400 = '#26c6da';
-	var cyan500 = exports.cyan500 = '#00bcd4';
-	var cyan600 = exports.cyan600 = '#00acc1';
-	var cyan700 = exports.cyan700 = '#0097a7';
-	var cyan800 = exports.cyan800 = '#00838f';
-	var cyan900 = exports.cyan900 = '#006064';
-	var cyanA100 = exports.cyanA100 = '#84ffff';
-	var cyanA200 = exports.cyanA200 = '#18ffff';
-	var cyanA400 = exports.cyanA400 = '#00e5ff';
-	var cyanA700 = exports.cyanA700 = '#00b8d4';
-	
-	var teal50 = exports.teal50 = '#e0f2f1';
-	var teal100 = exports.teal100 = '#b2dfdb';
-	var teal200 = exports.teal200 = '#80cbc4';
-	var teal300 = exports.teal300 = '#4db6ac';
-	var teal400 = exports.teal400 = '#26a69a';
-	var teal500 = exports.teal500 = '#009688';
-	var teal600 = exports.teal600 = '#00897b';
-	var teal700 = exports.teal700 = '#00796b';
-	var teal800 = exports.teal800 = '#00695c';
-	var teal900 = exports.teal900 = '#004d40';
-	var tealA100 = exports.tealA100 = '#a7ffeb';
-	var tealA200 = exports.tealA200 = '#64ffda';
-	var tealA400 = exports.tealA400 = '#1de9b6';
-	var tealA700 = exports.tealA700 = '#00bfa5';
-	
-	var green50 = exports.green50 = '#e8f5e9';
-	var green100 = exports.green100 = '#c8e6c9';
-	var green200 = exports.green200 = '#a5d6a7';
-	var green300 = exports.green300 = '#81c784';
-	var green400 = exports.green400 = '#66bb6a';
-	var green500 = exports.green500 = '#4caf50';
-	var green600 = exports.green600 = '#43a047';
-	var green700 = exports.green700 = '#388e3c';
-	var green800 = exports.green800 = '#2e7d32';
-	var green900 = exports.green900 = '#1b5e20';
-	var greenA100 = exports.greenA100 = '#b9f6ca';
-	var greenA200 = exports.greenA200 = '#69f0ae';
-	var greenA400 = exports.greenA400 = '#00e676';
-	var greenA700 = exports.greenA700 = '#00c853';
-	
-	var lightGreen50 = exports.lightGreen50 = '#f1f8e9';
-	var lightGreen100 = exports.lightGreen100 = '#dcedc8';
-	var lightGreen200 = exports.lightGreen200 = '#c5e1a5';
-	var lightGreen300 = exports.lightGreen300 = '#aed581';
-	var lightGreen400 = exports.lightGreen400 = '#9ccc65';
-	var lightGreen500 = exports.lightGreen500 = '#8bc34a';
-	var lightGreen600 = exports.lightGreen600 = '#7cb342';
-	var lightGreen700 = exports.lightGreen700 = '#689f38';
-	var lightGreen800 = exports.lightGreen800 = '#558b2f';
-	var lightGreen900 = exports.lightGreen900 = '#33691e';
-	var lightGreenA100 = exports.lightGreenA100 = '#ccff90';
-	var lightGreenA200 = exports.lightGreenA200 = '#b2ff59';
-	var lightGreenA400 = exports.lightGreenA400 = '#76ff03';
-	var lightGreenA700 = exports.lightGreenA700 = '#64dd17';
-	
-	var lime50 = exports.lime50 = '#f9fbe7';
-	var lime100 = exports.lime100 = '#f0f4c3';
-	var lime200 = exports.lime200 = '#e6ee9c';
-	var lime300 = exports.lime300 = '#dce775';
-	var lime400 = exports.lime400 = '#d4e157';
-	var lime500 = exports.lime500 = '#cddc39';
-	var lime600 = exports.lime600 = '#c0ca33';
-	var lime700 = exports.lime700 = '#afb42b';
-	var lime800 = exports.lime800 = '#9e9d24';
-	var lime900 = exports.lime900 = '#827717';
-	var limeA100 = exports.limeA100 = '#f4ff81';
-	var limeA200 = exports.limeA200 = '#eeff41';
-	var limeA400 = exports.limeA400 = '#c6ff00';
-	var limeA700 = exports.limeA700 = '#aeea00';
-	
-	var yellow50 = exports.yellow50 = '#fffde7';
-	var yellow100 = exports.yellow100 = '#fff9c4';
-	var yellow200 = exports.yellow200 = '#fff59d';
-	var yellow300 = exports.yellow300 = '#fff176';
-	var yellow400 = exports.yellow400 = '#ffee58';
-	var yellow500 = exports.yellow500 = '#ffeb3b';
-	var yellow600 = exports.yellow600 = '#fdd835';
-	var yellow700 = exports.yellow700 = '#fbc02d';
-	var yellow800 = exports.yellow800 = '#f9a825';
-	var yellow900 = exports.yellow900 = '#f57f17';
-	var yellowA100 = exports.yellowA100 = '#ffff8d';
-	var yellowA200 = exports.yellowA200 = '#ffff00';
-	var yellowA400 = exports.yellowA400 = '#ffea00';
-	var yellowA700 = exports.yellowA700 = '#ffd600';
-	
-	var amber50 = exports.amber50 = '#fff8e1';
-	var amber100 = exports.amber100 = '#ffecb3';
-	var amber200 = exports.amber200 = '#ffe082';
-	var amber300 = exports.amber300 = '#ffd54f';
-	var amber400 = exports.amber400 = '#ffca28';
-	var amber500 = exports.amber500 = '#ffc107';
-	var amber600 = exports.amber600 = '#ffb300';
-	var amber700 = exports.amber700 = '#ffa000';
-	var amber800 = exports.amber800 = '#ff8f00';
-	var amber900 = exports.amber900 = '#ff6f00';
-	var amberA100 = exports.amberA100 = '#ffe57f';
-	var amberA200 = exports.amberA200 = '#ffd740';
-	var amberA400 = exports.amberA400 = '#ffc400';
-	var amberA700 = exports.amberA700 = '#ffab00';
-	
-	var orange50 = exports.orange50 = '#fff3e0';
-	var orange100 = exports.orange100 = '#ffe0b2';
-	var orange200 = exports.orange200 = '#ffcc80';
-	var orange300 = exports.orange300 = '#ffb74d';
-	var orange400 = exports.orange400 = '#ffa726';
-	var orange500 = exports.orange500 = '#ff9800';
-	var orange600 = exports.orange600 = '#fb8c00';
-	var orange700 = exports.orange700 = '#f57c00';
-	var orange800 = exports.orange800 = '#ef6c00';
-	var orange900 = exports.orange900 = '#e65100';
-	var orangeA100 = exports.orangeA100 = '#ffd180';
-	var orangeA200 = exports.orangeA200 = '#ffab40';
-	var orangeA400 = exports.orangeA400 = '#ff9100';
-	var orangeA700 = exports.orangeA700 = '#ff6d00';
-	
-	var deepOrange50 = exports.deepOrange50 = '#fbe9e7';
-	var deepOrange100 = exports.deepOrange100 = '#ffccbc';
-	var deepOrange200 = exports.deepOrange200 = '#ffab91';
-	var deepOrange300 = exports.deepOrange300 = '#ff8a65';
-	var deepOrange400 = exports.deepOrange400 = '#ff7043';
-	var deepOrange500 = exports.deepOrange500 = '#ff5722';
-	var deepOrange600 = exports.deepOrange600 = '#f4511e';
-	var deepOrange700 = exports.deepOrange700 = '#e64a19';
-	var deepOrange800 = exports.deepOrange800 = '#d84315';
-	var deepOrange900 = exports.deepOrange900 = '#bf360c';
-	var deepOrangeA100 = exports.deepOrangeA100 = '#ff9e80';
-	var deepOrangeA200 = exports.deepOrangeA200 = '#ff6e40';
-	var deepOrangeA400 = exports.deepOrangeA400 = '#ff3d00';
-	var deepOrangeA700 = exports.deepOrangeA700 = '#dd2c00';
-	
-	var brown50 = exports.brown50 = '#efebe9';
-	var brown100 = exports.brown100 = '#d7ccc8';
-	var brown200 = exports.brown200 = '#bcaaa4';
-	var brown300 = exports.brown300 = '#a1887f';
-	var brown400 = exports.brown400 = '#8d6e63';
-	var brown500 = exports.brown500 = '#795548';
-	var brown600 = exports.brown600 = '#6d4c41';
-	var brown700 = exports.brown700 = '#5d4037';
-	var brown800 = exports.brown800 = '#4e342e';
-	var brown900 = exports.brown900 = '#3e2723';
-	
-	var blueGrey50 = exports.blueGrey50 = '#eceff1';
-	var blueGrey100 = exports.blueGrey100 = '#cfd8dc';
-	var blueGrey200 = exports.blueGrey200 = '#b0bec5';
-	var blueGrey300 = exports.blueGrey300 = '#90a4ae';
-	var blueGrey400 = exports.blueGrey400 = '#78909c';
-	var blueGrey500 = exports.blueGrey500 = '#607d8b';
-	var blueGrey600 = exports.blueGrey600 = '#546e7a';
-	var blueGrey700 = exports.blueGrey700 = '#455a64';
-	var blueGrey800 = exports.blueGrey800 = '#37474f';
-	var blueGrey900 = exports.blueGrey900 = '#263238';
-	
-	var grey50 = exports.grey50 = '#fafafa';
-	var grey100 = exports.grey100 = '#f5f5f5';
-	var grey200 = exports.grey200 = '#eeeeee';
-	var grey300 = exports.grey300 = '#e0e0e0';
-	var grey400 = exports.grey400 = '#bdbdbd';
-	var grey500 = exports.grey500 = '#9e9e9e';
-	var grey600 = exports.grey600 = '#757575';
-	var grey700 = exports.grey700 = '#616161';
-	var grey800 = exports.grey800 = '#424242';
-	var grey900 = exports.grey900 = '#212121';
-	
-	var black = exports.black = '#000000';
-	var white = exports.white = '#ffffff';
-	
-	var transparent = exports.transparent = 'rgba(0, 0, 0, 0)';
-	var fullBlack = exports.fullBlack = 'rgba(0, 0, 0, 1)';
-	var darkBlack = exports.darkBlack = 'rgba(0, 0, 0, 0.87)';
-	var lightBlack = exports.lightBlack = 'rgba(0, 0, 0, 0.54)';
-	var minBlack = exports.minBlack = 'rgba(0, 0, 0, 0.26)';
-	var faintBlack = exports.faintBlack = 'rgba(0, 0, 0, 0.12)';
-	var fullWhite = exports.fullWhite = 'rgba(255, 255, 255, 1)';
-	var darkWhite = exports.darkWhite = 'rgba(255, 255, 255, 0.87)';
-	var lightWhite = exports.lightWhite = 'rgba(255, 255, 255, 0.54)';
-
-/***/ },
-/* 203 */
 /*!*********************************************!*\
   !*** ./~/material-ui/RaisedButton/index.js ***!
   \*********************************************/
@@ -25406,7 +25116,7 @@
 	});
 	exports.default = undefined;
 	
-	var _RaisedButton = __webpack_require__(/*! ./RaisedButton */ 204);
+	var _RaisedButton = __webpack_require__(/*! ./RaisedButton */ 203);
 	
 	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 	
@@ -25415,7 +25125,7 @@
 	exports.default = _RaisedButton2.default;
 
 /***/ },
-/* 204 */
+/* 203 */
 /*!****************************************************!*\
   !*** ./~/material-ui/RaisedButton/RaisedButton.js ***!
   \****************************************************/
@@ -25445,9 +25155,9 @@
 	
 	var _colorManipulator = __webpack_require__(/*! ../utils/colorManipulator */ 195);
 	
-	var _childUtils = __webpack_require__(/*! ../utils/childUtils */ 205);
+	var _childUtils = __webpack_require__(/*! ../utils/childUtils */ 204);
 	
-	var _EnhancedButton = __webpack_require__(/*! ../internal/EnhancedButton */ 208);
+	var _EnhancedButton = __webpack_require__(/*! ../internal/EnhancedButton */ 207);
 	
 	var _EnhancedButton2 = _interopRequireDefault(_EnhancedButton);
 	
@@ -25890,7 +25600,7 @@
 	exports.default = RaisedButton;
 
 /***/ },
-/* 205 */
+/* 204 */
 /*!*******************************************!*\
   !*** ./~/material-ui/utils/childUtils.js ***!
   \*******************************************/
@@ -25908,7 +25618,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactAddonsCreateFragment = __webpack_require__(/*! react-addons-create-fragment */ 206);
+	var _reactAddonsCreateFragment = __webpack_require__(/*! react-addons-create-fragment */ 205);
 	
 	var _reactAddonsCreateFragment2 = _interopRequireDefault(_reactAddonsCreateFragment);
 	
@@ -25946,16 +25656,16 @@
 	}
 
 /***/ },
-/* 206 */
+/* 205 */
 /*!***************************************************************!*\
   !*** ./~/material-ui/~/react-addons-create-fragment/index.js ***!
   \***************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! react/lib/ReactFragment */ 207).create;
+	module.exports = __webpack_require__(/*! react/lib/ReactFragment */ 206).create;
 
 /***/ },
-/* 207 */
+/* 206 */
 /*!**************************************!*\
   !*** ./~/react/lib/ReactFragment.js ***!
   \**************************************/
@@ -26031,7 +25741,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 3)))
 
 /***/ },
-/* 208 */
+/* 207 */
 /*!**************************************************!*\
   !*** ./~/material-ui/internal/EnhancedButton.js ***!
   \**************************************************/
@@ -26055,9 +25765,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _childUtils = __webpack_require__(/*! ../utils/childUtils */ 205);
+	var _childUtils = __webpack_require__(/*! ../utils/childUtils */ 204);
 	
-	var _events = __webpack_require__(/*! ../utils/events */ 209);
+	var _events = __webpack_require__(/*! ../utils/events */ 208);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
@@ -26065,11 +25775,11 @@
 	
 	var _keycode2 = _interopRequireDefault(_keycode);
 	
-	var _FocusRipple = __webpack_require__(/*! ./FocusRipple */ 210);
+	var _FocusRipple = __webpack_require__(/*! ./FocusRipple */ 209);
 	
 	var _FocusRipple2 = _interopRequireDefault(_FocusRipple);
 	
-	var _TouchRipple = __webpack_require__(/*! ./TouchRipple */ 214);
+	var _TouchRipple = __webpack_require__(/*! ./TouchRipple */ 213);
 	
 	var _TouchRipple2 = _interopRequireDefault(_TouchRipple);
 	
@@ -26421,7 +26131,7 @@
 	exports.default = EnhancedButton;
 
 /***/ },
-/* 209 */
+/* 208 */
 /*!***************************************!*\
   !*** ./~/material-ui/utils/events.js ***!
   \***************************************/
@@ -26468,7 +26178,7 @@
 	};
 
 /***/ },
-/* 210 */
+/* 209 */
 /*!***********************************************!*\
   !*** ./~/material-ui/internal/FocusRipple.js ***!
   \***********************************************/
@@ -26498,7 +26208,7 @@
 	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 	
-	var _autoPrefix = __webpack_require__(/*! ../utils/autoPrefix */ 211);
+	var _autoPrefix = __webpack_require__(/*! ../utils/autoPrefix */ 210);
 	
 	var _autoPrefix2 = _interopRequireDefault(_autoPrefix);
 	
@@ -26506,7 +26216,7 @@
 	
 	var _transitions2 = _interopRequireDefault(_transitions);
 	
-	var _ScaleIn = __webpack_require__(/*! ./ScaleIn */ 212);
+	var _ScaleIn = __webpack_require__(/*! ./ScaleIn */ 211);
 	
 	var _ScaleIn2 = _interopRequireDefault(_ScaleIn);
 	
@@ -26660,7 +26370,7 @@
 	exports.default = FocusRipple;
 
 /***/ },
-/* 211 */
+/* 210 */
 /*!*******************************************!*\
   !*** ./~/material-ui/utils/autoPrefix.js ***!
   \*******************************************/
@@ -26678,7 +26388,7 @@
 	};
 
 /***/ },
-/* 212 */
+/* 211 */
 /*!*******************************************!*\
   !*** ./~/material-ui/internal/ScaleIn.js ***!
   \*******************************************/
@@ -26706,7 +26416,7 @@
 	
 	var _reactAddonsTransitionGroup2 = _interopRequireDefault(_reactAddonsTransitionGroup);
 	
-	var _ScaleInChild = __webpack_require__(/*! ./ScaleInChild */ 213);
+	var _ScaleInChild = __webpack_require__(/*! ./ScaleInChild */ 212);
 	
 	var _ScaleInChild2 = _interopRequireDefault(_ScaleInChild);
 	
@@ -26799,7 +26509,7 @@
 	exports.default = ScaleIn;
 
 /***/ },
-/* 213 */
+/* 212 */
 /*!************************************************!*\
   !*** ./~/material-ui/internal/ScaleInChild.js ***!
   \************************************************/
@@ -26827,7 +26537,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _autoPrefix = __webpack_require__(/*! ../utils/autoPrefix */ 211);
+	var _autoPrefix = __webpack_require__(/*! ../utils/autoPrefix */ 210);
 	
 	var _autoPrefix2 = _interopRequireDefault(_autoPrefix);
 	
@@ -26960,7 +26670,7 @@
 	exports.default = ScaleInChild;
 
 /***/ },
-/* 214 */
+/* 213 */
 /*!***********************************************!*\
   !*** ./~/material-ui/internal/TouchRipple.js ***!
   \***********************************************/
@@ -26994,11 +26704,11 @@
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _CircleRipple = __webpack_require__(/*! ./CircleRipple */ 215);
+	var _CircleRipple = __webpack_require__(/*! ./CircleRipple */ 214);
 	
 	var _CircleRipple2 = _interopRequireDefault(_CircleRipple);
 	
-	var _reactAddonsUpdate = __webpack_require__(/*! react-addons-update */ 216);
+	var _reactAddonsUpdate = __webpack_require__(/*! react-addons-update */ 215);
 	
 	var _reactAddonsUpdate2 = _interopRequireDefault(_reactAddonsUpdate);
 	
@@ -27261,7 +26971,7 @@
 	exports.default = TouchRipple;
 
 /***/ },
-/* 215 */
+/* 214 */
 /*!************************************************!*\
   !*** ./~/material-ui/internal/CircleRipple.js ***!
   \************************************************/
@@ -27293,7 +27003,7 @@
 	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 	
-	var _autoPrefix = __webpack_require__(/*! ../utils/autoPrefix */ 211);
+	var _autoPrefix = __webpack_require__(/*! ../utils/autoPrefix */ 210);
 	
 	var _autoPrefix2 = _interopRequireDefault(_autoPrefix);
 	
@@ -27423,16 +27133,16 @@
 	exports.default = CircleRipple;
 
 /***/ },
-/* 216 */
+/* 215 */
 /*!******************************************************!*\
   !*** ./~/material-ui/~/react-addons-update/index.js ***!
   \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! react/lib/update */ 217);
+	module.exports = __webpack_require__(/*! react/lib/update */ 216);
 
 /***/ },
-/* 217 */
+/* 216 */
 /*!*******************************!*\
   !*** ./~/react/lib/update.js ***!
   \*******************************/
@@ -27553,7 +27263,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 3)))
 
 /***/ },
-/* 218 */
+/* 217 */
 /*!*******************************************!*\
   !*** ./~/material-ui/FlatButton/index.js ***!
   \*******************************************/
@@ -27566,7 +27276,7 @@
 	});
 	exports.default = undefined;
 	
-	var _FlatButton = __webpack_require__(/*! ./FlatButton */ 219);
+	var _FlatButton = __webpack_require__(/*! ./FlatButton */ 218);
 	
 	var _FlatButton2 = _interopRequireDefault(_FlatButton);
 	
@@ -27575,7 +27285,7 @@
 	exports.default = _FlatButton2.default;
 
 /***/ },
-/* 219 */
+/* 218 */
 /*!************************************************!*\
   !*** ./~/material-ui/FlatButton/FlatButton.js ***!
   \************************************************/
@@ -27603,15 +27313,15 @@
 	
 	var _transitions2 = _interopRequireDefault(_transitions);
 	
-	var _childUtils = __webpack_require__(/*! ../utils/childUtils */ 205);
+	var _childUtils = __webpack_require__(/*! ../utils/childUtils */ 204);
 	
 	var _colorManipulator = __webpack_require__(/*! ../utils/colorManipulator */ 195);
 	
-	var _EnhancedButton = __webpack_require__(/*! ../internal/EnhancedButton */ 208);
+	var _EnhancedButton = __webpack_require__(/*! ../internal/EnhancedButton */ 207);
 	
 	var _EnhancedButton2 = _interopRequireDefault(_EnhancedButton);
 	
-	var _FlatButtonLabel = __webpack_require__(/*! ./FlatButtonLabel */ 220);
+	var _FlatButtonLabel = __webpack_require__(/*! ./FlatButtonLabel */ 219);
 	
 	var _FlatButtonLabel2 = _interopRequireDefault(_FlatButtonLabel);
 	
@@ -27901,7 +27611,7 @@
 	exports.default = FlatButton;
 
 /***/ },
-/* 220 */
+/* 219 */
 /*!*****************************************************!*\
   !*** ./~/material-ui/FlatButton/FlatButtonLabel.js ***!
   \*****************************************************/
@@ -27985,7 +27695,7 @@
 	exports.default = FlatButtonLabel;
 
 /***/ },
-/* 221 */
+/* 220 */
 /*!*******************************************!*\
   !*** ./views/Components/SignUpDialog.jsx ***!
   \*******************************************/
@@ -28011,11 +27721,11 @@
 	
 	var _TextField2 = _interopRequireDefault(_TextField);
 	
-	var _RaisedButton = __webpack_require__(/*! material-ui/RaisedButton */ 203);
+	var _RaisedButton = __webpack_require__(/*! material-ui/RaisedButton */ 202);
 	
 	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 	
-	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 218);
+	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 217);
 	
 	var _FlatButton2 = _interopRequireDefault(_FlatButton);
 	
@@ -28028,8 +27738,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var signUpFormStyle = {
-		width: '40%',
-		maxWidth: 'none'
+		width: '20%'
 	};
 	
 	var SignUpDialogComponent = function (_React$Component) {
@@ -28123,6 +27832,7 @@
 						_react2.default.createElement(_TextField2.default, {
 							hintText: 'Username',
 							floatingLabelText: 'Username',
+							fullWidth: true,
 							errorText: this.state.errorTextUser,
 							onChange: this.handleUserNameChange.bind(this)
 						}),
@@ -28130,6 +27840,7 @@
 						_react2.default.createElement(_TextField2.default, {
 							hintText: 'Password Field',
 							floatingLabelText: 'Password',
+							fullWidth: true,
 							errorText: this.state.errorTextPassword,
 							onChange: this.handlePasswordChange.bind(this),
 							type: 'password'
@@ -28137,6 +27848,7 @@
 						_react2.default.createElement('br', null),
 						_react2.default.createElement(_TextField2.default, {
 							hintText: 'Email Address',
+							fullWidth: true,
 							floatingLabelText: 'Email Address',
 							errorText: this.state.errorTextEmail,
 							onChange: this.handleEmailChange.bind(this)
@@ -28151,6 +27863,180 @@
 	}(_react2.default.Component);
 	
 	exports.default = SignUpDialogComponent;
+
+/***/ },
+/* 221 */
+/*!**************************************!*\
+  !*** ./views/Components/NewHand.jsx ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Dialog = __webpack_require__(/*! material-ui/Dialog */ 176);
+	
+	var _Dialog2 = _interopRequireDefault(_Dialog);
+	
+	var _TextField = __webpack_require__(/*! material-ui/TextField */ 192);
+	
+	var _TextField2 = _interopRequireDefault(_TextField);
+	
+	var _RaisedButton = __webpack_require__(/*! material-ui/RaisedButton */ 202);
+	
+	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+	
+	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 217);
+	
+	var _FlatButton2 = _interopRequireDefault(_FlatButton);
+	
+	var _index = __webpack_require__(/*! react-flexbox-grid/lib/index */ 324);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var newHandStyle = {
+		width: '80%',
+		maxWidth: 'none',
+		maxHeight: 'none',
+		height: '80%'
+	};
+	
+	var NewHand = function (_React$Component) {
+		_inherits(NewHand, _React$Component);
+	
+		function NewHand(props) {
+			_classCallCheck(this, NewHand);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NewHand).call(this, props));
+	
+			_this.state = { open: false };
+			_this.handleOpen = _this.handleOpen.bind(_this);
+			_this.handleClose = _this.handleClose.bind(_this);
+			return _this;
+		}
+	
+		_createClass(NewHand, [{
+			key: 'handleOpen',
+			value: function handleOpen() {
+				this.setState({ open: true });
+			}
+		}, {
+			key: 'handleClose',
+			value: function handleClose() {
+				this.setState({ open: false });
+			}
+		}, {
+			key: 'onSubmit',
+			value: function onSubmit(e) {
+				console.log('Submitted');
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var actions = [_react2.default.createElement(_FlatButton2.default, {
+					label: 'Login',
+					primary: true,
+					keyboardFocused: true,
+					onTouchTap: this.onSubmit.bind(this)
+				}), _react2.default.createElement(_FlatButton2.default, {
+					label: 'Cancel',
+					primary: true,
+					keyboardFocused: true,
+					onTouchTap: this.handleClose
+				})];
+	
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_RaisedButton2.default, {
+						label: 'New Hand',
+						onTouchTap: this.handleOpen
+					}),
+					_react2.default.createElement(
+						_Dialog2.default,
+						{
+							title: 'New Hand Form',
+							actions: actions,
+							contentStyle: newHandStyle,
+							modal: false,
+							open: this.state.open,
+							onRequestClose: this.handleClose },
+						_react2.default.createElement(
+							_index.Grid,
+							null,
+							_react2.default.createElement(
+								_index.Row,
+								null,
+								_react2.default.createElement(
+									_index.Col,
+									{ xs: 12 },
+									_react2.default.createElement(
+										_index.Row,
+										{ start: 'xs' },
+										_react2.default.createElement(
+											_index.Col,
+											{ xs: 4 },
+											_react2.default.createElement(
+												'b',
+												null,
+												'Table Information'
+											),
+											_react2.default.createElement('br', null),
+											_react2.default.createElement(_TextField2.default, {
+												hintText: 'Hero Stack Size'
+											}),
+											_react2.default.createElement(_TextField2.default, {
+												hintText: 'Villain Stack Size'
+											})
+										),
+										_react2.default.createElement(
+											_index.Col,
+											{ xs: 4 },
+											_react2.default.createElement(_TextField2.default, {
+												hintText: 'Hero Table Image'
+											}),
+											_react2.default.createElement(_TextField2.default, {
+												hintText: 'Villain Table Image'
+											})
+										),
+										_react2.default.createElement(
+											_index.Col,
+											{ xs: 4 },
+											_react2.default.createElement(_TextField2.default, {
+												hintText: 'Hero Position'
+											}),
+											_react2.default.createElement(_TextField2.default, {
+												hintText: 'Villain Position'
+											})
+										)
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return NewHand;
+	}(_react2.default.Component);
+	
+	exports.default = NewHand;
 
 /***/ },
 /* 222 */
@@ -28198,12 +28084,12 @@
 			key: 'render',
 			value: function render() {
 				var posts = [];
-				this.props.hands.map(function (hand) {
+				this.props.hands.map(function (hand, index) {
 					posts.push(_react2.default.createElement(_Post2.default, {
 						title: hand.title,
 						author: hand.author,
 						key: hand.postid,
-						id: hand.postid }));
+						id: index + 1 }));
 				});
 				return _react2.default.createElement(
 					_List.List,
@@ -28548,7 +28434,7 @@
 	
 	var _transitions2 = _interopRequireDefault(_transitions);
 	
-	var _EnhancedButton = __webpack_require__(/*! ../internal/EnhancedButton */ 208);
+	var _EnhancedButton = __webpack_require__(/*! ../internal/EnhancedButton */ 207);
 	
 	var _EnhancedButton2 = _interopRequireDefault(_EnhancedButton);
 	
@@ -29245,7 +29131,7 @@
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _EnhancedButton = __webpack_require__(/*! ../internal/EnhancedButton */ 208);
+	var _EnhancedButton = __webpack_require__(/*! ../internal/EnhancedButton */ 207);
 	
 	var _EnhancedButton2 = _interopRequireDefault(_EnhancedButton);
 	
@@ -29257,7 +29143,7 @@
 	
 	var _Tooltip2 = _interopRequireDefault(_Tooltip);
 	
-	var _childUtils = __webpack_require__(/*! ../utils/childUtils */ 205);
+	var _childUtils = __webpack_require__(/*! ../utils/childUtils */ 204);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -30788,7 +30674,7 @@
 	
 	var _Card = __webpack_require__(/*! material-ui/Card */ 249);
 	
-	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 218);
+	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 217);
 	
 	var _FlatButton2 = _interopRequireDefault(_FlatButton);
 	
@@ -30884,11 +30770,11 @@
 	
 	var _TextField2 = _interopRequireDefault(_TextField);
 	
-	var _RaisedButton = __webpack_require__(/*! material-ui/RaisedButton */ 203);
+	var _RaisedButton = __webpack_require__(/*! material-ui/RaisedButton */ 202);
 	
 	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 	
-	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 218);
+	var _FlatButton = __webpack_require__(/*! material-ui/FlatButton */ 217);
 	
 	var _FlatButton2 = _interopRequireDefault(_FlatButton);
 	
@@ -30980,6 +30866,7 @@
 	          _react2.default.createElement(_TextField2.default, {
 	            hintText: 'Enter your reply here',
 	            multiLine: true,
+	            fullWidth: true,
 	            errorText: this.state.userErrorText,
 	            onChange: this.handleReplyText.bind(this)
 	          }),
@@ -39019,31 +38906,31 @@
 	
 	var _lightBaseTheme2 = _interopRequireDefault(_lightBaseTheme);
 	
-	var _zIndex = __webpack_require__(/*! ./zIndex */ 343);
+	var _zIndex = __webpack_require__(/*! ./zIndex */ 344);
 	
 	var _zIndex2 = _interopRequireDefault(_zIndex);
 	
-	var _autoprefixer = __webpack_require__(/*! ../utils/autoprefixer */ 344);
+	var _autoprefixer = __webpack_require__(/*! ../utils/autoprefixer */ 345);
 	
 	var _autoprefixer2 = _interopRequireDefault(_autoprefixer);
 	
-	var _callOnce = __webpack_require__(/*! ../utils/callOnce */ 377);
+	var _callOnce = __webpack_require__(/*! ../utils/callOnce */ 378);
 	
 	var _callOnce2 = _interopRequireDefault(_callOnce);
 	
-	var _rtl = __webpack_require__(/*! ../utils/rtl */ 378);
+	var _rtl = __webpack_require__(/*! ../utils/rtl */ 379);
 	
 	var _rtl2 = _interopRequireDefault(_rtl);
 	
-	var _compose = __webpack_require__(/*! recompose/compose */ 379);
+	var _compose = __webpack_require__(/*! recompose/compose */ 380);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	var _typography = __webpack_require__(/*! ./typography */ 424);
+	var _typography = __webpack_require__(/*! ./typography */ 425);
 	
 	var _typography2 = _interopRequireDefault(_typography);
 	
-	var _colors = __webpack_require__(/*! ./colors */ 202);
+	var _colors = __webpack_require__(/*! ./colors */ 342);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -43569,11 +43456,11 @@
 	  value: true
 	});
 	
-	var _colors = __webpack_require__(/*! ../colors */ 202);
+	var _colors = __webpack_require__(/*! ../colors */ 342);
 	
 	var _colorManipulator = __webpack_require__(/*! ../../utils/colorManipulator */ 195);
 	
-	var _spacing = __webpack_require__(/*! ../spacing */ 342);
+	var _spacing = __webpack_require__(/*! ../spacing */ 343);
 	
 	var _spacing2 = _interopRequireDefault(_spacing);
 	
@@ -43608,6 +43495,304 @@
 
 /***/ },
 /* 342 */
+/*!****************************************!*\
+  !*** ./~/material-ui/styles/colors.js ***!
+  \****************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var red50 = exports.red50 = '#ffebee';
+	var red100 = exports.red100 = '#ffcdd2';
+	var red200 = exports.red200 = '#ef9a9a';
+	var red300 = exports.red300 = '#e57373';
+	var red400 = exports.red400 = '#ef5350';
+	var red500 = exports.red500 = '#f44336';
+	var red600 = exports.red600 = '#e53935';
+	var red700 = exports.red700 = '#d32f2f';
+	var red800 = exports.red800 = '#c62828';
+	var red900 = exports.red900 = '#b71c1c';
+	var redA100 = exports.redA100 = '#ff8a80';
+	var redA200 = exports.redA200 = '#ff5252';
+	var redA400 = exports.redA400 = '#ff1744';
+	var redA700 = exports.redA700 = '#d50000';
+	
+	var pink50 = exports.pink50 = '#fce4ec';
+	var pink100 = exports.pink100 = '#f8bbd0';
+	var pink200 = exports.pink200 = '#f48fb1';
+	var pink300 = exports.pink300 = '#f06292';
+	var pink400 = exports.pink400 = '#ec407a';
+	var pink500 = exports.pink500 = '#e91e63';
+	var pink600 = exports.pink600 = '#d81b60';
+	var pink700 = exports.pink700 = '#c2185b';
+	var pink800 = exports.pink800 = '#ad1457';
+	var pink900 = exports.pink900 = '#880e4f';
+	var pinkA100 = exports.pinkA100 = '#ff80ab';
+	var pinkA200 = exports.pinkA200 = '#ff4081';
+	var pinkA400 = exports.pinkA400 = '#f50057';
+	var pinkA700 = exports.pinkA700 = '#c51162';
+	
+	var purple50 = exports.purple50 = '#f3e5f5';
+	var purple100 = exports.purple100 = '#e1bee7';
+	var purple200 = exports.purple200 = '#ce93d8';
+	var purple300 = exports.purple300 = '#ba68c8';
+	var purple400 = exports.purple400 = '#ab47bc';
+	var purple500 = exports.purple500 = '#9c27b0';
+	var purple600 = exports.purple600 = '#8e24aa';
+	var purple700 = exports.purple700 = '#7b1fa2';
+	var purple800 = exports.purple800 = '#6a1b9a';
+	var purple900 = exports.purple900 = '#4a148c';
+	var purpleA100 = exports.purpleA100 = '#ea80fc';
+	var purpleA200 = exports.purpleA200 = '#e040fb';
+	var purpleA400 = exports.purpleA400 = '#d500f9';
+	var purpleA700 = exports.purpleA700 = '#aa00ff';
+	
+	var deepPurple50 = exports.deepPurple50 = '#ede7f6';
+	var deepPurple100 = exports.deepPurple100 = '#d1c4e9';
+	var deepPurple200 = exports.deepPurple200 = '#b39ddb';
+	var deepPurple300 = exports.deepPurple300 = '#9575cd';
+	var deepPurple400 = exports.deepPurple400 = '#7e57c2';
+	var deepPurple500 = exports.deepPurple500 = '#673ab7';
+	var deepPurple600 = exports.deepPurple600 = '#5e35b1';
+	var deepPurple700 = exports.deepPurple700 = '#512da8';
+	var deepPurple800 = exports.deepPurple800 = '#4527a0';
+	var deepPurple900 = exports.deepPurple900 = '#311b92';
+	var deepPurpleA100 = exports.deepPurpleA100 = '#b388ff';
+	var deepPurpleA200 = exports.deepPurpleA200 = '#7c4dff';
+	var deepPurpleA400 = exports.deepPurpleA400 = '#651fff';
+	var deepPurpleA700 = exports.deepPurpleA700 = '#6200ea';
+	
+	var indigo50 = exports.indigo50 = '#e8eaf6';
+	var indigo100 = exports.indigo100 = '#c5cae9';
+	var indigo200 = exports.indigo200 = '#9fa8da';
+	var indigo300 = exports.indigo300 = '#7986cb';
+	var indigo400 = exports.indigo400 = '#5c6bc0';
+	var indigo500 = exports.indigo500 = '#3f51b5';
+	var indigo600 = exports.indigo600 = '#3949ab';
+	var indigo700 = exports.indigo700 = '#303f9f';
+	var indigo800 = exports.indigo800 = '#283593';
+	var indigo900 = exports.indigo900 = '#1a237e';
+	var indigoA100 = exports.indigoA100 = '#8c9eff';
+	var indigoA200 = exports.indigoA200 = '#536dfe';
+	var indigoA400 = exports.indigoA400 = '#3d5afe';
+	var indigoA700 = exports.indigoA700 = '#304ffe';
+	
+	var blue50 = exports.blue50 = '#e3f2fd';
+	var blue100 = exports.blue100 = '#bbdefb';
+	var blue200 = exports.blue200 = '#90caf9';
+	var blue300 = exports.blue300 = '#64b5f6';
+	var blue400 = exports.blue400 = '#42a5f5';
+	var blue500 = exports.blue500 = '#2196f3';
+	var blue600 = exports.blue600 = '#1e88e5';
+	var blue700 = exports.blue700 = '#1976d2';
+	var blue800 = exports.blue800 = '#1565c0';
+	var blue900 = exports.blue900 = '#0d47a1';
+	var blueA100 = exports.blueA100 = '#82b1ff';
+	var blueA200 = exports.blueA200 = '#448aff';
+	var blueA400 = exports.blueA400 = '#2979ff';
+	var blueA700 = exports.blueA700 = '#2962ff';
+	
+	var lightBlue50 = exports.lightBlue50 = '#e1f5fe';
+	var lightBlue100 = exports.lightBlue100 = '#b3e5fc';
+	var lightBlue200 = exports.lightBlue200 = '#81d4fa';
+	var lightBlue300 = exports.lightBlue300 = '#4fc3f7';
+	var lightBlue400 = exports.lightBlue400 = '#29b6f6';
+	var lightBlue500 = exports.lightBlue500 = '#03a9f4';
+	var lightBlue600 = exports.lightBlue600 = '#039be5';
+	var lightBlue700 = exports.lightBlue700 = '#0288d1';
+	var lightBlue800 = exports.lightBlue800 = '#0277bd';
+	var lightBlue900 = exports.lightBlue900 = '#01579b';
+	var lightBlueA100 = exports.lightBlueA100 = '#80d8ff';
+	var lightBlueA200 = exports.lightBlueA200 = '#40c4ff';
+	var lightBlueA400 = exports.lightBlueA400 = '#00b0ff';
+	var lightBlueA700 = exports.lightBlueA700 = '#0091ea';
+	
+	var cyan50 = exports.cyan50 = '#e0f7fa';
+	var cyan100 = exports.cyan100 = '#b2ebf2';
+	var cyan200 = exports.cyan200 = '#80deea';
+	var cyan300 = exports.cyan300 = '#4dd0e1';
+	var cyan400 = exports.cyan400 = '#26c6da';
+	var cyan500 = exports.cyan500 = '#00bcd4';
+	var cyan600 = exports.cyan600 = '#00acc1';
+	var cyan700 = exports.cyan700 = '#0097a7';
+	var cyan800 = exports.cyan800 = '#00838f';
+	var cyan900 = exports.cyan900 = '#006064';
+	var cyanA100 = exports.cyanA100 = '#84ffff';
+	var cyanA200 = exports.cyanA200 = '#18ffff';
+	var cyanA400 = exports.cyanA400 = '#00e5ff';
+	var cyanA700 = exports.cyanA700 = '#00b8d4';
+	
+	var teal50 = exports.teal50 = '#e0f2f1';
+	var teal100 = exports.teal100 = '#b2dfdb';
+	var teal200 = exports.teal200 = '#80cbc4';
+	var teal300 = exports.teal300 = '#4db6ac';
+	var teal400 = exports.teal400 = '#26a69a';
+	var teal500 = exports.teal500 = '#009688';
+	var teal600 = exports.teal600 = '#00897b';
+	var teal700 = exports.teal700 = '#00796b';
+	var teal800 = exports.teal800 = '#00695c';
+	var teal900 = exports.teal900 = '#004d40';
+	var tealA100 = exports.tealA100 = '#a7ffeb';
+	var tealA200 = exports.tealA200 = '#64ffda';
+	var tealA400 = exports.tealA400 = '#1de9b6';
+	var tealA700 = exports.tealA700 = '#00bfa5';
+	
+	var green50 = exports.green50 = '#e8f5e9';
+	var green100 = exports.green100 = '#c8e6c9';
+	var green200 = exports.green200 = '#a5d6a7';
+	var green300 = exports.green300 = '#81c784';
+	var green400 = exports.green400 = '#66bb6a';
+	var green500 = exports.green500 = '#4caf50';
+	var green600 = exports.green600 = '#43a047';
+	var green700 = exports.green700 = '#388e3c';
+	var green800 = exports.green800 = '#2e7d32';
+	var green900 = exports.green900 = '#1b5e20';
+	var greenA100 = exports.greenA100 = '#b9f6ca';
+	var greenA200 = exports.greenA200 = '#69f0ae';
+	var greenA400 = exports.greenA400 = '#00e676';
+	var greenA700 = exports.greenA700 = '#00c853';
+	
+	var lightGreen50 = exports.lightGreen50 = '#f1f8e9';
+	var lightGreen100 = exports.lightGreen100 = '#dcedc8';
+	var lightGreen200 = exports.lightGreen200 = '#c5e1a5';
+	var lightGreen300 = exports.lightGreen300 = '#aed581';
+	var lightGreen400 = exports.lightGreen400 = '#9ccc65';
+	var lightGreen500 = exports.lightGreen500 = '#8bc34a';
+	var lightGreen600 = exports.lightGreen600 = '#7cb342';
+	var lightGreen700 = exports.lightGreen700 = '#689f38';
+	var lightGreen800 = exports.lightGreen800 = '#558b2f';
+	var lightGreen900 = exports.lightGreen900 = '#33691e';
+	var lightGreenA100 = exports.lightGreenA100 = '#ccff90';
+	var lightGreenA200 = exports.lightGreenA200 = '#b2ff59';
+	var lightGreenA400 = exports.lightGreenA400 = '#76ff03';
+	var lightGreenA700 = exports.lightGreenA700 = '#64dd17';
+	
+	var lime50 = exports.lime50 = '#f9fbe7';
+	var lime100 = exports.lime100 = '#f0f4c3';
+	var lime200 = exports.lime200 = '#e6ee9c';
+	var lime300 = exports.lime300 = '#dce775';
+	var lime400 = exports.lime400 = '#d4e157';
+	var lime500 = exports.lime500 = '#cddc39';
+	var lime600 = exports.lime600 = '#c0ca33';
+	var lime700 = exports.lime700 = '#afb42b';
+	var lime800 = exports.lime800 = '#9e9d24';
+	var lime900 = exports.lime900 = '#827717';
+	var limeA100 = exports.limeA100 = '#f4ff81';
+	var limeA200 = exports.limeA200 = '#eeff41';
+	var limeA400 = exports.limeA400 = '#c6ff00';
+	var limeA700 = exports.limeA700 = '#aeea00';
+	
+	var yellow50 = exports.yellow50 = '#fffde7';
+	var yellow100 = exports.yellow100 = '#fff9c4';
+	var yellow200 = exports.yellow200 = '#fff59d';
+	var yellow300 = exports.yellow300 = '#fff176';
+	var yellow400 = exports.yellow400 = '#ffee58';
+	var yellow500 = exports.yellow500 = '#ffeb3b';
+	var yellow600 = exports.yellow600 = '#fdd835';
+	var yellow700 = exports.yellow700 = '#fbc02d';
+	var yellow800 = exports.yellow800 = '#f9a825';
+	var yellow900 = exports.yellow900 = '#f57f17';
+	var yellowA100 = exports.yellowA100 = '#ffff8d';
+	var yellowA200 = exports.yellowA200 = '#ffff00';
+	var yellowA400 = exports.yellowA400 = '#ffea00';
+	var yellowA700 = exports.yellowA700 = '#ffd600';
+	
+	var amber50 = exports.amber50 = '#fff8e1';
+	var amber100 = exports.amber100 = '#ffecb3';
+	var amber200 = exports.amber200 = '#ffe082';
+	var amber300 = exports.amber300 = '#ffd54f';
+	var amber400 = exports.amber400 = '#ffca28';
+	var amber500 = exports.amber500 = '#ffc107';
+	var amber600 = exports.amber600 = '#ffb300';
+	var amber700 = exports.amber700 = '#ffa000';
+	var amber800 = exports.amber800 = '#ff8f00';
+	var amber900 = exports.amber900 = '#ff6f00';
+	var amberA100 = exports.amberA100 = '#ffe57f';
+	var amberA200 = exports.amberA200 = '#ffd740';
+	var amberA400 = exports.amberA400 = '#ffc400';
+	var amberA700 = exports.amberA700 = '#ffab00';
+	
+	var orange50 = exports.orange50 = '#fff3e0';
+	var orange100 = exports.orange100 = '#ffe0b2';
+	var orange200 = exports.orange200 = '#ffcc80';
+	var orange300 = exports.orange300 = '#ffb74d';
+	var orange400 = exports.orange400 = '#ffa726';
+	var orange500 = exports.orange500 = '#ff9800';
+	var orange600 = exports.orange600 = '#fb8c00';
+	var orange700 = exports.orange700 = '#f57c00';
+	var orange800 = exports.orange800 = '#ef6c00';
+	var orange900 = exports.orange900 = '#e65100';
+	var orangeA100 = exports.orangeA100 = '#ffd180';
+	var orangeA200 = exports.orangeA200 = '#ffab40';
+	var orangeA400 = exports.orangeA400 = '#ff9100';
+	var orangeA700 = exports.orangeA700 = '#ff6d00';
+	
+	var deepOrange50 = exports.deepOrange50 = '#fbe9e7';
+	var deepOrange100 = exports.deepOrange100 = '#ffccbc';
+	var deepOrange200 = exports.deepOrange200 = '#ffab91';
+	var deepOrange300 = exports.deepOrange300 = '#ff8a65';
+	var deepOrange400 = exports.deepOrange400 = '#ff7043';
+	var deepOrange500 = exports.deepOrange500 = '#ff5722';
+	var deepOrange600 = exports.deepOrange600 = '#f4511e';
+	var deepOrange700 = exports.deepOrange700 = '#e64a19';
+	var deepOrange800 = exports.deepOrange800 = '#d84315';
+	var deepOrange900 = exports.deepOrange900 = '#bf360c';
+	var deepOrangeA100 = exports.deepOrangeA100 = '#ff9e80';
+	var deepOrangeA200 = exports.deepOrangeA200 = '#ff6e40';
+	var deepOrangeA400 = exports.deepOrangeA400 = '#ff3d00';
+	var deepOrangeA700 = exports.deepOrangeA700 = '#dd2c00';
+	
+	var brown50 = exports.brown50 = '#efebe9';
+	var brown100 = exports.brown100 = '#d7ccc8';
+	var brown200 = exports.brown200 = '#bcaaa4';
+	var brown300 = exports.brown300 = '#a1887f';
+	var brown400 = exports.brown400 = '#8d6e63';
+	var brown500 = exports.brown500 = '#795548';
+	var brown600 = exports.brown600 = '#6d4c41';
+	var brown700 = exports.brown700 = '#5d4037';
+	var brown800 = exports.brown800 = '#4e342e';
+	var brown900 = exports.brown900 = '#3e2723';
+	
+	var blueGrey50 = exports.blueGrey50 = '#eceff1';
+	var blueGrey100 = exports.blueGrey100 = '#cfd8dc';
+	var blueGrey200 = exports.blueGrey200 = '#b0bec5';
+	var blueGrey300 = exports.blueGrey300 = '#90a4ae';
+	var blueGrey400 = exports.blueGrey400 = '#78909c';
+	var blueGrey500 = exports.blueGrey500 = '#607d8b';
+	var blueGrey600 = exports.blueGrey600 = '#546e7a';
+	var blueGrey700 = exports.blueGrey700 = '#455a64';
+	var blueGrey800 = exports.blueGrey800 = '#37474f';
+	var blueGrey900 = exports.blueGrey900 = '#263238';
+	
+	var grey50 = exports.grey50 = '#fafafa';
+	var grey100 = exports.grey100 = '#f5f5f5';
+	var grey200 = exports.grey200 = '#eeeeee';
+	var grey300 = exports.grey300 = '#e0e0e0';
+	var grey400 = exports.grey400 = '#bdbdbd';
+	var grey500 = exports.grey500 = '#9e9e9e';
+	var grey600 = exports.grey600 = '#757575';
+	var grey700 = exports.grey700 = '#616161';
+	var grey800 = exports.grey800 = '#424242';
+	var grey900 = exports.grey900 = '#212121';
+	
+	var black = exports.black = '#000000';
+	var white = exports.white = '#ffffff';
+	
+	var transparent = exports.transparent = 'rgba(0, 0, 0, 0)';
+	var fullBlack = exports.fullBlack = 'rgba(0, 0, 0, 1)';
+	var darkBlack = exports.darkBlack = 'rgba(0, 0, 0, 0.87)';
+	var lightBlack = exports.lightBlack = 'rgba(0, 0, 0, 0.54)';
+	var minBlack = exports.minBlack = 'rgba(0, 0, 0, 0.26)';
+	var faintBlack = exports.faintBlack = 'rgba(0, 0, 0, 0.12)';
+	var fullWhite = exports.fullWhite = 'rgba(255, 255, 255, 1)';
+	var darkWhite = exports.darkWhite = 'rgba(255, 255, 255, 0.87)';
+	var lightWhite = exports.lightWhite = 'rgba(255, 255, 255, 0.54)';
+
+/***/ },
+/* 343 */
 /*!*****************************************!*\
   !*** ./~/material-ui/styles/spacing.js ***!
   \*****************************************/
@@ -43634,7 +43819,7 @@
 	};
 
 /***/ },
-/* 343 */
+/* 344 */
 /*!****************************************!*\
   !*** ./~/material-ui/styles/zIndex.js ***!
   \****************************************/
@@ -43659,7 +43844,7 @@
 	};
 
 /***/ },
-/* 344 */
+/* 345 */
 /*!*********************************************!*\
   !*** ./~/material-ui/utils/autoprefixer.js ***!
   \*********************************************/
@@ -43711,7 +43896,7 @@
 	  }
 	};
 	
-	var _inlineStylePrefixer = __webpack_require__(/*! inline-style-prefixer */ 345);
+	var _inlineStylePrefixer = __webpack_require__(/*! inline-style-prefixer */ 346);
 	
 	var _inlineStylePrefixer2 = _interopRequireDefault(_inlineStylePrefixer);
 	
@@ -43725,7 +43910,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 3)))
 
 /***/ },
-/* 345 */
+/* 346 */
 /*!***************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/Prefixer.js ***!
   \***************************************************************/
@@ -43743,61 +43928,61 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var _inlineStylePrefixAll = __webpack_require__(/*! inline-style-prefix-all */ 346);
+	var _inlineStylePrefixAll = __webpack_require__(/*! inline-style-prefix-all */ 347);
 	
 	var _inlineStylePrefixAll2 = _interopRequireDefault(_inlineStylePrefixAll);
 	
-	var _utilsGetBrowserInformation = __webpack_require__(/*! ./utils/getBrowserInformation */ 361);
+	var _utilsGetBrowserInformation = __webpack_require__(/*! ./utils/getBrowserInformation */ 362);
 	
 	var _utilsGetBrowserInformation2 = _interopRequireDefault(_utilsGetBrowserInformation);
 	
-	var _utilsGetPrefixedKeyframes = __webpack_require__(/*! ./utils/getPrefixedKeyframes */ 363);
+	var _utilsGetPrefixedKeyframes = __webpack_require__(/*! ./utils/getPrefixedKeyframes */ 364);
 	
 	var _utilsGetPrefixedKeyframes2 = _interopRequireDefault(_utilsGetPrefixedKeyframes);
 	
-	var _utilsCapitalizeString = __webpack_require__(/*! ./utils/capitalizeString */ 364);
+	var _utilsCapitalizeString = __webpack_require__(/*! ./utils/capitalizeString */ 365);
 	
 	var _utilsCapitalizeString2 = _interopRequireDefault(_utilsCapitalizeString);
 	
-	var _utilsAssign = __webpack_require__(/*! ./utils/assign */ 365);
+	var _utilsAssign = __webpack_require__(/*! ./utils/assign */ 366);
 	
 	var _utilsAssign2 = _interopRequireDefault(_utilsAssign);
 	
-	var _prefixProps = __webpack_require__(/*! ./prefixProps */ 366);
+	var _prefixProps = __webpack_require__(/*! ./prefixProps */ 367);
 	
 	var _prefixProps2 = _interopRequireDefault(_prefixProps);
 	
-	var _pluginsCalc = __webpack_require__(/*! ./plugins/calc */ 367);
+	var _pluginsCalc = __webpack_require__(/*! ./plugins/calc */ 368);
 	
 	var _pluginsCalc2 = _interopRequireDefault(_pluginsCalc);
 	
-	var _pluginsCursor = __webpack_require__(/*! ./plugins/cursor */ 369);
+	var _pluginsCursor = __webpack_require__(/*! ./plugins/cursor */ 370);
 	
 	var _pluginsCursor2 = _interopRequireDefault(_pluginsCursor);
 	
-	var _pluginsFlex = __webpack_require__(/*! ./plugins/flex */ 370);
+	var _pluginsFlex = __webpack_require__(/*! ./plugins/flex */ 371);
 	
 	var _pluginsFlex2 = _interopRequireDefault(_pluginsFlex);
 	
-	var _pluginsSizing = __webpack_require__(/*! ./plugins/sizing */ 371);
+	var _pluginsSizing = __webpack_require__(/*! ./plugins/sizing */ 372);
 	
 	var _pluginsSizing2 = _interopRequireDefault(_pluginsSizing);
 	
-	var _pluginsGradient = __webpack_require__(/*! ./plugins/gradient */ 372);
+	var _pluginsGradient = __webpack_require__(/*! ./plugins/gradient */ 373);
 	
 	var _pluginsGradient2 = _interopRequireDefault(_pluginsGradient);
 	
-	var _pluginsTransition = __webpack_require__(/*! ./plugins/transition */ 373);
+	var _pluginsTransition = __webpack_require__(/*! ./plugins/transition */ 374);
 	
 	var _pluginsTransition2 = _interopRequireDefault(_pluginsTransition);
 	
 	// special flexbox specifications
 	
-	var _pluginsFlexboxIE = __webpack_require__(/*! ./plugins/flexboxIE */ 375);
+	var _pluginsFlexboxIE = __webpack_require__(/*! ./plugins/flexboxIE */ 376);
 	
 	var _pluginsFlexboxIE2 = _interopRequireDefault(_pluginsFlexboxIE);
 	
-	var _pluginsFlexboxOld = __webpack_require__(/*! ./plugins/flexboxOld */ 376);
+	var _pluginsFlexboxOld = __webpack_require__(/*! ./plugins/flexboxOld */ 377);
 	
 	var _pluginsFlexboxOld2 = _interopRequireDefault(_pluginsFlexboxOld);
 	
@@ -43931,7 +44116,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 346 */
+/* 347 */
 /*!******************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/prefixAll.js ***!
   \******************************************************************************************/
@@ -43946,49 +44131,49 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _prefixProps = __webpack_require__(/*! ./prefixProps */ 347);
+	var _prefixProps = __webpack_require__(/*! ./prefixProps */ 348);
 	
 	var _prefixProps2 = _interopRequireDefault(_prefixProps);
 	
-	var _utilsCapitalizeString = __webpack_require__(/*! ./utils/capitalizeString */ 348);
+	var _utilsCapitalizeString = __webpack_require__(/*! ./utils/capitalizeString */ 349);
 	
 	var _utilsCapitalizeString2 = _interopRequireDefault(_utilsCapitalizeString);
 	
-	var _utilsAssign = __webpack_require__(/*! ./utils/assign */ 349);
+	var _utilsAssign = __webpack_require__(/*! ./utils/assign */ 350);
 	
 	var _utilsAssign2 = _interopRequireDefault(_utilsAssign);
 	
-	var _pluginsCalc = __webpack_require__(/*! ./plugins/calc */ 350);
+	var _pluginsCalc = __webpack_require__(/*! ./plugins/calc */ 351);
 	
 	var _pluginsCalc2 = _interopRequireDefault(_pluginsCalc);
 	
-	var _pluginsCursor = __webpack_require__(/*! ./plugins/cursor */ 354);
+	var _pluginsCursor = __webpack_require__(/*! ./plugins/cursor */ 355);
 	
 	var _pluginsCursor2 = _interopRequireDefault(_pluginsCursor);
 	
-	var _pluginsFlex = __webpack_require__(/*! ./plugins/flex */ 355);
+	var _pluginsFlex = __webpack_require__(/*! ./plugins/flex */ 356);
 	
 	var _pluginsFlex2 = _interopRequireDefault(_pluginsFlex);
 	
-	var _pluginsSizing = __webpack_require__(/*! ./plugins/sizing */ 356);
+	var _pluginsSizing = __webpack_require__(/*! ./plugins/sizing */ 357);
 	
 	var _pluginsSizing2 = _interopRequireDefault(_pluginsSizing);
 	
-	var _pluginsGradient = __webpack_require__(/*! ./plugins/gradient */ 357);
+	var _pluginsGradient = __webpack_require__(/*! ./plugins/gradient */ 358);
 	
 	var _pluginsGradient2 = _interopRequireDefault(_pluginsGradient);
 	
-	var _pluginsTransition = __webpack_require__(/*! ./plugins/transition */ 358);
+	var _pluginsTransition = __webpack_require__(/*! ./plugins/transition */ 359);
 	
 	var _pluginsTransition2 = _interopRequireDefault(_pluginsTransition);
 	
 	// special flexbox specifications
 	
-	var _pluginsFlexboxIE = __webpack_require__(/*! ./plugins/flexboxIE */ 359);
+	var _pluginsFlexboxIE = __webpack_require__(/*! ./plugins/flexboxIE */ 360);
 	
 	var _pluginsFlexboxIE2 = _interopRequireDefault(_pluginsFlexboxIE);
 	
-	var _pluginsFlexboxOld = __webpack_require__(/*! ./plugins/flexboxOld */ 360);
+	var _pluginsFlexboxOld = __webpack_require__(/*! ./plugins/flexboxOld */ 361);
 	
 	var _pluginsFlexboxOld2 = _interopRequireDefault(_pluginsFlexboxOld);
 	
@@ -44028,7 +44213,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 347 */
+/* 348 */
 /*!********************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/prefixProps.js ***!
   \********************************************************************************************/
@@ -44043,7 +44228,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 348 */
+/* 349 */
 /*!*******************************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/utils/capitalizeString.js ***!
   \*******************************************************************************************************/
@@ -44063,7 +44248,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 349 */
+/* 350 */
 /*!*********************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/utils/assign.js ***!
   \*********************************************************************************************/
@@ -44087,7 +44272,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 350 */
+/* 351 */
 /*!*********************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/plugins/calc.js ***!
   \*********************************************************************************************/
@@ -44102,11 +44287,11 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _utilsJoinPrefixedRules = __webpack_require__(/*! ../utils/joinPrefixedRules */ 351);
+	var _utilsJoinPrefixedRules = __webpack_require__(/*! ../utils/joinPrefixedRules */ 352);
 	
 	var _utilsJoinPrefixedRules2 = _interopRequireDefault(_utilsJoinPrefixedRules);
 	
-	var _utilsIsPrefixedValue = __webpack_require__(/*! ../utils/isPrefixedValue */ 353);
+	var _utilsIsPrefixedValue = __webpack_require__(/*! ../utils/isPrefixedValue */ 354);
 	
 	var _utilsIsPrefixedValue2 = _interopRequireDefault(_utilsIsPrefixedValue);
 	
@@ -44123,7 +44308,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 351 */
+/* 352 */
 /*!********************************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/utils/joinPrefixedRules.js ***!
   \********************************************************************************************************/
@@ -44139,7 +44324,7 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var _camelToDashCase = __webpack_require__(/*! ./camelToDashCase */ 352);
+	var _camelToDashCase = __webpack_require__(/*! ./camelToDashCase */ 353);
 	
 	var _camelToDashCase2 = _interopRequireDefault(_camelToDashCase);
 	
@@ -44159,7 +44344,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 352 */
+/* 353 */
 /*!******************************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/utils/camelToDashCase.js ***!
   \******************************************************************************************************/
@@ -44184,7 +44369,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 353 */
+/* 354 */
 /*!******************************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/utils/isPrefixedValue.js ***!
   \******************************************************************************************************/
@@ -44205,7 +44390,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 354 */
+/* 355 */
 /*!***********************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/plugins/cursor.js ***!
   \***********************************************************************************************/
@@ -44220,7 +44405,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _utilsJoinPrefixedRules = __webpack_require__(/*! ../utils/joinPrefixedRules */ 351);
+	var _utilsJoinPrefixedRules = __webpack_require__(/*! ../utils/joinPrefixedRules */ 352);
 	
 	var _utilsJoinPrefixedRules2 = _interopRequireDefault(_utilsJoinPrefixedRules);
 	
@@ -44240,7 +44425,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 355 */
+/* 356 */
 /*!*********************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/plugins/flex.js ***!
   \*********************************************************************************************/
@@ -44255,7 +44440,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 352);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 353);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
@@ -44272,7 +44457,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 356 */
+/* 357 */
 /*!***********************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/plugins/sizing.js ***!
   \***********************************************************************************************/
@@ -44287,7 +44472,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _utilsJoinPrefixedRules = __webpack_require__(/*! ../utils/joinPrefixedRules */ 351);
+	var _utilsJoinPrefixedRules = __webpack_require__(/*! ../utils/joinPrefixedRules */ 352);
 	
 	var _utilsJoinPrefixedRules2 = _interopRequireDefault(_utilsJoinPrefixedRules);
 	
@@ -44317,7 +44502,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 357 */
+/* 358 */
 /*!*************************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/plugins/gradient.js ***!
   \*************************************************************************************************/
@@ -44332,11 +44517,11 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _utilsJoinPrefixedRules = __webpack_require__(/*! ../utils/joinPrefixedRules */ 351);
+	var _utilsJoinPrefixedRules = __webpack_require__(/*! ../utils/joinPrefixedRules */ 352);
 	
 	var _utilsJoinPrefixedRules2 = _interopRequireDefault(_utilsJoinPrefixedRules);
 	
-	var _utilsIsPrefixedValue = __webpack_require__(/*! ../utils/isPrefixedValue */ 353);
+	var _utilsIsPrefixedValue = __webpack_require__(/*! ../utils/isPrefixedValue */ 354);
 	
 	var _utilsIsPrefixedValue2 = _interopRequireDefault(_utilsIsPrefixedValue);
 	
@@ -44353,7 +44538,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 358 */
+/* 359 */
 /*!***************************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/plugins/transition.js ***!
   \***************************************************************************************************/
@@ -44370,19 +44555,19 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 352);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 353);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
-	var _utilsCapitalizeString = __webpack_require__(/*! ../utils/capitalizeString */ 348);
+	var _utilsCapitalizeString = __webpack_require__(/*! ../utils/capitalizeString */ 349);
 	
 	var _utilsCapitalizeString2 = _interopRequireDefault(_utilsCapitalizeString);
 	
-	var _utilsIsPrefixedValue = __webpack_require__(/*! ../utils/isPrefixedValue */ 353);
+	var _utilsIsPrefixedValue = __webpack_require__(/*! ../utils/isPrefixedValue */ 354);
 	
 	var _utilsIsPrefixedValue2 = _interopRequireDefault(_utilsIsPrefixedValue);
 	
-	var _prefixProps = __webpack_require__(/*! ../prefixProps */ 347);
+	var _prefixProps = __webpack_require__(/*! ../prefixProps */ 348);
 	
 	var _prefixProps2 = _interopRequireDefault(_prefixProps);
 	
@@ -44443,7 +44628,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 359 */
+/* 360 */
 /*!**************************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/plugins/flexboxIE.js ***!
   \**************************************************************************************************/
@@ -44484,7 +44669,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 360 */
+/* 361 */
 /*!***************************************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/inline-style-prefix-all/lib/plugins/flexboxOld.js ***!
   \***************************************************************************************************/
@@ -44501,7 +44686,7 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 352);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 353);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
@@ -44535,7 +44720,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 361 */
+/* 362 */
 /*!**********************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/utils/getBrowserInformation.js ***!
   \**********************************************************************************/
@@ -44549,7 +44734,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _bowser = __webpack_require__(/*! bowser */ 362);
+	var _bowser = __webpack_require__(/*! bowser */ 363);
 	
 	var _bowser2 = _interopRequireDefault(_bowser);
 	
@@ -44636,7 +44821,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 362 */
+/* 363 */
 /*!**********************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/~/bowser/src/bowser.js ***!
   \**********************************************************************/
@@ -45063,7 +45248,7 @@
 
 
 /***/ },
-/* 363 */
+/* 364 */
 /*!*********************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/utils/getPrefixedKeyframes.js ***!
   \*********************************************************************************/
@@ -45091,7 +45276,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 364 */
+/* 365 */
 /*!*****************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/utils/capitalizeString.js ***!
   \*****************************************************************************/
@@ -45111,7 +45296,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 365 */
+/* 366 */
 /*!*******************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/utils/assign.js ***!
   \*******************************************************************/
@@ -45136,7 +45321,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 366 */
+/* 367 */
 /*!******************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/prefixProps.js ***!
   \******************************************************************/
@@ -45151,7 +45336,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 367 */
+/* 368 */
 /*!*******************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/plugins/calc.js ***!
   \*******************************************************************/
@@ -45168,7 +45353,7 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 368);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 369);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
@@ -45189,7 +45374,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 368 */
+/* 369 */
 /*!****************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/utils/camelToDashCase.js ***!
   \****************************************************************************/
@@ -45214,7 +45399,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 369 */
+/* 370 */
 /*!*********************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/plugins/cursor.js ***!
   \*********************************************************************/
@@ -45229,7 +45414,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 368);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 369);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
@@ -45259,7 +45444,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 370 */
+/* 371 */
 /*!*******************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/plugins/flex.js ***!
   \*******************************************************************/
@@ -45274,7 +45459,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 368);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 369);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
@@ -45302,7 +45487,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 371 */
+/* 372 */
 /*!*********************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/plugins/sizing.js ***!
   \*********************************************************************/
@@ -45319,7 +45504,7 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 368);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 369);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
@@ -45356,7 +45541,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 372 */
+/* 373 */
 /*!***********************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/plugins/gradient.js ***!
   \***********************************************************************/
@@ -45373,7 +45558,7 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 368);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 369);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
@@ -45396,7 +45581,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 373 */
+/* 374 */
 /*!*************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/plugins/transition.js ***!
   \*************************************************************************/
@@ -45413,15 +45598,15 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 368);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 369);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
-	var _utilsCapitalizeString = __webpack_require__(/*! ../utils/capitalizeString */ 364);
+	var _utilsCapitalizeString = __webpack_require__(/*! ../utils/capitalizeString */ 365);
 	
 	var _utilsCapitalizeString2 = _interopRequireDefault(_utilsCapitalizeString);
 	
-	var _utilsUnprefixProperty = __webpack_require__(/*! ../utils/unprefixProperty */ 374);
+	var _utilsUnprefixProperty = __webpack_require__(/*! ../utils/unprefixProperty */ 375);
 	
 	var _utilsUnprefixProperty2 = _interopRequireDefault(_utilsUnprefixProperty);
 	
@@ -45465,7 +45650,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 374 */
+/* 375 */
 /*!*****************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/utils/unprefixProperty.js ***!
   \*****************************************************************************/
@@ -45485,7 +45670,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 375 */
+/* 376 */
 /*!************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/plugins/flexboxIE.js ***!
   \************************************************************************/
@@ -45502,7 +45687,7 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 368);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 369);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
@@ -45558,7 +45743,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 376 */
+/* 377 */
 /*!*************************************************************************!*\
   !*** ./~/material-ui/~/inline-style-prefixer/lib/plugins/flexboxOld.js ***!
   \*************************************************************************/
@@ -45575,7 +45760,7 @@
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
-	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 368);
+	var _utilsCamelToDashCase = __webpack_require__(/*! ../utils/camelToDashCase */ 369);
 	
 	var _utilsCamelToDashCase2 = _interopRequireDefault(_utilsCamelToDashCase);
 	
@@ -45637,7 +45822,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 377 */
+/* 378 */
 /*!*****************************************!*\
   !*** ./~/material-ui/utils/callOnce.js ***!
   \*****************************************/
@@ -45672,7 +45857,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 3)))
 
 /***/ },
-/* 378 */
+/* 379 */
 /*!************************************!*\
   !*** ./~/material-ui/utils/rtl.js ***!
   \************************************/
@@ -45763,7 +45948,7 @@
 	}
 
 /***/ },
-/* 379 */
+/* 380 */
 /*!**********************************************!*\
   !*** ./~/material-ui/~/recompose/compose.js ***!
   \**********************************************/
@@ -45775,7 +45960,7 @@
 	  value: true
 	});
 	
-	var _flowRight = __webpack_require__(/*! lodash/flowRight */ 380);
+	var _flowRight = __webpack_require__(/*! lodash/flowRight */ 381);
 	
 	var _flowRight2 = _interopRequireDefault(_flowRight);
 	
@@ -45784,13 +45969,13 @@
 	exports.default = _flowRight2.default;
 
 /***/ },
-/* 380 */
+/* 381 */
 /*!*********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/flowRight.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var createFlow = __webpack_require__(/*! ./_createFlow */ 381);
+	var createFlow = __webpack_require__(/*! ./_createFlow */ 382);
 	
 	/**
 	 * This method is like `_.flow` except that it creates a function that
@@ -45819,19 +46004,19 @@
 
 
 /***/ },
-/* 381 */
+/* 382 */
 /*!***********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_createFlow.js ***!
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ 382),
-	    baseFlatten = __webpack_require__(/*! ./_baseFlatten */ 386),
-	    getData = __webpack_require__(/*! ./_getData */ 398),
-	    getFuncName = __webpack_require__(/*! ./_getFuncName */ 411),
-	    isArray = __webpack_require__(/*! ./isArray */ 397),
-	    isLaziable = __webpack_require__(/*! ./_isLaziable */ 413),
-	    rest = __webpack_require__(/*! ./rest */ 418);
+	var LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ 383),
+	    baseFlatten = __webpack_require__(/*! ./_baseFlatten */ 387),
+	    getData = __webpack_require__(/*! ./_getData */ 399),
+	    getFuncName = __webpack_require__(/*! ./_getFuncName */ 412),
+	    isArray = __webpack_require__(/*! ./isArray */ 398),
+	    isLaziable = __webpack_require__(/*! ./_isLaziable */ 414),
+	    rest = __webpack_require__(/*! ./rest */ 419);
 	
 	/** Used as the size to enable large array optimizations. */
 	var LARGE_ARRAY_SIZE = 200;
@@ -45913,14 +46098,14 @@
 
 
 /***/ },
-/* 382 */
+/* 383 */
 /*!**************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_LodashWrapper.js ***!
   \**************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseCreate = __webpack_require__(/*! ./_baseCreate */ 383),
-	    baseLodash = __webpack_require__(/*! ./_baseLodash */ 385);
+	var baseCreate = __webpack_require__(/*! ./_baseCreate */ 384),
+	    baseLodash = __webpack_require__(/*! ./_baseLodash */ 386);
 	
 	/**
 	 * The base constructor for creating `lodash` wrapper objects.
@@ -45944,13 +46129,13 @@
 
 
 /***/ },
-/* 383 */
+/* 384 */
 /*!***********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_baseCreate.js ***!
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(/*! ./isObject */ 384);
+	var isObject = __webpack_require__(/*! ./isObject */ 385);
 	
 	/** Built-in value references. */
 	var objectCreate = Object.create;
@@ -45971,7 +46156,7 @@
 
 
 /***/ },
-/* 384 */
+/* 385 */
 /*!********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/isObject.js ***!
   \********************************************************/
@@ -46011,7 +46196,7 @@
 
 
 /***/ },
-/* 385 */
+/* 386 */
 /*!***********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_baseLodash.js ***!
   \***********************************************************/
@@ -46030,14 +46215,14 @@
 
 
 /***/ },
-/* 386 */
+/* 387 */
 /*!************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_baseFlatten.js ***!
   \************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayPush = __webpack_require__(/*! ./_arrayPush */ 387),
-	    isFlattenable = __webpack_require__(/*! ./_isFlattenable */ 388);
+	var arrayPush = __webpack_require__(/*! ./_arrayPush */ 388),
+	    isFlattenable = __webpack_require__(/*! ./_isFlattenable */ 389);
 	
 	/**
 	 * The base implementation of `_.flatten` with support for restricting flattening.
@@ -46077,7 +46262,7 @@
 
 
 /***/ },
-/* 387 */
+/* 388 */
 /*!**********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_arrayPush.js ***!
   \**********************************************************/
@@ -46106,14 +46291,14 @@
 
 
 /***/ },
-/* 388 */
+/* 389 */
 /*!**************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_isFlattenable.js ***!
   \**************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArguments = __webpack_require__(/*! ./isArguments */ 389),
-	    isArray = __webpack_require__(/*! ./isArray */ 397);
+	var isArguments = __webpack_require__(/*! ./isArguments */ 390),
+	    isArray = __webpack_require__(/*! ./isArray */ 398);
 	
 	/**
 	 * Checks if `value` is a flattenable `arguments` object or array.
@@ -46130,13 +46315,13 @@
 
 
 /***/ },
-/* 389 */
+/* 390 */
 /*!***********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/isArguments.js ***!
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArrayLikeObject = __webpack_require__(/*! ./isArrayLikeObject */ 390);
+	var isArrayLikeObject = __webpack_require__(/*! ./isArrayLikeObject */ 391);
 	
 	/** `Object#toString` result references. */
 	var argsTag = '[object Arguments]';
@@ -46185,14 +46370,14 @@
 
 
 /***/ },
-/* 390 */
+/* 391 */
 /*!*****************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/isArrayLikeObject.js ***!
   \*****************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArrayLike = __webpack_require__(/*! ./isArrayLike */ 391),
-	    isObjectLike = __webpack_require__(/*! ./isObjectLike */ 396);
+	var isArrayLike = __webpack_require__(/*! ./isArrayLike */ 392),
+	    isObjectLike = __webpack_require__(/*! ./isObjectLike */ 397);
 	
 	/**
 	 * This method is like `_.isArrayLike` except that it also checks if `value`
@@ -46227,15 +46412,15 @@
 
 
 /***/ },
-/* 391 */
+/* 392 */
 /*!***********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/isArrayLike.js ***!
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var getLength = __webpack_require__(/*! ./_getLength */ 392),
-	    isFunction = __webpack_require__(/*! ./isFunction */ 394),
-	    isLength = __webpack_require__(/*! ./isLength */ 395);
+	var getLength = __webpack_require__(/*! ./_getLength */ 393),
+	    isFunction = __webpack_require__(/*! ./isFunction */ 395),
+	    isLength = __webpack_require__(/*! ./isLength */ 396);
 	
 	/**
 	 * Checks if `value` is array-like. A value is considered array-like if it's
@@ -46270,13 +46455,13 @@
 
 
 /***/ },
-/* 392 */
+/* 393 */
 /*!**********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_getLength.js ***!
   \**********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseProperty = __webpack_require__(/*! ./_baseProperty */ 393);
+	var baseProperty = __webpack_require__(/*! ./_baseProperty */ 394);
 	
 	/**
 	 * Gets the "length" property value of `object`.
@@ -46295,7 +46480,7 @@
 
 
 /***/ },
-/* 393 */
+/* 394 */
 /*!*************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_baseProperty.js ***!
   \*************************************************************/
@@ -46318,13 +46503,13 @@
 
 
 /***/ },
-/* 394 */
+/* 395 */
 /*!**********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/isFunction.js ***!
   \**********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(/*! ./isObject */ 384);
+	var isObject = __webpack_require__(/*! ./isObject */ 385);
 	
 	/** `Object#toString` result references. */
 	var funcTag = '[object Function]',
@@ -46370,7 +46555,7 @@
 
 
 /***/ },
-/* 395 */
+/* 396 */
 /*!********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/isLength.js ***!
   \********************************************************/
@@ -46415,7 +46600,7 @@
 
 
 /***/ },
-/* 396 */
+/* 397 */
 /*!************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/isObjectLike.js ***!
   \************************************************************/
@@ -46453,7 +46638,7 @@
 
 
 /***/ },
-/* 397 */
+/* 398 */
 /*!*******************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/isArray.js ***!
   \*******************************************************/
@@ -46490,14 +46675,14 @@
 
 
 /***/ },
-/* 398 */
+/* 399 */
 /*!********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_getData.js ***!
   \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var metaMap = __webpack_require__(/*! ./_metaMap */ 399),
-	    noop = __webpack_require__(/*! ./noop */ 410);
+	var metaMap = __webpack_require__(/*! ./_metaMap */ 400),
+	    noop = __webpack_require__(/*! ./noop */ 411);
 	
 	/**
 	 * Gets metadata for `func`.
@@ -46514,13 +46699,13 @@
 
 
 /***/ },
-/* 399 */
+/* 400 */
 /*!********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_metaMap.js ***!
   \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var WeakMap = __webpack_require__(/*! ./_WeakMap */ 400);
+	var WeakMap = __webpack_require__(/*! ./_WeakMap */ 401);
 	
 	/** Used to store function metadata. */
 	var metaMap = WeakMap && new WeakMap;
@@ -46529,14 +46714,14 @@
 
 
 /***/ },
-/* 400 */
+/* 401 */
 /*!********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_WeakMap.js ***!
   \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(/*! ./_getNative */ 401),
-	    root = __webpack_require__(/*! ./_root */ 406);
+	var getNative = __webpack_require__(/*! ./_getNative */ 402),
+	    root = __webpack_require__(/*! ./_root */ 407);
 	
 	/* Built-in method references that are verified to be native. */
 	var WeakMap = getNative(root, 'WeakMap');
@@ -46545,14 +46730,14 @@
 
 
 /***/ },
-/* 401 */
+/* 402 */
 /*!**********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_getNative.js ***!
   \**********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsNative = __webpack_require__(/*! ./_baseIsNative */ 402),
-	    getValue = __webpack_require__(/*! ./_getValue */ 409);
+	var baseIsNative = __webpack_require__(/*! ./_baseIsNative */ 403),
+	    getValue = __webpack_require__(/*! ./_getValue */ 410);
 	
 	/**
 	 * Gets the native function at `key` of `object`.
@@ -46571,17 +46756,17 @@
 
 
 /***/ },
-/* 402 */
+/* 403 */
 /*!*************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_baseIsNative.js ***!
   \*************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(/*! ./isFunction */ 394),
-	    isHostObject = __webpack_require__(/*! ./_isHostObject */ 403),
-	    isMasked = __webpack_require__(/*! ./_isMasked */ 404),
-	    isObject = __webpack_require__(/*! ./isObject */ 384),
-	    toSource = __webpack_require__(/*! ./_toSource */ 408);
+	var isFunction = __webpack_require__(/*! ./isFunction */ 395),
+	    isHostObject = __webpack_require__(/*! ./_isHostObject */ 404),
+	    isMasked = __webpack_require__(/*! ./_isMasked */ 405),
+	    isObject = __webpack_require__(/*! ./isObject */ 385),
+	    toSource = __webpack_require__(/*! ./_toSource */ 409);
 	
 	/**
 	 * Used to match `RegExp`
@@ -46627,7 +46812,7 @@
 
 
 /***/ },
-/* 403 */
+/* 404 */
 /*!*************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_isHostObject.js ***!
   \*************************************************************/
@@ -46656,13 +46841,13 @@
 
 
 /***/ },
-/* 404 */
+/* 405 */
 /*!*********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_isMasked.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var coreJsData = __webpack_require__(/*! ./_coreJsData */ 405);
+	var coreJsData = __webpack_require__(/*! ./_coreJsData */ 406);
 	
 	/** Used to detect methods masquerading as native. */
 	var maskSrcKey = (function() {
@@ -46685,13 +46870,13 @@
 
 
 /***/ },
-/* 405 */
+/* 406 */
 /*!***********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_coreJsData.js ***!
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(/*! ./_root */ 406);
+	var root = __webpack_require__(/*! ./_root */ 407);
 	
 	/** Used to detect overreaching core-js shims. */
 	var coreJsData = root['__core-js_shared__'];
@@ -46700,13 +46885,13 @@
 
 
 /***/ },
-/* 406 */
+/* 407 */
 /*!*****************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_root.js ***!
   \*****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var checkGlobal = __webpack_require__(/*! ./_checkGlobal */ 407);
+	/* WEBPACK VAR INJECTION */(function(global) {var checkGlobal = __webpack_require__(/*! ./_checkGlobal */ 408);
 	
 	/** Detect free variable `global` from Node.js. */
 	var freeGlobal = checkGlobal(typeof global == 'object' && global);
@@ -46725,7 +46910,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 407 */
+/* 408 */
 /*!************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_checkGlobal.js ***!
   \************************************************************/
@@ -46746,7 +46931,7 @@
 
 
 /***/ },
-/* 408 */
+/* 409 */
 /*!*********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_toSource.js ***!
   \*********************************************************/
@@ -46778,7 +46963,7 @@
 
 
 /***/ },
-/* 409 */
+/* 410 */
 /*!*********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_getValue.js ***!
   \*********************************************************/
@@ -46800,7 +46985,7 @@
 
 
 /***/ },
-/* 410 */
+/* 411 */
 /*!****************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/noop.js ***!
   \****************************************************/
@@ -46826,13 +47011,13 @@
 
 
 /***/ },
-/* 411 */
+/* 412 */
 /*!************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_getFuncName.js ***!
   \************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var realNames = __webpack_require__(/*! ./_realNames */ 412);
+	var realNames = __webpack_require__(/*! ./_realNames */ 413);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -46866,7 +47051,7 @@
 
 
 /***/ },
-/* 412 */
+/* 413 */
 /*!**********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_realNames.js ***!
   \**********************************************************/
@@ -46879,16 +47064,16 @@
 
 
 /***/ },
-/* 413 */
+/* 414 */
 /*!***********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_isLaziable.js ***!
   \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 414),
-	    getData = __webpack_require__(/*! ./_getData */ 398),
-	    getFuncName = __webpack_require__(/*! ./_getFuncName */ 411),
-	    lodash = __webpack_require__(/*! ./wrapperLodash */ 415);
+	var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 415),
+	    getData = __webpack_require__(/*! ./_getData */ 399),
+	    getFuncName = __webpack_require__(/*! ./_getFuncName */ 412),
+	    lodash = __webpack_require__(/*! ./wrapperLodash */ 416);
 	
 	/**
 	 * Checks if `func` has a lazy counterpart.
@@ -46916,14 +47101,14 @@
 
 
 /***/ },
-/* 414 */
+/* 415 */
 /*!************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_LazyWrapper.js ***!
   \************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseCreate = __webpack_require__(/*! ./_baseCreate */ 383),
-	    baseLodash = __webpack_require__(/*! ./_baseLodash */ 385);
+	var baseCreate = __webpack_require__(/*! ./_baseCreate */ 384),
+	    baseLodash = __webpack_require__(/*! ./_baseLodash */ 386);
 	
 	/** Used as references for the maximum length and index of an array. */
 	var MAX_ARRAY_LENGTH = 4294967295;
@@ -46953,18 +47138,18 @@
 
 
 /***/ },
-/* 415 */
+/* 416 */
 /*!*************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/wrapperLodash.js ***!
   \*************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 414),
-	    LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ 382),
-	    baseLodash = __webpack_require__(/*! ./_baseLodash */ 385),
-	    isArray = __webpack_require__(/*! ./isArray */ 397),
-	    isObjectLike = __webpack_require__(/*! ./isObjectLike */ 396),
-	    wrapperClone = __webpack_require__(/*! ./_wrapperClone */ 416);
+	var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 415),
+	    LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ 383),
+	    baseLodash = __webpack_require__(/*! ./_baseLodash */ 386),
+	    isArray = __webpack_require__(/*! ./isArray */ 398),
+	    isObjectLike = __webpack_require__(/*! ./isObjectLike */ 397),
+	    wrapperClone = __webpack_require__(/*! ./_wrapperClone */ 417);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -47109,15 +47294,15 @@
 
 
 /***/ },
-/* 416 */
+/* 417 */
 /*!*************************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_wrapperClone.js ***!
   \*************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 414),
-	    LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ 382),
-	    copyArray = __webpack_require__(/*! ./_copyArray */ 417);
+	var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 415),
+	    LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ 383),
+	    copyArray = __webpack_require__(/*! ./_copyArray */ 418);
 	
 	/**
 	 * Creates a clone of `wrapper`.
@@ -47141,7 +47326,7 @@
 
 
 /***/ },
-/* 417 */
+/* 418 */
 /*!**********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_copyArray.js ***!
   \**********************************************************/
@@ -47170,14 +47355,14 @@
 
 
 /***/ },
-/* 418 */
+/* 419 */
 /*!****************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/rest.js ***!
   \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var apply = __webpack_require__(/*! ./_apply */ 419),
-	    toInteger = __webpack_require__(/*! ./toInteger */ 420);
+	var apply = __webpack_require__(/*! ./_apply */ 420),
+	    toInteger = __webpack_require__(/*! ./toInteger */ 421);
 	
 	/** Used as the `TypeError` message for "Functions" methods. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -47243,7 +47428,7 @@
 
 
 /***/ },
-/* 419 */
+/* 420 */
 /*!******************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/_apply.js ***!
   \******************************************************/
@@ -47274,13 +47459,13 @@
 
 
 /***/ },
-/* 420 */
+/* 421 */
 /*!*********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/toInteger.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var toFinite = __webpack_require__(/*! ./toFinite */ 421);
+	var toFinite = __webpack_require__(/*! ./toFinite */ 422);
 	
 	/**
 	 * Converts `value` to an integer.
@@ -47319,13 +47504,13 @@
 
 
 /***/ },
-/* 421 */
+/* 422 */
 /*!********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/toFinite.js ***!
   \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var toNumber = __webpack_require__(/*! ./toNumber */ 422);
+	var toNumber = __webpack_require__(/*! ./toNumber */ 423);
 	
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0,
@@ -47370,15 +47555,15 @@
 
 
 /***/ },
-/* 422 */
+/* 423 */
 /*!********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/toNumber.js ***!
   \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(/*! ./isFunction */ 394),
-	    isObject = __webpack_require__(/*! ./isObject */ 384),
-	    isSymbol = __webpack_require__(/*! ./isSymbol */ 423);
+	var isFunction = __webpack_require__(/*! ./isFunction */ 395),
+	    isObject = __webpack_require__(/*! ./isObject */ 385),
+	    isSymbol = __webpack_require__(/*! ./isSymbol */ 424);
 	
 	/** Used as references for various `Number` constants. */
 	var NAN = 0 / 0;
@@ -47446,13 +47631,13 @@
 
 
 /***/ },
-/* 423 */
+/* 424 */
 /*!********************************************************!*\
   !*** ./~/material-ui/~/recompose/~/lodash/isSymbol.js ***!
   \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObjectLike = __webpack_require__(/*! ./isObjectLike */ 396);
+	var isObjectLike = __webpack_require__(/*! ./isObjectLike */ 397);
 	
 	/** `Object#toString` result references. */
 	var symbolTag = '[object Symbol]';
@@ -47494,7 +47679,7 @@
 
 
 /***/ },
-/* 424 */
+/* 425 */
 /*!********************************************!*\
   !*** ./~/material-ui/styles/typography.js ***!
   \********************************************/
@@ -47506,7 +47691,7 @@
 	  value: true
 	});
 	
-	var _colors = __webpack_require__(/*! ./colors */ 202);
+	var _colors = __webpack_require__(/*! ./colors */ 342);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -47533,7 +47718,7 @@
 	exports.default = new Typography();
 
 /***/ },
-/* 425 */
+/* 426 */
 /*!*****************************************!*\
   !*** ./views/Components/PostDetail.jsx ***!
   \*****************************************/
@@ -47551,7 +47736,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _CommentList = __webpack_require__(/*! ./CommentList.jsx */ 426);
+	var _CommentList = __webpack_require__(/*! ./CommentList.jsx */ 427);
 	
 	var _CommentList2 = _interopRequireDefault(_CommentList);
 	
@@ -47560,6 +47745,8 @@
 	var _CommentReply2 = _interopRequireDefault(_CommentReply);
 	
 	var _Card = __webpack_require__(/*! material-ui/Card */ 249);
+	
+	var _index = __webpack_require__(/*! react-flexbox-grid/lib/index */ 324);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -47592,7 +47779,7 @@
 				$.ajax({
 					url: "/api/hands?handid=" + this.props.params.postid,
 					success: function (response) {
-						this.setState({ title: response.title, content: response.content, author: response.author });
+						this.setState({ title: response.title, author: response.author });
 					}.bind(this),
 					error: function (xhr) {
 						console.log("GET request to retrieve hand failed.");
@@ -47608,7 +47795,7 @@
 						this.setState({ comments: response });
 					}.bind(this),
 					error: function (xhr) {
-						console.log("GET request to retrieve hand failed.");
+						console.log("GET request to retrieve comments for hand failed.");
 					}.bind(this)
 				});
 			}
@@ -47650,29 +47837,41 @@
 					'div',
 					null,
 					_react2.default.createElement(
-						_Card.Card,
+						_index.Grid,
 						null,
-						_react2.default.createElement(_Card.CardHeader, {
-							title: this.state.title,
-							subtitle: this.state.author,
-							showExpandableButton: false
-						}),
 						_react2.default.createElement(
-							_Card.CardText,
-							null,
-							this.state.content
-						)
-					),
-					_react2.default.createElement(_CommentList2.default, {
-						postid: this.state.postid,
-						comments: this.state.comments,
-						onCommentSubmit: this.handleCommentSubmit
-					}),
-					_react2.default.createElement(_CommentReply2.default, {
-						onCommentSubmit: this.handleCommentSubmit,
-						postid: this.state.postid
+							_index.Row,
+							{ start: 'xs' },
+							_react2.default.createElement(
+								_index.Col,
+								{ xs: 12 },
+								_react2.default.createElement(
+									_Card.Card,
+									null,
+									_react2.default.createElement(_Card.CardHeader, {
+										title: this.state.title,
+										subtitle: this.state.author,
+										showExpandableButton: false
+									}),
+									_react2.default.createElement(
+										_Card.CardText,
+										null,
+										this.state.content
+									)
+								)
+							)
+						),
+						_react2.default.createElement(_CommentList2.default, {
+							postid: this.state.postid,
+							comments: this.state.comments,
+							onCommentSubmit: this.handleCommentSubmit
+						}),
+						_react2.default.createElement(_CommentReply2.default, {
+							onCommentSubmit: this.handleCommentSubmit,
+							postid: this.state.postid
 	
-					})
+						})
+					)
 				);
 			}
 		}]);
@@ -47683,7 +47882,7 @@
 	exports.default = PostDetail;
 
 /***/ },
-/* 426 */
+/* 427 */
 /*!******************************************!*\
   !*** ./views/Components/CommentList.jsx ***!
   \******************************************/
@@ -47777,7 +47976,7 @@
 	exports.default = CommentList;
 
 /***/ },
-/* 427 */
+/* 428 */
 /*!**************************************************!*\
   !*** ./~/material-ui/styles/MuiThemeProvider.js ***!
   \**************************************************/

@@ -2,7 +2,7 @@ import React from 'react';
 import CommentList from './CommentList.jsx'
 import CommentReply from './CommentReply.jsx'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-
+import {Grid, Col, Row} from 'react-flexbox-grid/lib/index';
 
 export default class PostDetail extends React.Component{
 	constructor(props){
@@ -18,7 +18,7 @@ export default class PostDetail extends React.Component{
 		$.ajax({
 	   	    url: "/api/hands?handid=" + this.props.params.postid,
 		    success: function(response) {
-		        this.setState({title: response.title, content : response.content, author: response.author})
+		        this.setState({title: response.title, author: response.author})
 		    }.bind(this),
 		    error: function(xhr) {
 		        console.log("GET request to retrieve hand failed.")
@@ -33,7 +33,7 @@ export default class PostDetail extends React.Component{
 				this.setState({comments: response})
 			}.bind(this),
 		    error: function(xhr) {
-		        console.log("GET request to retrieve hand failed.")
+		        console.log("GET request to retrieve comments for hand failed.")
 		    }.bind(this)
 		});
 	}
@@ -69,28 +69,37 @@ export default class PostDetail extends React.Component{
 	render(){
 		return(
 			<div>
-				<Card>
-				    <CardHeader
-				      title={this.state.title}
-				      subtitle={this.state.author}
-				      showExpandableButton={false}
-				    />
-				    <CardText>
-				      {this.state.content}
-				    </CardText>
-				    
-				    
-				</Card>
-				<CommentList 
-					postid = {this.state.postid}
-					comments = {this.state.comments}
-					onCommentSubmit = {this.handleCommentSubmit}
-					/>
-				<CommentReply 
-					onCommentSubmit = {this.handleCommentSubmit}
-					postid = {this.state.postid}
+				<Grid>
+					<Row start = "xs">
+						<Col xs = {12}>
+							<Card>
+							    <CardHeader
+							      title={this.state.title}
+							      subtitle={this.state.author}
+							      showExpandableButton={false}
+							    />
+							    <CardText>
+							      {this.state.content}
+							    </CardText>
+						    
+							</Card>
+						</Col>
+						
+					</Row>
+					
+					<CommentList 
+						postid = {this.state.postid}
+						comments = {this.state.comments}
+						onCommentSubmit = {this.handleCommentSubmit}
+						/>
+					<CommentReply 
+						onCommentSubmit = {this.handleCommentSubmit}
+						postid = {this.state.postid}
 
-				 />
+					 />
+
+				</Grid>
+				
 			</div>
 
 		);

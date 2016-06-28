@@ -5,8 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
 const signUpFormStyle = {
-	  width: '40%',
-	  maxWidth: 'none',
+	  width: '20%'
 	};
 
 export default class SignUpDialogComponent extends React.Component{
@@ -91,18 +90,21 @@ export default class SignUpDialogComponent extends React.Component{
 					<TextField
 				      hintText="Username"
 				      floatingLabelText="Username"
+				      fullWidth = {true}
 				      errorText={this.state.errorTextUser}
 				      onChange = {this.handleUserNameChange.bind(this)}
 				    /><br />
 					<TextField
 				      hintText="Password Field"
 				      floatingLabelText="Password"
+				      fullWidth = {true}
 				      errorText={this.state.errorTextPassword}
 				      onChange = {this.handlePasswordChange.bind(this)}
 				      type="password"
 				    /><br />
 				    <TextField
 				      hintText="Email Address"
+				      fullWidth = {true}
 				      floatingLabelText="Email Address"
 				      errorText={this.state.errorTextEmail}
 				      onChange = {this.handleEmailChange.bind(this)}

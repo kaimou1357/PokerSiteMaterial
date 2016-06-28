@@ -1,13 +1,11 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField'
-import {redA700} from 'material-ui/styles/colors';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
 const loginCustomStyle = {
-	width : '40%',
-	maxWidth : 'none',
+	width : '20%'
 }
 
 export default class LoginDialogComponent extends React.Component{
@@ -85,11 +83,13 @@ export default class LoginDialogComponent extends React.Component{
 					<TextField
 				      hintText="Username"
 				      errorText = {this.state.userErrorText}
+				      fullWidth = {true}
 				      onChange = {this.handleUserText.bind(this)}
 				    /><br />
 					<TextField
 				      hintText="Password Field"
 				      floatingLabelText="Password"
+				      fullWidth = {true}
 				      errorText = {this.state.passwordErrorText}
 				      onChange = {this.handlePasswordText.bind(this)}
 				      type="password"

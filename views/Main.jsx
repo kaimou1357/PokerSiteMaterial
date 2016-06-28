@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import LoginDialogComponent from './Components/LoginDialog.jsx';
 import SignUpDialogComponent from './Components/SignUpDialog.jsx';
+import NewHand from './Components/NewHand.jsx'
 import PostList from './Components/PostList.jsx'
 import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -49,10 +50,10 @@ class Main extends Component {
     $.ajax({
         url: "/api/hands",
       success: function(response) {
-  		this.setState({hands : response})
+  		  this.setState({hands : response})
   		}.bind(this),
   		error: function(xhr) {
-  		console.log("GET request to retrieve hand failed.")
+  		  console.log("GET request to retrieve hand failed.")
   		}.bind(this)
     });
   }
@@ -85,10 +86,13 @@ class Main extends Component {
         		<Row>
         			<Col xs={12}>
         				<Row start = "xs">
-        					<Col xs = {8}>
+        					<Col xs = {6}>
         						<img src = 'http://localhost:3000/images/cardlogo.png' height = '75' width = '125'/>
 
         					</Col>
+                  <Col xs = {2}>
+                    <NewHand />
+                  </Col>
         					<Col xs = {2}>
         						<SignUpDialogComponent onSignUp = {this.handleSignUp} />
         					</Col>

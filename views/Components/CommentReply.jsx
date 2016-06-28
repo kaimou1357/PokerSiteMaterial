@@ -74,6 +74,7 @@ export default class CommentReply extends React.Component{
           <TextField
               hintText="Enter your reply here"
               multiLine = {true}
+              fullWidth = {true}
               errorText = {this.state.userErrorText}
               onChange = {this.handleReplyText.bind(this)}
             /><br />
