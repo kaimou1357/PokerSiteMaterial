@@ -11,17 +11,12 @@ const loginCustomStyle = {
 export default class LoginDialogComponent extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = { open:false, username : '', password : '', userErrorText : '', passwordErrorText : ''};
-		this.handleOpen = this.handleOpen.bind(this);
-		this.handleClose = this.handleClose.bind(this);
+		this.state = {username : '', password : '', userErrorText : '', passwordErrorText : ''};
+		this.handleOpenClose = this.handleOpenClose.bind(this)
 	}
 
-	handleOpen(){
-		this.setState({open:true})
-	}
-
-	handleClose(){
-		this.setState({open:false})
+	handleOpenClose(){
+		this.props.onTouch()
 	}
 
 	handleUserText(e){
@@ -45,9 +40,7 @@ export default class LoginDialogComponent extends React.Component{
 		else{
 			this.setState({passwordErrorText: '', userErrorText : ''})
 			//Testing sending requests to/from server.
-			this.serverRequest = $.get('/api/test', function(result){
-				alert(result)
-			});
+			this.props.onLogin({"username" : user, "password" : password})
 		}
 		
 	}
@@ -64,22 +57,22 @@ export default class LoginDialogComponent extends React.Component{
 	      	label = "Cancel"
 	      	primary = {true}
 	      	keyboardFocused = {true}
-	      	onTouchTap = {this.handleClose}
+	      	onTouchTap = {this.handleOpenClose}
 	      />
 	    ];
 		return (
 			<div>
 				<FlatButton
 					label = "Login" 
-					onTouchTap = {this.handleOpen} 
+					onTouchTap = {this.handleOpenClose} 
 					/>
 				<Dialog
 					title = "Login Form"
 					actions = {actions}
 					modal = {false}
 					contentStyle = {loginCustomStyle}
-					open = {this.state.open}
-					onRequestClose = {this.handleClose}>
+					open = {this.props.isOpen}
+					onRequestClose = {this.handleOpenClose}>
 					<TextField
 				      hintText="Username"
 				      errorText = {this.state.userErrorText}

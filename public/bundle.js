@@ -21352,11 +21352,14 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props, context));
 	
 	    _this.handleRequestClose = _this.handleRequestClose.bind(_this);
-	    _this.handleTouchTap = _this.handleTouchTap.bind(_this);
 	    _this.handleSignUp = _this.handleSignUp.bind(_this);
+	    _this.handleLogin = _this.handleLogin.bind(_this);
+	
+	    _this.handleLoginOpen = _this.handleLoginOpen.bind(_this);
+	    _this.handleSignUpOpen = _this.handleSignUpOpen.bind(_this);
 	
 	    _this.state = {
-	      open: false, hands: []
+	      signUpOpen: false, loginOpen: false, hands: []
 	    };
 	    return _this;
 	  }
@@ -21370,7 +21373,26 @@
 	        contentType: "application/json",
 	        data: JSON.stringify(userinformation),
 	        success: function (response) {
-	          alert(JSON.stringify(response));
+	          //handle the response from signup here.
+	
+	          alert(response);
+	        }.bind(this),
+	        error: function (xhr) {
+	          console.log("POST request to signup failed");
+	        }.bind(this)
+	      });
+	    }
+	  }, {
+	    key: 'handleLogin',
+	    value: function handleLogin(userinformation) {
+	      $.ajax({
+	        url: "/login",
+	        type: "POST",
+	        contentType: "application/json",
+	        data: JSON.stringify(userinformation),
+	        success: function (response) {
+	          //handle the response from signup here.
+	          alert(response);
 	        }.bind(this),
 	        error: function (xhr) {
 	          console.log("POST request to signup failed");
@@ -21398,11 +21420,22 @@
 	      });
 	    }
 	  }, {
-	    key: 'handleTouchTap',
-	    value: function handleTouchTap() {
-	      this.setState({
-	        open: true
-	      });
+	    key: 'handleLoginOpen',
+	    value: function handleLoginOpen() {
+	      if (this.state.loginOpen) {
+	        this.setState({ loginOpen: false });
+	      } else {
+	        this.setState({ loginOpen: true });
+	      }
+	    }
+	  }, {
+	    key: 'handleSignUpOpen',
+	    value: function handleSignUpOpen() {
+	      if (this.state.signUpOpen) {
+	        this.setState({ signUpOpen: false });
+	      } else {
+	        this.setState({ signUpOpen: true });
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -21440,12 +21473,18 @@
 	                _react2.default.createElement(
 	                  _index.Col,
 	                  { xs: 2 },
-	                  _react2.default.createElement(_SignUpDialog2.default, { onSignUp: this.handleSignUp })
+	                  _react2.default.createElement(_SignUpDialog2.default, {
+	                    onSignUp: this.handleSignUp,
+	                    onTouch: this.handleSignUpOpen,
+	                    isOpen: this.state.signUpOpen })
 	                ),
 	                _react2.default.createElement(
 	                  _index.Col,
 	                  { xs: 2 },
-	                  _react2.default.createElement(_LoginDialog2.default, { label: 'Brand' })
+	                  _react2.default.createElement(_LoginDialog2.default, {
+	                    onTouch: this.handleLoginOpen,
+	                    onLogin: this.handleLogin,
+	                    isOpen: this.state.loginOpen })
 	                )
 	              )
 	            )
@@ -21533,21 +21572,15 @@
 	
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LoginDialogComponent).call(this, props));
 	
-			_this.state = { open: false, username: '', password: '', userErrorText: '', passwordErrorText: '' };
-			_this.handleOpen = _this.handleOpen.bind(_this);
-			_this.handleClose = _this.handleClose.bind(_this);
+			_this.state = { username: '', password: '', userErrorText: '', passwordErrorText: '' };
+			_this.handleOpenClose = _this.handleOpenClose.bind(_this);
 			return _this;
 		}
 	
 		_createClass(LoginDialogComponent, [{
-			key: 'handleOpen',
-			value: function handleOpen() {
-				this.setState({ open: true });
-			}
-		}, {
-			key: 'handleClose',
-			value: function handleClose() {
-				this.setState({ open: false });
+			key: 'handleOpenClose',
+			value: function handleOpenClose() {
+				this.props.onTouch();
 			}
 		}, {
 			key: 'handleUserText',
@@ -21573,9 +21606,7 @@
 				} else {
 					this.setState({ passwordErrorText: '', userErrorText: '' });
 					//Testing sending requests to/from server.
-					this.serverRequest = $.get('/api/test', function (result) {
-						alert(result);
-					});
+					this.props.onLogin({ "username": user, "password": password });
 				}
 			}
 		}, {
@@ -21590,14 +21621,14 @@
 					label: 'Cancel',
 					primary: true,
 					keyboardFocused: true,
-					onTouchTap: this.handleClose
+					onTouchTap: this.handleOpenClose
 				})];
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(_FlatButton2.default, {
 						label: 'Login',
-						onTouchTap: this.handleOpen
+						onTouchTap: this.handleOpenClose
 					}),
 					_react2.default.createElement(
 						_Dialog2.default,
@@ -21606,8 +21637,8 @@
 							actions: actions,
 							modal: false,
 							contentStyle: loginCustomStyle,
-							open: this.state.open,
-							onRequestClose: this.handleClose },
+							open: this.props.isOpen,
+							onRequestClose: this.handleOpenClose },
 						_react2.default.createElement(_TextField2.default, {
 							hintText: 'Username',
 							errorText: this.state.userErrorText,
@@ -27749,21 +27780,15 @@
 	
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SignUpDialogComponent).call(this, props));
 	
-			_this.state = { open: false, errorTextUser: '', errorTextPassword: '', errorTextEmail: '', username: '', password: '', email: '' };
-			_this.handleOpen = _this.handleOpen.bind(_this);
-			_this.handleClose = _this.handleClose.bind(_this);
+			_this.state = { errorTextUser: '', errorTextPassword: '', errorTextEmail: '', username: '', password: '', email: '' };
+			_this.handleOpenClose = _this.handleOpenClose.bind(_this);
 			return _this;
 		}
 	
 		_createClass(SignUpDialogComponent, [{
-			key: 'handleOpen',
-			value: function handleOpen() {
-				this.setState({ open: true });
-			}
-		}, {
-			key: 'handleClose',
-			value: function handleClose() {
-				this.setState({ open: false });
+			key: 'handleOpenClose',
+			value: function handleOpenClose() {
+				this.props.onTouch();
 			}
 		}, {
 			key: 'handleUserNameChange',
@@ -27812,23 +27837,23 @@
 					label: 'Cancel',
 					primary: true,
 					keyboardFocused: true,
-					onTouchTap: this.handleClose
+					onTouchTap: this.handleOpenClose
 				})];
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(_FlatButton2.default, {
 						label: 'Sign Up',
-						onTouchTap: this.handleOpen }),
+						onTouchTap: this.handleOpenClose }),
 					_react2.default.createElement(
 						_Dialog2.default,
 						{
 							title: 'Sign Up',
 							actions: actions,
 							modal: false,
-							open: this.state.open,
+							open: this.props.isOpen,
 							contentStyle: signUpFormStyle,
-							onRequestClose: this.handleClose },
+							onRequestClose: this.handleOpenClose },
 						_react2.default.createElement(_TextField2.default, {
 							hintText: 'Username',
 							floatingLabelText: 'Username',
@@ -27983,6 +28008,15 @@
 								_index.Row,
 								null,
 								_react2.default.createElement(
+									'b',
+									null,
+									'Table Information'
+								)
+							),
+							_react2.default.createElement(
+								_index.Row,
+								null,
+								_react2.default.createElement(
 									_index.Col,
 									{ xs: 12 },
 									_react2.default.createElement(
@@ -27991,12 +28025,6 @@
 										_react2.default.createElement(
 											_index.Col,
 											{ xs: 4 },
-											_react2.default.createElement(
-												'b',
-												null,
-												'Table Information'
-											),
-											_react2.default.createElement('br', null),
 											_react2.default.createElement(_TextField2.default, {
 												hintText: 'Hero Stack Size'
 											}),

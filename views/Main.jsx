@@ -23,11 +23,14 @@ class Main extends Component {
     super(props, context);
 
     this.handleRequestClose = this.handleRequestClose.bind(this);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
+
+    this.handleLoginOpen = this.handleLoginOpen.bind(this)
+    this.handleSignUpOpen = this.handleSignUpOpen.bind(this)
 
     this.state = {
-      open: false, hands : []
+      signUpOpen: false, loginOpen : false,  hands : []
     };
   }
 
@@ -38,7 +41,25 @@ class Main extends Component {
         contentType : "application/json",
         data: JSON.stringify(userinformation),
         success: function(response){
-          alert(JSON.stringify(response))
+          //handle the response from signup here.
+
+          alert(response)
+        }.bind(this), 
+        error:function(xhr){
+          console.log("POST request to signup failed")
+        }.bind(this)
+    });
+  }
+
+  handleLogin(userinformation){
+    $.ajax({
+      url: "/login",
+        type: "POST",
+        contentType : "application/json",
+        data: JSON.stringify(userinformation),
+        success: function(response){
+          //handle the response from signup here.
+          alert(response)
         }.bind(this), 
         error:function(xhr){
           console.log("POST request to signup failed")
@@ -64,10 +85,23 @@ class Main extends Component {
     });
   }
 
-  handleTouchTap() {
-    this.setState({
-      open: true,
-    });
+  handleLoginOpen() {
+    if(this.state.loginOpen){
+      this.setState({loginOpen : false})
+    }
+    else{
+      this.setState({loginOpen : true})
+    }
+
+  }
+
+  handleSignUpOpen(){
+    if(this.state.signUpOpen){
+      this.setState({signUpOpen : false})
+    }
+    else{
+      this.setState({signUpOpen : true})
+    }
   }
 
   render() {
@@ -94,10 +128,16 @@ class Main extends Component {
                     <NewHand />
                   </Col>
         					<Col xs = {2}>
-        						<SignUpDialogComponent onSignUp = {this.handleSignUp} />
+        						<SignUpDialogComponent 
+                      onSignUp = {this.handleSignUp} 
+                      onTouch = {this.handleSignUpOpen}
+                      isOpen = {this.state.signUpOpen} />
         					</Col>
         					<Col xs = {2} >
-        						<LoginDialogComponent label = "Brand" />
+        						<LoginDialogComponent 
+                      onTouch = {this.handleLoginOpen} 
+                      onLogin = {this.handleLogin} 
+                      isOpen = {this.state.loginOpen}  />
         					</Col>
 
         				</Row>

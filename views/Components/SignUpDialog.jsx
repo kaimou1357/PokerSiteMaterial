@@ -13,18 +13,14 @@ export default class SignUpDialogComponent extends React.Component{
 
 	constructor(props){
 		super(props);
-		this.state = { open:false, errorTextUser : '',errorTextPassword : '', errorTextEmail : '', username : '', password : '', email : ''};
-		this.handleOpen = this.handleOpen.bind(this);
-		this.handleClose = this.handleClose.bind(this);
+		this.state = {errorTextUser : '',errorTextPassword : '', errorTextEmail : '', username : '', password : '', email : ''};
+		this.handleOpenClose = this.handleOpenClose.bind(this)
 	}
 
-	handleOpen(){
-		this.setState({open:true})
+	handleOpenClose(){
+		this.props.onTouch()
 	}
 
-	handleClose(){
-		this.setState({open:false})
-	}
 
 	handleUserNameChange(e){
 		this.setState({username : e.target.value, errorTextUser : ''})
@@ -72,21 +68,21 @@ export default class SignUpDialogComponent extends React.Component{
 	      	label = "Cancel"
 	      	primary = {true}
 	      	keyboardFocused = {true}
-	      	onTouchTap = {this.handleClose}
+	      	onTouchTap = {this.handleOpenClose}
 	      />
 	    ];
 		return (
 			<div>
 				<FlatButton
 					label = "Sign Up" 
-					onTouchTap = {this.handleOpen} />
+					onTouchTap = {this.handleOpenClose} />
 				<Dialog
 					title = "Sign Up"
 					actions = {actions}
 					modal = {false}
-					open = {this.state.open}
+					open = {this.props.isOpen}
 					contentStyle = {signUpFormStyle}
-					onRequestClose = {this.handleClose}>
+					onRequestClose = {this.handleOpenClose}>
 					<TextField
 				      hintText="Username"
 				      floatingLabelText="Username"

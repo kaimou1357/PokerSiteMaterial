@@ -63,11 +63,14 @@ export default class NewHand extends React.Component{
 					onRequestClose = {this.handleClose}>
 					<Grid>
 						<Row>
+							<b>Table Information</b>
+							
+						</Row>
+						<Row>
 							<Col xs = {12}>
 								<Row start = "xs">
 									<Col xs = {4}>
-										<b>Table Information</b>
-										<br></br>
+										
 										<TextField
 											hintText = "Hero Stack Size"
 										/>
