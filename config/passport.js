@@ -1,13 +1,16 @@
 var LocalStrategy = require('passport-local').Strategy
-
+var bcrypt = require('bcrypt')
+const saltRounds = 8
 var User = require('../routes/user')
 
 module.exports = function(passport){
+	
 	passport.serializeUser(function(user, done){
-		done(null, user.id)
+		done(null, user.userid)
 	})
 
 	passport.deserializeUser(function(id, done){
+		
 		User.findById(id, function(err, user){
 			done(err, user)
 		})
@@ -15,32 +18,62 @@ module.exports = function(passport){
 
 	passport.use('local-signup', new LocalStrategy({
 		usernameField : 'username',
-		emailField : 'email',
-		passwordField : 'password',
+		passwordField: 'password',
 		passReqToCallback : true
 	}, 
-	function(req, username, email, password, done){
-		process.nextTick(function(){
-			User.findOne(username, function(err, user){
-				if(err) return done(err)
+	function(req, email, password,done){
+		User.findUser(req.body.username, function(err, user){
+			if(err) 
+				return done(err)
 
-				if(user){
-					return done(null, false, req.flash('signupMessage', 'That username is already taken'))
+			if(user){	
+				 console.log('User already exists so not created!')
+				 return done(null, false)
+			}
+			else{
+				bcrypt.hash(req.body.password, saltRounds, function(err, hash){
+					User.saveUser(req.body.username, hash, req.body.email, function(err, user){
+						if(err){
+							console.log(err)
+						}
+						else{
+							return done(null, user)
+						}
+					})
+				})
+				
+			}
+
+		})
+		
+	}))
+
+
+	passport.use('local-login', new LocalStrategy({
+		usernameField : 'username',
+        passwordField : 'password',
+		passReqToCallback : true
+	},
+	function(req, email, password, done){
+		User.findUser(req.body.username, function(err, user){
+			if(err)
+				return done(err)
+			if(!user)
+				return done(null, false)
+			bcrypt.compare(req.body.password, user.password, function(err, res){
+				console.log(res)
+				if(res == true){
+					console.log('Login Successful')
+					return done(null, user)
 				}
 				else{
-					var newUser = new User()
-					newUser.email = email
-					newUser.password = password
-					newUser.username = username
-
-					newUser.save(function(err){
-						if(err)
-							throw err
-						return done(null, newUser)
-					})
+					console.log('Login UnSuccessful')
+					return done(null, false)
 				}
-
 			})
+
+			
 		})
+	
 	}))
 }

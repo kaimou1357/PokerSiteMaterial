@@ -13,11 +13,15 @@ module.exports = function(app, passport){
 	app.post('/api/comments', comment.postComment)
 	app.delete('/api/comments/:commentid', comment.deleteComment)
 
-	app.post('/signup', passport.authenticate('local-signup', {
-		successRedirect : '/',
-		failureRedirect : '/posts/1',
-		failureFlash : true
-	}))
+	app.post('/signup', passport.authenticate('local-signup'), function(req, res){
+		res.json({"Success" : "true"} )
+	})
+
+	
+	app.post('/login', passport.authenticate('local-login'), function(req, res){
+		res.send('Login Successful')
+	})
+
 
 	app.get('*', function(req, res){
 		res.sendFile(path.join(__dirname, "../public" , "index.html"))
