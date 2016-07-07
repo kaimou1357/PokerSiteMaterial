@@ -1,5 +1,5 @@
 var LocalStrategy = require('passport-local').Strategy
-var bcrypt = require('bcrypt')
+var bcrypt = require('bcrypt-nodejs')
 const saltRounds = 8
 var User = require('../routes/user')
 
