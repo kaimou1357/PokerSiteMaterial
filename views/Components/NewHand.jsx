@@ -35,7 +35,7 @@ export default class NewHand extends React.Component{
 	render(){	
 		const actions = [
 			 <FlatButton
-		        label="Login"
+		        label="Upload"
 		        primary={true}
 		        keyboardFocused={true}
 		        onTouchTap={this.onSubmit.bind(this)}
