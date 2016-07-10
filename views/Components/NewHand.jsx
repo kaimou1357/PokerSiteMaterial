@@ -20,11 +20,12 @@ export default class NewHand extends React.Component{
 	constructor(props){
 		super(props)
 		this.state = 
-			{open: false, heroStack : '', villainStack: '', heroTableImage: '', villainTableImage: '',
+			{	
+				open: false, heroStack : '', villainStack: '', heroTableImage: '', villainTableImage: '',
 				heroPosition : 0, villainPosition : 0, preflopOne: 52, preflopTwo: 52, 
-				flopOne: '', flopTwo: '', flopThree: '', flopBetting : '',
-				turnCard : '', turnBetting : '',
-				riverCard : '', riverBetting: '' 
+				flopOne: 52, flopTwo: 52, flopThree: 52, flopBetting : '',
+				turnCard : 52, turnBetting : '',
+				riverCard : 52, riverBetting: '' 
 			}
 		this.handleOpen = this.handleOpen.bind(this);
 		this.handleClose = this.handleClose.bind(this);
@@ -32,6 +33,7 @@ export default class NewHand extends React.Component{
 		this.handleChangeVillain = this.handleChangeVillain.bind(this)
 		this.handleFormChange = this.handleFormChange.bind(this)
 	}
+
 
 	handleOpen(){
 		this.setState({open:true})
@@ -52,6 +54,7 @@ export default class NewHand extends React.Component{
 
 	onSubmit(e){
 		console.log(this.state.heroStack)
+		this.props.onHandSubmit()
 	}
 
 	handleChangeHero(event, index, value){
@@ -62,13 +65,11 @@ export default class NewHand extends React.Component{
 		this.setState({villainPosition : value})
 	}
 
-	handleCardChange(key){
-		return function(e){
+	handleCardChange(street){
+		return function(event, index, value){
 			var state = {}
-			console.log(e.target.value)
-			state[key] = e.target.value
+			state[street] = value
 			this.setState(state)
-
 		}.bind(this)
 	}
 
@@ -129,7 +130,21 @@ export default class NewHand extends React.Component{
 					onRequestClose = {this.handleClose}>
 					<Grid>
 						<Row>
-							<b><h2>Table Information</h2></b>
+							<Col xs = {12}>
+								<Row start = "xs">
+									<Col xs = {4}>
+										<b><h2>Table Information</h2></b>
+									</Col>
+									<Col xs = {2}>
+										<h4>Hero Position</h4>
+									</Col>
+									<Col xs = {2}>
+										<h4>Villain Position</h4>
+									</Col>
+									
+								</Row>
+							</Col>
+							
 							
 						</Row>
 						<Row>
@@ -146,13 +161,30 @@ export default class NewHand extends React.Component{
 											onChange = {this.handleFormChange('villainStack')}
 										/>	
 									</Col>
+									<Col xs = {2}>
+										
+										<DropDownMenu value = {this.state.heroPosition} onChange = {this.handleChangeHero} children = {positions}>
+										</DropDownMenu>
+										
+									</Col>
 
-									<Col xs = {4}>
+									<Col xs = {2}>
+										
+										<DropDownMenu value = {this.state.villainPosition} onChange = {this.handleChangeVillain} children = {positions} >
+										</DropDownMenu>
+
+									</Col>
+									<Col xs = {1}>
+										<h5>Rock</h5>
+									</Col>
+									<Col xs = {2}>
+										
 										<Slider 
 											defaultValue = {0.5}
 											description = "Hero Table Image"
 											onDragStop = {this.handleFormChange('heroTableImage')}
 										/>
+										
 										<Slider
 											defaultValue = {0.5}
 											description = "Villain Table Image"
@@ -160,31 +192,25 @@ export default class NewHand extends React.Component{
 										/>
 
 									</Col>
-
-									<Col xs = {2}>
-										<h4>Hero Table Position</h4>
-										<DropDownMenu value = {this.state.heroPosition} onChange = {this.handleChangeHero} children = {positions}>
-										</DropDownMenu>
-										
+									<Col xs = {1}>
+										<h5>Maniac</h5>
 									</Col>
 
-									<Col xs = {2}>
-										<h4>Villain Table Position</h4>
-										<DropDownMenu value = {this.state.villainPosition} onChange = {this.handleChangeVillain} children = {positions} >
-										</DropDownMenu>
-
-									</Col>
+									
 								</Row>
 							</Col>
 						</Row>
+
+						
 						<Row>
 							<b><h2>Preflop</h2></b>
 						</Row>
+						
 						<Row>
 							<Col xs = {12}>
 								<Row start = "xs">
 									<Col xs = {6}>
-										<DropDownMenu value = {this.state.preflopOne} maxHeight = {300} onChange = {this.handleCardChange('preflopOne')} children = {cards} >
+										<DropDownMenu value = {this.state.preflopOne} maxHeight = {300} name = "preflopOne" onChange = {this.handleCardChange('preflopOne')} children = {cards} >
 										</DropDownMenu>
 										<DropDownMenu value = {this.state.preflopTwo} maxHeight = {300} onChange = {this.handleCardChange('preflopTwo')} children = {cards} >
 										</DropDownMenu>
@@ -207,11 +233,11 @@ export default class NewHand extends React.Component{
 							<Col xs = {12}>
 								<Row start = "xs">
 									<Col xs = {6}>
-										<DropDownMenu value = {this.state.preflopOne} maxHeight = {300} onChange = {this.handleCardChange('preflopOne')} children = {cards} >
+										<DropDownMenu value = {this.state.flopOne} maxHeight = {300} onChange = {this.handleCardChange('flopOne')} children = {cards} >
 										</DropDownMenu>
-										<DropDownMenu value = {this.state.preflopTwo} maxHeight = {300} onChange = {this.handleCardChange('preflopTwo')} children = {cards} >
+										<DropDownMenu value = {this.state.flopTwo} maxHeight = {300} onChange = {this.handleCardChange('flopTwo')} children = {cards} >
 										</DropDownMenu>
-										<DropDownMenu value = {this.state.preflopTwo} maxHeight = {300} onChange = {this.handleCardChange('preflopTwo')} children = {cards} >
+										<DropDownMenu value = {this.state.flopThree} maxHeight = {300} onChange = {this.handleCardChange('flopThree')} children = {cards} >
 										</DropDownMenu>
 									</Col>
 									<Col xs = {6}>
@@ -232,7 +258,7 @@ export default class NewHand extends React.Component{
 							<Col xs = {12}>
 								<Row start = "xs">
 									<Col xs = {6}>
-										<DropDownMenu value = {this.state.preflopOne} maxHeight = {300} onChange = {this.handleCardChange('preflopOne')} children = {cards} >
+										<DropDownMenu value = {this.state.turnCard} maxHeight = {300} onChange = {this.handleCardChange('turnCard')} children = {cards} >
 										</DropDownMenu>
 									</Col>
 									<Col xs = {6}>
@@ -254,7 +280,7 @@ export default class NewHand extends React.Component{
 							<Col xs = {12}>
 								<Row start = "xs">
 									<Col xs = {6}>
-										<DropDownMenu value = {this.state.preflopOne} maxHeight = {300} onChange = {this.handleCardChange('preflopOne')} children = {cards} >
+										<DropDownMenu value = {this.state.riverCard} maxHeight = {300} onChange = {this.handleCardChange('riverCard')} children = {cards} >
 										</DropDownMenu>
 		
 									</Col>

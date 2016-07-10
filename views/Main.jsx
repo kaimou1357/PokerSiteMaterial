@@ -58,8 +58,25 @@ class Main extends Component {
         contentType : "application/json",
         data: JSON.stringify(userinformation),
         success: function(response){
-          //handle the response from signup here.
+          //handle the response from logging in here.
           alert(response)
+        }.bind(this), 
+        error:function(xhr){
+          console.log("POST request to signup failed")
+        }.bind(this)
+    });
+  }
+
+  postNewHand(hand){
+    $.ajax({
+      url: "/api/hands",
+        type: "POST",
+        contentType : "application/json",
+        data: JSON.stringify(hand),
+        success: function(response){
+          //handle the response from signup here.
+
+          console.log(response)
         }.bind(this), 
         error:function(xhr){
           console.log("POST request to signup failed")
@@ -125,7 +142,7 @@ class Main extends Component {
 
         					</Col>
                   <Col xs = {2}>
-                    <NewHand />
+                    <NewHand onHandSubmit = {this.postNewHand}/>
                   </Col>
         					<Col xs = {2}>
         						<SignUpDialogComponent 

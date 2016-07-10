@@ -60,16 +60,19 @@ exports.postHand = function(req, res){
 		else{
 	
 			client.query('INSERT INTO hands(author, title, preflop_one, preflop_two, preflop_betting, flop_one, flop_two, flop_three, flop_betting, turn_card, turn_betting, river_card, river_betting) VALUES' + 
-				'($1, $2, $3, $4, $5, $6,$7, $8, $9, $10, $11, $12, $13) returning postid;',[req.body.author, req.body.title, req.body.preflop.one, req.body.preflop.two, req.body.preflop_betting, req.body.flop.one, req.body.flop.two,req.body.flop.three, req.body.flop_betting, req.body.turn_card, req.body.turn_betting, req.body.river_card, req.body.river_betting], function(err, result){
+				'($1, $2, $3, $4, $5, $6,$7, $8, $9, $10, $11, $12, $13) returning postid;',[req.body.author, req.body.title, req.body.preflop.one, req.body.preflop.two, req.body.preflop.betting, req.body.flop.one, req.body.flop.two,req.body.flop.three, req.body.flop.betting, req.body.turn.card, req.body.turn.betting, req.body.river.card, req.body.river.betting], function(err, result){
 					done()
 					if(err){
 						console.log(err)
-					}					
+					}				
 					for(var i = 0; i<req.body.players.length; i++){
 						var player = req.body.players[i]
-						client.query('INSERT INTO playerinfo(postid, name, position, stack_size, image) VALUES ($1, $2, $3, $4, $5);', [req.body.postid, player.name, player.position, player.stack_size, player.image], function(err, result){
+						client.query('INSERT INTO playerinfo(postid, name, position, stack_size, image) VALUES ($1, $2, $3, $4, $5);', [result.rows[0].postid, player.name, player.position, player.stack_size, player.image], function(err, result){
 							done()
-							if(err){console.log('Failed to insert into playerinfo')}
+							if(err){
+								console.log('Failed to insert into playerinfo')
+								console.log(err)
+							}
 
 						})
 					}
