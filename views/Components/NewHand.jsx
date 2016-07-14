@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Slider from 'material-ui/Slider';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-
+import Snackbar from 'material-ui/Snackbar';
 import {Grid, Col, Row} from 'react-flexbox-grid/lib/index';
 
 const newHandStyle = {
@@ -21,8 +21,9 @@ export default class NewHand extends React.Component{
 		super(props)
 		this.state = 
 			{	
-				open: false, heroStack : '', villainStack: '', heroTableImage: '', villainTableImage: '',
-				heroPosition : 0, villainPosition : 0, preflopOne: 52, preflopTwo: 52, 
+				open: false, snackbarOpen : false, title : '', heroStack : '', villainStack: '', heroTableImage: 50, villainTableImage: 50,
+				heroPosition : 0, villainPosition : 0, 
+				preflopOne: 52, preflopTwo: 52, preflopBetting : '',
 				flopOne: 52, flopTwo: 52, flopThree: 52, flopBetting : '',
 				turnCard : 52, turnBetting : '',
 				riverCard : 52, riverBetting: '' 
@@ -32,6 +33,15 @@ export default class NewHand extends React.Component{
 		this.handleChangeHero = this.handleChangeHero.bind(this)
 		this.handleChangeVillain = this.handleChangeVillain.bind(this)
 		this.handleFormChange = this.handleFormChange.bind(this)
+		this.handleHeroSlider = this.handleHeroSlider.bind(this)
+		this.handleVillainSlider = this.handleVillainSlider.bind(this)
+	}
+
+	shouldComponentUpdate(nextProps, nextState){
+		if((nextState.heroTableImage != this.state.heroTableImage) || nextState.villainTableImage != this.state.villainTableImage){
+			return false
+		}
+		return true
 	}
 
 
@@ -52,9 +62,75 @@ export default class NewHand extends React.Component{
 
 	}
 
+	handleSnackBarOpen(){
+		this.setState({snackbarOpen : true})
+	}
+
+	handleSnackBarClose(){
+		this.setState({snackbarOpen : false})
+	}
+
+	handleHeroSlider(e, value){
+		this.setState({heroTableImage : value})
+	}
+
+	handleVillainSlider(e, value){
+		this.setState({villainTableImage : value})
+	}
+
 	onSubmit(e){
-		console.log(this.state.heroStack)
-		this.props.onHandSubmit()
+		var preflop = {
+			"one" : this.state.preflopOne,
+			"two" : this.state.preflopTwo,
+			"betting" : this.state.preflopBetting
+		}		
+
+		var flop = {
+			"one" : this.state.flopOne,
+			"two" : this.state.flopTwo,
+			"three" : this.state.flopThree,
+			"betting"  : this.state.flopBetting
+		}
+
+		var turn = {
+			"card" : this.state.turnCard,
+			"betting" : this.state.turnBetting
+		}
+
+		var river = {
+			"card" : this.state.riverCard,
+			"betting" : this.state.riverBetting
+		}
+		
+
+		var players = [
+			{
+				"name" : "Hero",
+				"position" : this.state.heroPosition,
+				"stack_size" : this.state.heroStack,
+				"image" : this.state.heroTableImage
+			},
+
+			{
+				"name" : "Villain",
+				"position" : this.state.villainPosition,
+				"stack_size" : this.state.villainStack,
+				"image" : this.state.villainTableImage 
+			}
+		]
+
+		var handjson = {
+			"author" : "Test user",
+			"title" : this.state.title,
+			"players" : players,
+			"preflop" : preflop,
+			"flop" : flop,
+			"turn" : turn,
+			"river" : river
+		}
+
+		this.props.onHandSubmit(handjson)
+		this.setState({open:false, snackbarOpen : true})
 	}
 
 	handleChangeHero(event, index, value){
@@ -120,6 +196,12 @@ export default class NewHand extends React.Component{
 					label = "New Hand"
 					onTouchTap = {this.handleOpen}
 				/>
+				<Snackbar
+		          open={this.state.snackbarOpen}
+		          message="Hand Posted!"
+		          autoHideDuration={4000}
+		          onRequestClose={this.handleSnackBarClose}
+		        />
 				<Dialog
 					title = "New Hand Form"
 					actions = {actions}
@@ -129,6 +211,13 @@ export default class NewHand extends React.Component{
 					open = {this.state.open}
 					onRequestClose = {this.handleClose}>
 					<Grid>
+						<Row>
+							<TextField
+								hintText = "Title of Post"
+								fullWidth = {true}
+								onChange = {this.handleFormChange('title')}
+							/>
+						</Row>
 						<Row>
 							<Col xs = {12}>
 								<Row start = "xs">
@@ -180,15 +269,21 @@ export default class NewHand extends React.Component{
 									<Col xs = {2}>
 										
 										<Slider 
-											defaultValue = {0.5}
+											min = {0}
+											max = {100}
+											step = {1}
+											defaultValue = {50}
 											description = "Hero Table Image"
-											onDragStop = {this.handleFormChange('heroTableImage')}
+											onChange = {this.handleHeroSlider}
 										/>
 										
 										<Slider
-											defaultValue = {0.5}
+											min = {0}
+											max = {100}
+											step = {1}
+											defaultValue = {50}
 											description = "Villain Table Image"
-											onDragStop = {this.handleFormChange('villainTableImage')}
+											onChange = {this.handleVillainSlider}
 										/>
 
 									</Col>

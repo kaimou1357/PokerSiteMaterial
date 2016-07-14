@@ -75,7 +75,7 @@ class Main extends Component {
         data: JSON.stringify(hand),
         success: function(response){
           //handle the response from signup here.
-
+          //should probably return the hand from the post request.
           console.log(response)
         }.bind(this), 
         error:function(xhr){
@@ -85,14 +85,18 @@ class Main extends Component {
   }
 
   componentDidMount(){
+    this.refreshHands()
+  }
+
+  refreshHands(){
     $.ajax({
         url: "/api/hands",
       success: function(response) {
-  		  this.setState({hands : response})
-  		}.bind(this),
-  		error: function(xhr) {
-  		  console.log("GET request to retrieve hand failed.")
-  		}.bind(this)
+        this.setState({hands : response})
+      }.bind(this),
+      error: function(xhr) {
+        console.log("GET request to retrieve hand failed.")
+      }.bind(this)
     });
   }
 

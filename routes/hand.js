@@ -64,6 +64,7 @@ exports.postHand = function(req, res){
 					done()
 					if(err){
 						console.log(err)
+						res.json({"Error" : "Failed to insert into hands"})
 					}				
 					for(var i = 0; i<req.body.players.length; i++){
 						var player = req.body.players[i]
@@ -72,6 +73,7 @@ exports.postHand = function(req, res){
 							if(err){
 								console.log('Failed to insert into playerinfo')
 								console.log(err)
+								res.json({"Error" : "Failed to insert into playerinfo"})
 							}
 
 						})
