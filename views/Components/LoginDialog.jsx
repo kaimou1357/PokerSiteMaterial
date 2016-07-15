@@ -41,6 +41,7 @@ export default class LoginDialogComponent extends React.Component{
 			this.setState({passwordErrorText: '', userErrorText : ''})
 			//Testing sending requests to/from server.
 			this.props.onLogin({"username" : user, "password" : password})
+			
 		}
 		
 	}

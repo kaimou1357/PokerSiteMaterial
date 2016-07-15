@@ -35,10 +35,11 @@ export default class NewHand extends React.Component{
 		this.handleFormChange = this.handleFormChange.bind(this)
 		this.handleHeroSlider = this.handleHeroSlider.bind(this)
 		this.handleVillainSlider = this.handleVillainSlider.bind(this)
+		this.handleSnackBarClose = this.handleSnackBarClose.bind(this)
 	}
 
 	shouldComponentUpdate(nextProps, nextState){
-		if((nextState.heroTableImage != this.state.heroTableImage) || nextState.villainTableImage != this.state.villainTableImage){
+		if((nextState.heroTableImage != this.state.heroTableImage) || (nextState.villainTableImage != this.state.villainTableImage)){
 			return false
 		}
 		return true

@@ -14,12 +14,23 @@ module.exports = function(app, passport){
 	app.delete('/api/comments/:commentid', comment.deleteComment)
 
 	app.post('/signup', passport.authenticate('local-signup'), function(req, res){
-		res.json({"Success" : "true"} )
+		if(req.user){
+			res.json(req.user)
+		}
+		else{
+			res.json({"Signup" : "Signup Failed"})
+		}
 	})
 
 	
 	app.post('/login', passport.authenticate('local-login'), function(req, res){
-		res.send('Login Successful')
+		if(req.user){
+			res.json(req.user)
+		}
+		else{
+			res.json({"Login" : "Login Failed"})
+		}
+		
 	})
 
 

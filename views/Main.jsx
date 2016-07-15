@@ -28,9 +28,10 @@ class Main extends Component {
 
     this.handleLoginOpen = this.handleLoginOpen.bind(this)
     this.handleSignUpOpen = this.handleSignUpOpen.bind(this)
+    this.postNewHand = this.postNewHand.bind(this)
 
     this.state = {
-      signUpOpen: false, loginOpen : false,  hands : []
+      signUpOpen: false, loginOpen : false,  hands : [], user : ''
     };
   }
 
@@ -42,8 +43,8 @@ class Main extends Component {
         data: JSON.stringify(userinformation),
         success: function(response){
           //handle the response from signup here.
+          this.setState({user : response, signUpOpen : false})
 
-          alert(response)
         }.bind(this), 
         error:function(xhr){
           console.log("POST request to signup failed")
@@ -58,11 +59,10 @@ class Main extends Component {
         contentType : "application/json",
         data: JSON.stringify(userinformation),
         success: function(response){
-          //handle the response from logging in here.
-          alert(response)
+          this.setState({user : response, loginOpen : false})
         }.bind(this), 
         error:function(xhr){
-          console.log("POST request to signup failed")
+          console.log("POST request to login failed")
         }.bind(this)
     });
   }
@@ -74,8 +74,10 @@ class Main extends Component {
         contentType : "application/json",
         data: JSON.stringify(hand),
         success: function(response){
-          //handle the response from signup here.
-          //should probably return the hand from the post request.
+          var newArray = this.state.hands.slice()
+          newArray.push(response)
+          this.setState({hands : newArray})
+
           console.log(response)
         }.bind(this), 
         error:function(xhr){
@@ -126,13 +128,16 @@ class Main extends Component {
   }
 
   render() {
-    const standardActions = (
-      <FlatButton
-        label="Ok"
-        primary={true}
-        onTouchTap={this.handleRequestClose}
-      />
-    );
+    let navBar = []
+    if(!this.state.user){
+      //If user is not logged in , display signup/login boxes. Otherwise, just allow them to post a new hand.
+      navBar.push(<SignUpDialogComponent onSignUp = {this.handleSignUp} onTouch = {this.handleSignUpOpen} isOpen = {this.state.signUpOpen} />)
+      navBar.push(<LoginDialogComponent onTouch = {this.handleLoginOpen} onLogin = {this.handleLogin} isOpen = {this.state.loginOpen} />)
+    }
+    else{
+      navBar[1] = <NewHand onHandSubmit = {this.postNewHand} />
+      navBar[2] = <LoginDialogComponent />
+    }
     return (
     	
       
@@ -146,21 +151,14 @@ class Main extends Component {
 
         					</Col>
                   <Col xs = {2}>
-                    <NewHand onHandSubmit = {this.postNewHand}/>
+                    {navBar[0]}
                   </Col>
-        					<Col xs = {2}>
-        						<SignUpDialogComponent 
-                      onSignUp = {this.handleSignUp} 
-                      onTouch = {this.handleSignUpOpen}
-                      isOpen = {this.state.signUpOpen} />
-        					</Col>
-        					<Col xs = {2} >
-        						<LoginDialogComponent 
-                      onTouch = {this.handleLoginOpen} 
-                      onLogin = {this.handleLogin} 
-                      isOpen = {this.state.loginOpen}  />
-        					</Col>
-
+                  <Col xs = {2}>
+                    {navBar[1]}
+                  </Col>
+                  <Col xs = {2}>
+                    {navBar[2]}
+                  </Col>
         				</Row>
   
         			</Col>

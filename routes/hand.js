@@ -41,7 +41,7 @@ exports.getHand = function(req, res){
 				if(err){
 					console.error("Error running query")
 				}
-
+				console.log("Get hand" + result.rows)
 				res.json(result.rows)
 			})
 		})
@@ -60,7 +60,7 @@ exports.postHand = function(req, res){
 		else{
 	
 			client.query('INSERT INTO hands(author, title, preflop_one, preflop_two, preflop_betting, flop_one, flop_two, flop_three, flop_betting, turn_card, turn_betting, river_card, river_betting) VALUES' + 
-				'($1, $2, $3, $4, $5, $6,$7, $8, $9, $10, $11, $12, $13) returning postid;',[req.body.author, req.body.title, req.body.preflop.one, req.body.preflop.two, req.body.preflop.betting, req.body.flop.one, req.body.flop.two,req.body.flop.three, req.body.flop.betting, req.body.turn.card, req.body.turn.betting, req.body.river.card, req.body.river.betting], function(err, result){
+				'($1, $2, $3, $4, $5, $6,$7, $8, $9, $10, $11, $12, $13) returning postid, title, author;',[req.body.author, req.body.title, req.body.preflop.one, req.body.preflop.two, req.body.preflop.betting, req.body.flop.one, req.body.flop.two,req.body.flop.three, req.body.flop.betting, req.body.turn.card, req.body.turn.betting, req.body.river.card, req.body.river.betting], function(err, result){
 					done()
 					if(err){
 						console.log(err)
@@ -78,7 +78,7 @@ exports.postHand = function(req, res){
 
 						})
 					}
-					res.json({"Success" : "True"})
+					res.json({"title" : result.rows[0].title, "author" : result.rows[0].author})
 			});
 		}
 	})
