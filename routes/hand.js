@@ -41,7 +41,6 @@ exports.getHand = function(req, res){
 				if(err){
 					console.error("Error running query")
 				}
-				console.log("Get hand" + result.rows)
 				res.json(result.rows)
 			})
 		})

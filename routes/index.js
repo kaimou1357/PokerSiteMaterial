@@ -33,8 +33,27 @@ module.exports = function(app, passport){
 		
 	})
 
+	app.get('/logout', function(req, res){
+		console.log("User logged out")
+		req.logout()
+		res.redirect('/')
+	})
 
+	app.get('/username', function(req, res){
+		if(req.user != undefined){
+			console.log("Client username check " + req.user.username)
+			res.json({username: req.user.username})
+		}
+		
+	})
+ 
 	app.get('*', function(req, res){
 		res.sendFile(path.join(__dirname, "../public" , "index.html"))
+		if(req.user == undefined){
+			console.log("Username not set in session")
+		}
+		else{
+			console.log("Username from session : " + req.user.username)
+		}
 	})
 }

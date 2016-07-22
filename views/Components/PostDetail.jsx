@@ -10,7 +10,8 @@ export default class PostDetail extends React.Component{
 		super(props)
 		this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
 		this.loadCommentsFromServer = this.loadCommentsFromServer.bind(this)
-		this.state = {postid : props.params.postid, title : '', content : '', author : '', comments : []}
+		this.getCurrentUser = this.getCurrentUser.bind(this)
+		this.state = {postid : props.params.postid, title : '', content : '', author : '', comments : [], currentUser : ''}
 
 	}
 
@@ -24,6 +25,22 @@ export default class PostDetail extends React.Component{
 		        console.log("GET request to retrieve hand failed.")
 		    }.bind(this)
 		});
+	}
+
+	getCurrentUser(){
+		$.ajax({
+	     	url: "/username",
+	        type: "GET",
+	        contentType : "application/json",
+	        success: function(response){
+	          this.setState({currentUser : response.username})
+
+
+	        }.bind(this), 
+	        error:function(xhr){
+	          console.log("GET request to retrieve username failed")
+	        }.bind(this)
+    	});
 	}
 
 	loadCommentsFromServer(){
@@ -56,10 +73,12 @@ export default class PostDetail extends React.Component{
 	}
 
 	componentDidMount(){
+		this.getCurrentUser()
 		this.loadHandFromServer()
 		this.loadCommentsFromServer()
 		this.intervalFunction = setInterval(this.loadCommentsFromServer, 5000)
 	}
+
 
 	componentWillUnmount(){
 		//unsubscribe from the interval so it doesn't call setstate on unrendered components.
@@ -67,6 +86,11 @@ export default class PostDetail extends React.Component{
 	}
 
 	render(){
+		let replyButton
+		if(this.state.currentUser){
+			replyButton = <CommentReply onCommentSubmit = {this.handleCommentSubmit} postid = {this.state.postid} currentUser = {this.state.currentUser} />
+		}
+		
 		return(
 			<div>
 				<Grid>
@@ -90,13 +114,9 @@ export default class PostDetail extends React.Component{
 					<CommentList 
 						postid = {this.state.postid}
 						comments = {this.state.comments}
-						onCommentSubmit = {this.handleCommentSubmit}
-						/>
-					<CommentReply 
-						onCommentSubmit = {this.handleCommentSubmit}
-						postid = {this.state.postid}
-
-					 />
+					/>
+					
+					{replyButton}
 
 				</Grid>
 				

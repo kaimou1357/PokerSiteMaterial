@@ -21354,6 +21354,7 @@
 	    _this.handleRequestClose = _this.handleRequestClose.bind(_this);
 	    _this.handleSignUp = _this.handleSignUp.bind(_this);
 	    _this.handleLogin = _this.handleLogin.bind(_this);
+	    _this.handleLogout = _this.handleLogout.bind(_this);
 	
 	    _this.handleLoginOpen = _this.handleLoginOpen.bind(_this);
 	    _this.handleSignUpOpen = _this.handleSignUpOpen.bind(_this);
@@ -21383,6 +21384,22 @@
 	      });
 	    }
 	  }, {
+	    key: 'checkUserLoggedIn',
+	    value: function checkUserLoggedIn() {
+	      $.ajax({
+	        url: "/username",
+	        type: "GET",
+	        contentType: "application/json",
+	        success: function (response) {
+	          //handle the response from signup here.
+	          this.setState({ user: response });
+	        }.bind(this),
+	        error: function (xhr) {
+	          console.log("POST request to signup failed");
+	        }.bind(this)
+	      });
+	    }
+	  }, {
 	    key: 'handleLogin',
 	    value: function handleLogin(userinformation) {
 	      $.ajax({
@@ -21392,6 +21409,21 @@
 	        data: JSON.stringify(userinformation),
 	        success: function (response) {
 	          this.setState({ user: response, loginOpen: false });
+	        }.bind(this),
+	        error: function (xhr) {
+	          console.log("POST request to login failed");
+	        }.bind(this)
+	      });
+	    }
+	  }, {
+	    key: 'handleLogout',
+	    value: function handleLogout() {
+	      $.ajax({
+	        url: "/logout",
+	        type: "GET",
+	        contentType: "application/json",
+	        success: function (response) {
+	          this.setState({ user: '' });
 	        }.bind(this),
 	        error: function (xhr) {
 	          console.log("POST request to login failed");
@@ -21421,6 +21453,7 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      this.checkUserLoggedIn();
 	      this.refreshHands();
 	    }
 	  }, {
@@ -21470,8 +21503,8 @@
 	        navBar.push(_react2.default.createElement(_SignUpDialog2.default, { onSignUp: this.handleSignUp, onTouch: this.handleSignUpOpen, isOpen: this.state.signUpOpen }));
 	        navBar.push(_react2.default.createElement(_LoginDialog2.default, { onTouch: this.handleLoginOpen, onLogin: this.handleLogin, isOpen: this.state.loginOpen }));
 	      } else {
-	        navBar[1] = _react2.default.createElement(_NewHand2.default, { onHandSubmit: this.postNewHand });
-	        navBar[2] = _react2.default.createElement(_LoginDialog2.default, null);
+	        navBar[0] = _react2.default.createElement(_NewHand2.default, { onHandSubmit: this.postNewHand });
+	        navBar[1] = _react2.default.createElement(_FlatButton2.default, { label: 'Logout', onTouchTap: this.handleLogout });
 	      }
 	      return _react2.default.createElement(
 	        'div',
@@ -21493,6 +21526,7 @@
 	                  { xs: 6 },
 	                  _react2.default.createElement('img', { src: 'http://localhost:3000/images/cardlogo.png', height: '75', width: '125' })
 	                ),
+	                _react2.default.createElement(_index.Col, { xs: 2 }),
 	                _react2.default.createElement(
 	                  _index.Col,
 	                  { xs: 2 },
@@ -21502,11 +21536,6 @@
 	                  _index.Col,
 	                  { xs: 2 },
 	                  navBar[1]
-	                ),
-	                _react2.default.createElement(
-	                  _index.Col,
-	                  { xs: 2 },
-	                  navBar[2]
 	                )
 	              )
 	            )
@@ -36564,7 +36593,7 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CommentReply).call(this, props));
 	
-	    _this.state = { open: false, replyText: '' };
+	    _this.state = { open: false, replyText: '', currentUser: _this.props.currentUser };
 	    _this.handleOpen = _this.handleOpen.bind(_this);
 	    _this.handleClose = _this.handleClose.bind(_this);
 	    return _this;
@@ -36594,8 +36623,8 @@
 	        return;
 	      } else {
 	        this.setState({ passwordErrorText: '', userErrorText: '' });
-	        //TODO : need to grab the author before submitting!
-	        this.props.onCommentSubmit({ author: 'Test User', content: replyText, postid: this.props.postid });
+	        console.log(this.props.currentUser);
+	        this.props.onCommentSubmit({ author: this.state.currentUser, content: replyText, postid: this.props.postid });
 	        this.setState({ open: false });
 	      }
 	    }
@@ -52699,7 +52728,8 @@
 	
 			_this.handleCommentSubmit = _this.handleCommentSubmit.bind(_this);
 			_this.loadCommentsFromServer = _this.loadCommentsFromServer.bind(_this);
-			_this.state = { postid: props.params.postid, title: '', content: '', author: '', comments: [] };
+			_this.getCurrentUser = _this.getCurrentUser.bind(_this);
+			_this.state = { postid: props.params.postid, title: '', content: '', author: '', comments: [], currentUser: '' };
 	
 			return _this;
 		}
@@ -52714,6 +52744,21 @@
 					}.bind(this),
 					error: function (xhr) {
 						console.log("GET request to retrieve hand failed.");
+					}.bind(this)
+				});
+			}
+		}, {
+			key: 'getCurrentUser',
+			value: function getCurrentUser() {
+				$.ajax({
+					url: "/username",
+					type: "GET",
+					contentType: "application/json",
+					success: function (response) {
+						this.setState({ currentUser: response.username });
+					}.bind(this),
+					error: function (xhr) {
+						console.log("GET request to retrieve username failed");
 					}.bind(this)
 				});
 			}
@@ -52751,6 +52796,7 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				this.getCurrentUser();
 				this.loadHandFromServer();
 				this.loadCommentsFromServer();
 				this.intervalFunction = setInterval(this.loadCommentsFromServer, 5000);
@@ -52764,6 +52810,11 @@
 		}, {
 			key: 'render',
 			value: function render() {
+				var replyButton = void 0;
+				if (this.state.currentUser) {
+					replyButton = _react2.default.createElement(_CommentReply2.default, { onCommentSubmit: this.handleCommentSubmit, postid: this.state.postid, currentUser: this.state.currentUser });
+				}
+	
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -52794,14 +52845,9 @@
 						),
 						_react2.default.createElement(_CommentList2.default, {
 							postid: this.state.postid,
-							comments: this.state.comments,
-							onCommentSubmit: this.handleCommentSubmit
+							comments: this.state.comments
 						}),
-						_react2.default.createElement(_CommentReply2.default, {
-							onCommentSubmit: this.handleCommentSubmit,
-							postid: this.state.postid
-	
-						})
+						replyButton
 					)
 				);
 			}

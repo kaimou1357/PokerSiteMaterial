@@ -12,7 +12,7 @@ const loginCustomStyle = {
 export default class CommentReply extends React.Component{
   constructor(props){
     super(props);
-    this.state = { open:false, replyText : ''};
+    this.state = { open:false, replyText : '', currentUser : this.props.currentUser};
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
@@ -37,8 +37,8 @@ export default class CommentReply extends React.Component{
     }
     else{
       this.setState({passwordErrorText: '', userErrorText : ''})
-      //TODO : need to grab the author before submitting!
-      this.props.onCommentSubmit({author : 'Test User', content: replyText, postid : this.props.postid})
+      console.log(this.props.currentUser)
+      this.props.onCommentSubmit({author : this.state.currentUser, content: replyText, postid : this.props.postid})
       this.setState({open:false})
     }
     

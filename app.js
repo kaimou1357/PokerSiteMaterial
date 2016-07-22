@@ -2,7 +2,6 @@ var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
 var passport = require('passport')
-var flash    = require('connect-flash');
 
 var morgan = require('morgan')
 var cookieParser = require('cookie-parser')
@@ -18,10 +17,9 @@ app.use(cookieParser())
 
 //passport setup
 
-app.use(session({secret : 'kaimou', resave : true, saveUninitialized : true}))
+app.use(session({secret : 'kaimou', resave : true, saveUninitialized : true, cookie : {maxAge : null}}))
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(flash());
 
 //routes
 require('./routes/index.js')(app, passport)	

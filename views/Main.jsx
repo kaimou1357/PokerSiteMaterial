@@ -25,6 +25,7 @@ class Main extends Component {
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
 
     this.handleLoginOpen = this.handleLoginOpen.bind(this)
     this.handleSignUpOpen = this.handleSignUpOpen.bind(this)
@@ -52,6 +53,22 @@ class Main extends Component {
     });
   }
 
+  checkUserLoggedIn(){
+    $.ajax({
+      url: "/username",
+        type: "GET",
+        contentType : "application/json",
+        success: function(response){
+          //handle the response from signup here.
+          this.setState({user : response})
+
+        }.bind(this), 
+        error:function(xhr){
+          console.log("POST request to signup failed")
+        }.bind(this)
+    });
+  }
+
   handleLogin(userinformation){
     $.ajax({
       url: "/login",
@@ -60,6 +77,20 @@ class Main extends Component {
         data: JSON.stringify(userinformation),
         success: function(response){
           this.setState({user : response, loginOpen : false})
+        }.bind(this), 
+        error:function(xhr){
+          console.log("POST request to login failed")
+        }.bind(this)
+    });
+  }
+
+  handleLogout(){
+    $.ajax({
+      url: "/logout",
+        type: "GET",
+        contentType : "application/json",
+        success: function(response){
+          this.setState({user : ''})
         }.bind(this), 
         error:function(xhr){
           console.log("POST request to login failed")
@@ -87,6 +118,7 @@ class Main extends Component {
   }
 
   componentDidMount(){
+    this.checkUserLoggedIn()
     this.refreshHands()
   }
 
@@ -135,8 +167,8 @@ class Main extends Component {
       navBar.push(<LoginDialogComponent onTouch = {this.handleLoginOpen} onLogin = {this.handleLogin} isOpen = {this.state.loginOpen} />)
     }
     else{
-      navBar[1] = <NewHand onHandSubmit = {this.postNewHand} />
-      navBar[2] = <LoginDialogComponent />
+      navBar[0] = <NewHand onHandSubmit = {this.postNewHand} />
+      navBar[1] = <FlatButton label = "Logout" onTouchTap = {this.handleLogout} />
     }
     return (
     	
@@ -151,13 +183,13 @@ class Main extends Component {
 
         					</Col>
                   <Col xs = {2}>
+                    
+                  </Col>
+                  <Col xs = {2}>
                     {navBar[0]}
                   </Col>
                   <Col xs = {2}>
                     {navBar[1]}
-                  </Col>
-                  <Col xs = {2}>
-                    {navBar[2]}
                   </Col>
         				</Row>
   
